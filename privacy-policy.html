@@ -156,33 +156,50 @@
 
                 <!-- Section 2: Local Processing -->
                 <div class="policy-section glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300">
-                    <h2>Local Data Processing</h2>
+                    <h2>What We Store Locally</h2>
                     <p>
-                        All information processed by Navi Lyrics, such as:
+                        Navi Lyrics uses your browser's local storage (<code>chrome.storage.local</code>) to remember your preferences and cache content for offline / fast access. Everything in this list stays on your device and is never transmitted anywhere:
                     </p>
                     <ul>
-                        <li>Font size preferences</li>
-                        <li>Song titles and artist names</li>
-                        <li>Time offset settings</li>
-                        <li>Active lyrics positions</li>
+                        <li><strong>Preferences:</strong> font size, time offset, translation language, color theme</li>
+                        <li><strong>Lyrics cache:</strong> synchronized and plain-text lyrics for songs you've recently viewed (LRU eviction at 50 entries)</li>
+                        <li><strong>Translation cache:</strong> previously translated lyrics, keyed by language and song ID (LRU eviction at 50 entries)</li>
+                        <li><strong>Search results cache:</strong> alternative lyric versions for the multi-version feature (30-minute TTL, 30 entries max)</li>
+                        <li><strong>Blacklist:</strong> IDs of lyric versions you marked as incorrect via the "dislike" button</li>
                     </ul>
                     <p>
-                        ...is processed entirely on your device and stored locally within your browser's local storage. This data never leaves your computer.
+                        No account is created. No identifier ties this data to you.
                     </p>
                 </div>
 
                 <!-- Section 3: External Requests -->
                 <div class="policy-section glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300">
-                    <h2>External Data Transmission</h2>
+                    <h2>Data Transmitted to External Servers</h2>
                     <p>
-                        The only data transmitted to external servers are <strong>necessary requests to fetch lyrics</strong>. These requests:
+                        Navi Lyrics communicates with three external services. In every case, only the strictly necessary data is sent, and only when you're actively using the extension on a supported page.
                     </p>
+                    <p><strong>1. LRCLIB API (lyrics provider)</strong></p>
                     <ul>
-                        <li>Are sent only when you explicitly request lyrics for a song</li>
-                        <li>Include only the song title and artist information needed to retrieve the lyrics</li>
-                        <li>Are transmitted to our lyrics provider (LRCLIB API) securely</li>
-                        <li>Are not used for any purpose other than providing you with lyrics data</li>
+                        <li>Sent: song title, artist, album name (when available), and duration</li>
+                        <li>When: automatically whenever you open the floating lyrics window on a new song</li>
+                        <li>Purpose: fetch synchronized or plain-text lyrics for the song</li>
                     </ul>
+                    <p><strong>2. Google Translate (translation provider)</strong></p>
+                    <ul>
+                        <li>Sent: the text content of the lyrics (without timestamps), plus your selected target language</li>
+                        <li>When: only when you tap the translate button in the floating window</li>
+                        <li>Purpose: produce a real-time translation of the lyrics</li>
+                        <li>Endpoint: Google Translate's public client endpoint (<code>translate.googleapis.com</code>)</li>
+                    </ul>
+                    <p><strong>3. Album art (Spotify CDN and YouTube image CDN — Adaptive theme only)</strong></p>
+                    <ul>
+                        <li>Loaded: the album cover image of the currently playing song, only when you choose the "Adaptive" color theme</li>
+                        <li>Processed: rendered into a 32×32 HTML canvas locally and analyzed to extract a dominant color</li>
+                        <li>Not transmitted: the image and the extracted color stay on your device. We never upload them anywhere.</li>
+                    </ul>
+                    <p>
+                        We do not log, store, or analyze any of these requests on a server we control — we don't operate one.
+                    </p>
                 </div>
 
                 <!-- Section 4: Browser Local Storage -->
@@ -203,13 +220,15 @@
                 <div class="policy-section glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300">
                     <h2>Third-Party Services</h2>
                     <p>
-                        Navi Lyrics uses the following third-party service:
+                        Navi Lyrics uses the following third-party services:
                     </p>
                     <ul>
-                        <li><strong>LRCLIB API</strong> - For fetching synchronized lyrics only</li>
+                        <li><strong><a href="https://lrclib.net/" target="_blank" class="text-primary hover:text-cyan-300 transition-colors underline">LRCLIB</a></strong> — public lyrics database. We send song title and artist to fetch matching lyrics.</li>
+                        <li><strong><a href="https://policies.google.com/privacy" target="_blank" class="text-primary hover:text-cyan-300 transition-colors underline">Google Translate</a></strong> — public translation endpoint. Used only when you actively request a translation; the lyric text is sent for translation.</li>
+                        <li><strong>Spotify image CDN</strong> (<code>i.scdn.co</code>) and <strong>YouTube image CDN</strong> (<code>lh3.googleusercontent.com</code>) — only the album art image is loaded by your browser, and only when the Adaptive color theme is active. The image is processed locally to derive a color; it is never re-uploaded.</li>
                     </ul>
                     <p>
-                        Please review <a href="https://lrclib.net/" target="_blank" class="text-primary hover:text-cyan-300 transition-colors underline">LRCLIB's privacy policy</a> to understand how they handle requests.
+                        Navi Lyrics has no affiliation with Spotify, YouTube Music, LRCLIB, or Google. We do not control their privacy practices — please review their respective policies if you need details on how they handle requests originating from your browser.
                     </p>
                 </div>
 
@@ -224,7 +243,6 @@
                         <li>Use strong passwords for your browser/OS account</li>
                         <li>Review permissions granted to extensions regularly</li>
                     </ul>
-                </p>
                 </div>
 
                 <!-- Section 7: Changes -->
@@ -250,7 +268,7 @@
                 <!-- Last Updated -->
                 <div class="text-center mt-16 pt-8 border-t border-white/10">
                     <p class="text-sm text-gray-500">
-                        Last updated: February 15, 2026
+                        Last updated: June 1, 2026
                     </p>
                 </div>
 
