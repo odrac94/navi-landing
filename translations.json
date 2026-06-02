@@ -1,0 +1,128 @@
+{
+  "en": {
+    "nav": {
+      "brand": "Navi Lyrics",
+      "features": "Features",
+      "roadmap": "Roadmap",
+      "support": "Support",
+      "getExtension": "Get Extension"
+    },
+    "hero": {
+      "badge": "Version 1.4.0 coming soon — Custom themes that adapt to your album art",
+      "heading1": "The tool your productivity",
+      "heading2": "didn't ask for",
+      "heading3": ", but your inner ",
+      "heading4": "karaoke",
+      "heading5": " needs.",
+      "description": "Floating, synchronized lyrics for YouTube Music and Spotify. Bring the concert to your spreadsheets, study sessions, or dance practices without losing your rhythm.",
+      "addChrome": "Add to Chrome",
+      "supportDev": "Support the dev"
+    },
+    "features": {
+      "title": "Specs & Capabilities",
+      "subtitle": "Engineered to sit quietly in the corner until the chorus hits.",
+      "feature1Title": "Always on Top",
+      "feature1Desc": "Uses native Picture-in-Picture technology to float above your Excel sheets, study notes, or endless browser tabs. Multitask without missing a lyric.",
+      "feature2Title": "Perfect Sync",
+      "feature2Desc": "Whether you're hitting high notes or learning a fast rap, Navi syncs perfectly with YouTube Music and Spotify in real-time. Never miss a beat.",
+      "feature3Title": "Smart Cache",
+      "feature3Desc": "Lyrics are cached locally with smart LRU eviction. Save bandwidth and keep singing even if your connection drops on your commute.",
+      "feature4Title": "Multi-Platform",
+      "feature4Desc": "Works seamlessly on both YouTube Music and Spotify. One extension, two platforms, all your lyrics.",
+      "feature5Title": "Ad Detection",
+      "feature5Desc": "Detects when ads are playing and shows a friendly fairy animation instead of broken lyrics. Resumes automatically when the music is back.",
+      "feature6Title": "Multi-Language UI",
+      "feature6Desc": "Full interface available in English and Spanish. The extension adapts to your browser language automatically."
+    },
+    "roadmap": {
+      "title": "What's Brewing",
+      "subtitle": "The master plan for world domination (via karaoke).",
+      "phase1Label": "DONE",
+      "phase1Title": "Phase 1: Launch",
+      "phase1Desc": "Core PiP functionality, YouTube Music integration, synced lyrics, smart cache, and playback controls.",
+      "phase2Label": "DONE",
+      "phase2Title": "Phase 2: Expansion",
+      "phase2Desc": "Spotify Web support, ad detection with fairy animation, multi-language UI (EN/ES), local fonts, and LRU cache eviction.",
+      "phase3Label": "DONE",
+      "phase3Title": "Phase 3: Translation",
+      "phase3Desc": "Real-time lyric translations across 13 languages (Korean, Japanese, Chinese, Arabic, Hindi and more) with smart caching. Shipped in v1.3.0.",
+      "phase4Label": "IN PROGRESS",
+      "phase4Title": "Phase 4: Customization",
+      "phase4Desc": "Color themes (Spotify, Apple Music, AMOLED, Sunset, Forest), keyboard shortcuts inside the PiP, an adaptive theme that matches your album art, and major performance improvements under the hood.",
+      "phase5Label": "PLANNED",
+      "phase5Title": "Phase 5: Beyond",
+      "phase5Desc": "Apple Music and Tidal integration, plus community-requested features."
+    },
+    "footer": {
+      "supportProject": "Support the project",
+      "copyright": "© 2026 Navi Lyrics. Open Source under MIT License.",
+      "madeWith": "Made with",
+      "and": "and a healthy dose of trial and error in",
+      "privacyPolicy": "Privacy Policy",
+      "poweredBy": "Lyrics graciously powered by the incredible"
+    }
+  },
+  "es": {
+    "nav": {
+      "brand": "Navi Lyrics",
+      "features": "Características",
+      "roadmap": "Hoja de Ruta",
+      "support": "Soporte",
+      "getExtension": "Obtener Extensión"
+    },
+    "hero": {
+      "badge": "Versión 1.4.0 próximamente — Temas personalizados que se adaptan a tu carátula",
+      "heading1": "La herramienta que tu productividad",
+      "heading2": "no pidió",
+      "heading3": ", pero tu interior ",
+      "heading4": "karaoke",
+      "heading5": " necesita.",
+      "description": "Letras flotantes y sincronizadas para YouTube Music y Spotify. Trae el concierto a tus hojas de cálculo, sesiones de estudio o prácticas de baile sin perder el ritmo.",
+      "addChrome": "Agregar a Chrome",
+      "supportDev": "Apoya al desarrollador"
+    },
+    "features": {
+      "title": "Especificaciones y Capacidades",
+      "subtitle": "Diseñado para estar en silencio en la esquina hasta que llegue el estribillo.",
+      "feature1Title": "Siempre en la Parte Superior",
+      "feature1Desc": "Utiliza la tecnología nativa de Picture-in-Picture para flotar sobre tus hojas de Excel, notas de estudio o pestañas de navegador infinitas. Multitarea sin perder una letra.",
+      "feature2Title": "Sincronización Perfecta",
+      "feature2Desc": "Ya sea que estés cantando notas altas o aprendiendo un rap rápido, Navi se sincroniza perfectamente con YouTube Music y Spotify en tiempo real. Nunca pierdas el ritmo.",
+      "feature3Title": "Caché Inteligente",
+      "feature3Desc": "Las letras se almacenan en caché localmente con desalojo inteligente LRU. Ahorra ancho de banda y continúa cantando incluso si tu conexión se cae en tu viaje.",
+      "feature4Title": "Multiplataforma",
+      "feature4Desc": "Funciona perfectamente tanto en YouTube Music como en Spotify. Una extensión, dos plataformas, todas tus letras.",
+      "feature5Title": "Detección de Anuncios",
+      "feature5Desc": "Detecta cuando se están reproduciendo anuncios y muestra una animación de hada amigable en lugar de letras rotas. Se reanuda automáticamente cuando vuelve la música.",
+      "feature6Title": "Interfaz Multilingüe",
+      "feature6Desc": "Interfaz completa disponible en inglés y español. La extensión se adapta automáticamente al idioma de tu navegador."
+    },
+    "roadmap": {
+      "title": "¿Qué se Está Preparando?",
+      "subtitle": "El plan maestro para la dominación mundial (a través del karaoke).",
+      "phase1Label": "HECHO",
+      "phase1Title": "Fase 1: Lanzamiento",
+      "phase1Desc": "Funcionalidad principal de PiP, integración de YouTube Music, letras sincronizadas, caché inteligente y controles de reproducción.",
+      "phase2Label": "HECHO",
+      "phase2Title": "Fase 2: Expansión",
+      "phase2Desc": "Soporte de Spotify Web, detección de anuncios con animación de hada, interfaz multilingüe (EN/ES), fuentes locales y desalojo de caché LRU.",
+      "phase3Label": "HECHO",
+      "phase3Title": "Fase 3: Traducción",
+      "phase3Desc": "Traducciones de letras en tiempo real en 13 idiomas (coreano, japonés, chino, árabe, hindi y más) con caché inteligente. Lanzado en v1.3.0.",
+      "phase4Label": "EN PROGRESO",
+      "phase4Title": "Fase 4: Personalización",
+      "phase4Desc": "Temas de color (Spotify, Apple Music, AMOLED, Sunset, Forest), atajos de teclado dentro del PiP, un tema adaptativo que coincide con la carátula del álbum, y mejoras importantes de rendimiento.",
+      "phase5Label": "PLANIFICADO",
+      "phase5Title": "Fase 5: Más Allá",
+      "phase5Desc": "Integración con Apple Music y Tidal, además de funciones solicitadas por la comunidad."
+    },
+    "footer": {
+      "supportProject": "Apoya el proyecto",
+      "copyright": "© 2026 Navi Lyrics. De código abierto bajo licencia MIT.",
+      "madeWith": "Hecho con",
+      "and": "y una buena dosis de prueba y error en",
+      "privacyPolicy": "Política de Privacidad",
+      "poweredBy": "Las letras son gentilmente proporcionadas por la increíble"
+    }
+  }
+}
