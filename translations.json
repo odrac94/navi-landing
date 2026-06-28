@@ -8,7 +8,7 @@
       "getExtension": "Get Extension"
     },
     "hero": {
-      "badge": "Version 1.4.0 coming soon — Custom themes that adapt to your album art",
+      "badge": "New in v1.5.0 — Retro skins & themes that adapt to your album art",
       "heading1": "The tool your productivity",
       "heading2": "didn't ask for",
       "heading3": ", but your inner ",
@@ -32,7 +32,11 @@
       "feature5Title": "Ad Detection",
       "feature5Desc": "Detects when ads are playing and shows a friendly fairy animation instead of broken lyrics. Resumes automatically when the music is back.",
       "feature6Title": "Multi-Language UI",
-      "feature6Desc": "Full interface available in English and Spanish. The extension adapts to your browser language automatically."
+      "feature6Desc": "Full interface available in English and Spanish. The extension adapts to your browser language automatically.",
+      "feature7Title": "Themes & Skins",
+      "feature7Desc": "Seven color themes (Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum, plus an Adaptive theme drawn from your album art) and six retro skins — CRT Amber, Y2K, E-Ink, ASCII and Arcade. Make the window yours.",
+      "feature8Title": "Lyric Translation",
+      "feature8Desc": "Translate any lyric in real time across 13 languages — Korean, Japanese, Chinese, Arabic, Hindi and more — right inside the floating window."
     },
     "roadmap": {
       "title": "What's Brewing",
@@ -46,12 +50,12 @@
       "phase3Label": "DONE",
       "phase3Title": "Phase 3: Translation",
       "phase3Desc": "Real-time lyric translations across 13 languages (Korean, Japanese, Chinese, Arabic, Hindi and more) with smart caching. Shipped in v1.3.0.",
-      "phase4Label": "IN PROGRESS",
+      "phase4Label": "DONE",
       "phase4Title": "Phase 4: Customization",
-      "phase4Desc": "Color themes (Spotify, Apple Music, AMOLED, Sunset, Forest), keyboard shortcuts inside the PiP, an adaptive theme that matches your album art, and major performance improvements under the hood.",
-      "phase5Label": "PLANNED",
+      "phase4Desc": "Seven color themes plus an adaptive theme from your album art, six retro skins (CRT Amber, Y2K, E-Ink, ASCII, Arcade), keyboard shortcuts inside the PiP, and major performance work. Shipped in v1.5.0.",
+      "phase5Label": "IN PROGRESS",
       "phase5Title": "Phase 5: Beyond",
-      "phase5Desc": "Apple Music and Tidal integration, plus community-requested features."
+      "phase5Desc": "Apple Music support is in the works, with Tidal and community-requested features to follow."
     },
     "footer": {
       "supportProject": "Support the project",
@@ -71,7 +75,7 @@
       "getExtension": "Obtener Extensión"
     },
     "hero": {
-      "badge": "Versión 1.4.0 próximamente — Temas personalizados que se adaptan a tu carátula",
+      "badge": "Nuevo en v1.5.0 — Skins retro y temas que se adaptan a tu carátula",
       "heading1": "La herramienta que tu productividad",
       "heading2": "no pidió",
       "heading3": ", pero tu interior ",
@@ -95,7 +99,11 @@
       "feature5Title": "Detección de Anuncios",
       "feature5Desc": "Detecta cuando se están reproduciendo anuncios y muestra una animación de hada amigable en lugar de letras rotas. Se reanuda automáticamente cuando vuelve la música.",
       "feature6Title": "Interfaz Multilingüe",
-      "feature6Desc": "Interfaz completa disponible en inglés y español. La extensión se adapta automáticamente al idioma de tu navegador."
+      "feature6Desc": "Interfaz completa disponible en inglés y español. La extensión se adapta automáticamente al idioma de tu navegador.",
+      "feature7Title": "Temas y Skins",
+      "feature7Desc": "Siete temas de color (Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum, más un tema Adaptativo que sale de tu carátula) y seis skins retro — CRT Amber, Y2K, E-Ink, ASCII y Arcade. Haz tuya la ventana.",
+      "feature8Title": "Traducción de Letras",
+      "feature8Desc": "Traduce cualquier letra en tiempo real en 13 idiomas — coreano, japonés, chino, árabe, hindi y más — dentro de la ventana flotante."
     },
     "roadmap": {
       "title": "¿Qué se Está Preparando?",
@@ -109,12 +117,12 @@
       "phase3Label": "HECHO",
       "phase3Title": "Fase 3: Traducción",
       "phase3Desc": "Traducciones de letras en tiempo real en 13 idiomas (coreano, japonés, chino, árabe, hindi y más) con caché inteligente. Lanzado en v1.3.0.",
-      "phase4Label": "EN PROGRESO",
+      "phase4Label": "HECHO",
       "phase4Title": "Fase 4: Personalización",
-      "phase4Desc": "Temas de color (Spotify, Apple Music, AMOLED, Sunset, Forest), atajos de teclado dentro del PiP, un tema adaptativo que coincide con la carátula del álbum, y mejoras importantes de rendimiento.",
-      "phase5Label": "PLANIFICADO",
+      "phase4Desc": "Siete temas de color más un tema adaptativo que sale de tu carátula, seis skins retro (CRT Amber, Y2K, E-Ink, ASCII, Arcade), atajos de teclado dentro del PiP y un gran trabajo de rendimiento. Lanzado en v1.5.0.",
+      "phase5Label": "EN PROGRESO",
       "phase5Title": "Fase 5: Más Allá",
-      "phase5Desc": "Integración con Apple Music y Tidal, además de funciones solicitadas por la comunidad."
+      "phase5Desc": "El soporte para Apple Music está en camino, seguido de Tidal y funciones solicitadas por la comunidad."
     },
     "footer": {
       "supportProject": "Apoya el proyecto",
