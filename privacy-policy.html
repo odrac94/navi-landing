@@ -162,7 +162,7 @@
                     </p>
                     <ul>
                         <li><strong>Preferences:</strong> font size, time offset, translation language, color theme</li>
-                        <li><strong>Lyrics cache:</strong> synchronized and plain-text lyrics for songs you've recently viewed (LRU eviction at 50 entries)</li>
+                        <li><strong>Lyrics cache:</strong> synchronized and plain-text lyrics for songs you've recently viewed (LRU eviction at 120 entries)</li>
                         <li><strong>Translation cache:</strong> previously translated lyrics, keyed by language and song ID (LRU eviction at 50 entries)</li>
                         <li><strong>Search results cache:</strong> alternative lyric versions for the multi-version feature (30-minute TTL, 30 entries max)</li>
                         <li><strong>Blacklist:</strong> IDs of lyric versions you marked as incorrect via the "dislike" button</li>
@@ -191,7 +191,7 @@
                         <li>Purpose: produce a real-time translation of the lyrics</li>
                         <li>Endpoint: Google Translate's public client endpoint (<code>translate.googleapis.com</code>)</li>
                     </ul>
-                    <p><strong>3. Album art (Spotify CDN and YouTube image CDN — Adaptive theme only)</strong></p>
+                    <p><strong>3. Album art (Spotify, YouTube and Apple Music image CDNs — Adaptive theme only)</strong></p>
                     <ul>
                         <li>Loaded: the album cover image of the currently playing song, only when you choose the "Adaptive" color theme</li>
                         <li>Processed: rendered into a 32×32 HTML canvas locally and analyzed to extract a dominant color</li>
@@ -225,10 +225,10 @@
                     <ul>
                         <li><strong><a href="https://lrclib.net/" target="_blank" class="text-primary hover:text-cyan-300 transition-colors underline">LRCLIB</a></strong> — public lyrics database. We send song title and artist to fetch matching lyrics.</li>
                         <li><strong><a href="https://policies.google.com/privacy" target="_blank" class="text-primary hover:text-cyan-300 transition-colors underline">Google Translate</a></strong> — public translation endpoint. Used only when you actively request a translation; the lyric text is sent for translation.</li>
-                        <li><strong>Spotify image CDN</strong> (<code>i.scdn.co</code>) and <strong>YouTube image CDN</strong> (<code>lh3.googleusercontent.com</code>) — only the album art image is loaded by your browser, and only when the Adaptive color theme is active. The image is processed locally to derive a color; it is never re-uploaded.</li>
+                        <li><strong>Spotify image CDN</strong> (<code>i.scdn.co</code>), <strong>YouTube image CDN</strong> (<code>lh3.googleusercontent.com</code>), and <strong>Apple Music image CDN</strong> (<code>mzstatic.com</code>) — only the album art image is loaded by your browser, and only when the Adaptive color theme is active. The image is processed locally to derive a color; it is never re-uploaded.</li>
                     </ul>
                     <p>
-                        Navi Lyrics has no affiliation with Spotify, YouTube Music, LRCLIB, or Google. We do not control their privacy practices — please review their respective policies if you need details on how they handle requests originating from your browser.
+                        Navi Lyrics has no affiliation with Spotify, YouTube Music, Apple Music, LRCLIB, or Google. We do not control their privacy practices — please review their respective policies if you need details on how they handle requests originating from your browser.
                     </p>
                 </div>
 
@@ -268,7 +268,7 @@
                 <!-- Last Updated -->
                 <div class="text-center mt-16 pt-8 border-t border-white/10">
                     <p class="text-sm text-gray-500">
-                        Last updated: June 1, 2026
+                        Last updated: June 27, 2026
                     </p>
                 </div>
 
