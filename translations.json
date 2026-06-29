@@ -8,13 +8,13 @@
       "getExtension": "Get Extension"
     },
     "hero": {
-      "badge": "New in v1.5.0 — Retro skins & themes that adapt to your album art",
+      "badge": "New in v1.6.0 — Now on Apple Music, plus retro skins & adaptive themes",
       "heading1": "The tool your productivity",
       "heading2": "didn't ask for",
       "heading3": ", but your inner ",
       "heading4": "karaoke",
       "heading5": " needs.",
-      "description": "Floating, synchronized lyrics for YouTube Music and Spotify. Bring the concert to your spreadsheets, study sessions, or dance practices without losing your rhythm.",
+      "description": "Floating, synchronized lyrics for YouTube Music, Spotify and Apple Music. Bring the concert to your spreadsheets, study sessions, or dance practices without losing your rhythm.",
       "addChrome": "Add to Chrome",
       "supportDev": "Support the dev"
     },
@@ -28,7 +28,7 @@
       "feature3Title": "Smart Cache",
       "feature3Desc": "Lyrics are cached locally with smart LRU eviction. Save bandwidth and keep singing even if your connection drops on your commute.",
       "feature4Title": "Multi-Platform",
-      "feature4Desc": "Works seamlessly on both YouTube Music and Spotify. One extension, two platforms, all your lyrics.",
+      "feature4Desc": "Works seamlessly on YouTube Music, Spotify and Apple Music. One extension, three platforms, all your lyrics.",
       "feature5Title": "Ad Detection",
       "feature5Desc": "Detects when ads are playing and shows a friendly fairy animation instead of broken lyrics. Resumes automatically when the music is back.",
       "feature6Title": "Multi-Language UI",
@@ -53,9 +53,9 @@
       "phase4Label": "DONE",
       "phase4Title": "Phase 4: Customization",
       "phase4Desc": "Seven color themes plus an adaptive theme from your album art, six retro skins (CRT Amber, Y2K, E-Ink, ASCII, Arcade), keyboard shortcuts inside the PiP, and major performance work. Shipped in v1.5.0.",
-      "phase5Label": "IN PROGRESS",
+      "phase5Label": "DONE",
       "phase5Title": "Phase 5: Beyond",
-      "phase5Desc": "Apple Music support is in the works, with Tidal and community-requested features to follow."
+      "phase5Desc": "Apple Music support shipped in v1.6.0. Tidal and community-requested features are next."
     },
     "footer": {
       "supportProject": "Support the project",
@@ -75,13 +75,13 @@
       "getExtension": "Obtener Extensión"
     },
     "hero": {
-      "badge": "Nuevo en v1.5.0 — Skins retro y temas que se adaptan a tu carátula",
+      "badge": "Nuevo en v1.6.0 — Ahora en Apple Music, además de skins retro y temas adaptativos",
       "heading1": "La herramienta que tu productividad",
       "heading2": "no pidió",
       "heading3": ", pero tu interior ",
       "heading4": "karaoke",
       "heading5": " necesita.",
-      "description": "Letras flotantes y sincronizadas para YouTube Music y Spotify. Trae el concierto a tus hojas de cálculo, sesiones de estudio o prácticas de baile sin perder el ritmo.",
+      "description": "Letras flotantes y sincronizadas para YouTube Music, Spotify y Apple Music. Trae el concierto a tus hojas de cálculo, sesiones de estudio o prácticas de baile sin perder el ritmo.",
       "addChrome": "Agregar a Chrome",
       "supportDev": "Apoya al desarrollador"
     },
@@ -95,7 +95,7 @@
       "feature3Title": "Caché Inteligente",
       "feature3Desc": "Las letras se almacenan en caché localmente con desalojo inteligente LRU. Ahorra ancho de banda y continúa cantando incluso si tu conexión se cae en tu viaje.",
       "feature4Title": "Multiplataforma",
-      "feature4Desc": "Funciona perfectamente tanto en YouTube Music como en Spotify. Una extensión, dos plataformas, todas tus letras.",
+      "feature4Desc": "Funciona perfectamente en YouTube Music, Spotify y Apple Music. Una extensión, tres plataformas, todas tus letras.",
       "feature5Title": "Detección de Anuncios",
       "feature5Desc": "Detecta cuando se están reproduciendo anuncios y muestra una animación de hada amigable en lugar de letras rotas. Se reanuda automáticamente cuando vuelve la música.",
       "feature6Title": "Interfaz Multilingüe",
@@ -120,9 +120,9 @@
       "phase4Label": "HECHO",
       "phase4Title": "Fase 4: Personalización",
       "phase4Desc": "Siete temas de color más un tema adaptativo que sale de tu carátula, seis skins retro (CRT Amber, Y2K, E-Ink, ASCII, Arcade), atajos de teclado dentro del PiP y un gran trabajo de rendimiento. Lanzado en v1.5.0.",
-      "phase5Label": "EN PROGRESO",
+      "phase5Label": "HECHO",
       "phase5Title": "Fase 5: Más Allá",
-      "phase5Desc": "El soporte para Apple Music está en camino, seguido de Tidal y funciones solicitadas por la comunidad."
+      "phase5Desc": "El soporte para Apple Music se lanzó en v1.6.0. Tidal y las funciones de la comunidad son lo siguiente."
     },
     "footer": {
       "supportProject": "Apoya el proyecto",
