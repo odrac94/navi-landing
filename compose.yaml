@@ -1,0 +1,53 @@
+name: navi-landing
+
+services:
+  web:
+    build: .
+    image: navi-landing:latest
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - edge
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: navi-landing_edge
+      traefik.http.routers.navi-landing.rule: Host(`${APP_HOST:-navilyrics.com}`) || Host(`www.${APP_HOST:-navilyrics.com}`)
+      traefik.http.routers.navi-landing.entrypoints: ${TRAEFIK_ENTRYPOINT:-websecure}
+      traefik.http.routers.navi-landing.tls: "true"
+      traefik.http.routers.navi-landing.tls.certresolver: ${TRAEFIK_CERT_RESOLVER:?Set TRAEFIK_CERT_RESOLVER}
+      traefik.http.routers.navi-landing.middlewares: navi-landing-www@docker,navi-landing-headers@docker
+      # www.navilyrics.com -> navilyrics.com
+      traefik.http.middlewares.navi-landing-www.redirectregex.regex: ^https://www\.(.+)
+      traefik.http.middlewares.navi-landing-www.redirectregex.replacement: https://$${1}
+      traefik.http.middlewares.navi-landing-www.redirectregex.permanent: "true"
+      traefik.http.middlewares.navi-landing-headers.headers.contenttypenosniff: "true"
+      traefik.http.middlewares.navi-landing-headers.headers.framedeny: "true"
+      traefik.http.middlewares.navi-landing-headers.headers.referrerpolicy: strict-origin-when-cross-origin
+      traefik.http.middlewares.navi-landing-headers.headers.stsseconds: "31536000"
+      traefik.http.services.navi-landing.loadbalancer.server.port: "80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx:size=16m
+      - /var/run:size=1m
+      - /tmp:size=8m
+    security_opt:
+      - no-new-privileges:true
+    cpus: 0.25
+    mem_limit: 64m
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+networks:
+  # Traefik corre con `network_mode: host` (igual que en generador-enlaces):
+  # descubre por docker.sock y llega al contenedor por su IP de bridge.
+  edge:
+    name: navi-landing_edge
