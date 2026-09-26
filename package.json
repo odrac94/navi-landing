@@ -1,0 +1,17 @@
+{
+  "name": "navi-landing",
+  "private": true,
+  "description": "Landing de Navi Lyrics (navilyrics.com)",
+  "scripts": {
+    "build": "node scripts/copy-fonts.mjs && tailwindcss -c tailwind.config.cjs -i src/site.css -o assets/site.css --minify",
+    "dev": "tailwindcss -c tailwind.config.cjs -i src/site.css -o assets/site.css --watch",
+    "sync-skins": "node scripts/sync-skins.mjs"
+  },
+  "devDependencies": {
+    "@fontsource-variable/space-grotesk": "^5.2.0",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.9",
+    "material-icons": "^1.13.12",
+    "tailwindcss": "^3.4.17"
+  }
+}

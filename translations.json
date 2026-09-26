@@ -5,7 +5,8 @@
       "features": "Features",
       "roadmap": "Roadmap",
       "support": "Support",
-      "getExtension": "Get Extension"
+      "getExtension": "Get Extension",
+      "faq": "FAQ"
     },
     "hero": {
       "badge": "New in v1.6.0 — Now on Apple Music, plus retro skins & adaptive themes",
@@ -14,11 +15,12 @@
       "heading3": ", but your inner ",
       "heading4": "karaoke",
       "heading5": " needs.",
-      "description": "Floating, synchronized lyrics for YouTube Music, Spotify and Apple Music. Bring the concert to your spreadsheets, study sessions, or dance practices without losing your rhythm.",
+      "description": "A free Chrome extension that keeps the lyrics in an always-on-top Picture-in-Picture window. Bring the concert to your spreadsheets, study sessions, or dance practices without losing your rhythm.",
       "addChrome": "Add to Chrome",
       "supportDev": "Support the dev",
       "skinPicker": "Live preview · pick a skin",
-      "themePicker": "Color themes · Navi skin"
+      "themePicker": "Color themes · Navi skin",
+      "h1": "Floating, synchronized lyrics for Spotify, YouTube Music & Apple Music"
     },
     "features": {
       "title": "Specs & Capabilities",
@@ -36,9 +38,9 @@
       "feature6Title": "Multi-Language UI",
       "feature6Desc": "Full interface available in English and Spanish. The extension adapts to your browser language automatically.",
       "feature7Title": "Themes & Skins",
-      "feature7Desc": "Seven color themes (Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum, plus an Adaptive theme drawn from your album art) and six retro skins — CRT Amber, Y2K, E-Ink, ASCII and Arcade. Make the window yours.",
+      "feature7Desc": "Seven color themes (Navi Cyan, Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum), an Adaptive theme drawn from your album art, and five retro skins — CRT Amber, Y2K, E-Ink, ASCII and Arcade. Make the window yours.",
       "feature8Title": "Lyric Translation",
-      "feature8Desc": "Translate any lyric in real time across 13 languages — Korean, Japanese, Chinese, Arabic, Hindi and more — right inside the floating window."
+      "feature8Desc": "Translate any lyric in real time into 12 languages — Korean, Japanese, Chinese, Arabic, Hindi and more — right inside the floating window."
     },
     "roadmap": {
       "title": "What's Brewing",
@@ -61,11 +63,42 @@
     },
     "footer": {
       "supportProject": "Support the project",
-      "copyright": "© 2026 Navi Lyrics. Open Source under MIT License.",
+      "copyright": "© 2026 Navi Lyrics by Ivan Delfin.",
       "madeWith": "Made with",
       "and": "and a healthy dose of trial and error in",
       "privacyPolicy": "Privacy Policy",
       "poweredBy": "Lyrics graciously powered by the incredible"
+    },
+    "about": {
+      "title": "What is Navi Lyrics?",
+      "p1": "Navi Lyrics is a free Chrome extension that shows synchronized, karaoke-style lyrics in a floating Picture-in-Picture window while you listen to Spotify, YouTube Music or Apple Music in your browser. The window stays on top of your other windows and apps, so the lyrics keep scrolling while you work, study or browse.",
+      "p2": "Lyrics come from LRCLIB, an open lyrics database. Navi highlights each line in real time, translates lyrics into 12 languages, and lets you restyle the window with color themes and retro skins. No account needed.",
+      "worksOn": "Works on",
+      "worksOnValue": "Spotify Web · YouTube Music · Apple Music",
+      "browsers": "Browsers",
+      "browsersValue": "Chrome · Edge · Brave",
+      "price": "Price",
+      "priceValue": "Free, no account"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "privacyLink": "Read the privacy policy",
+      "q1": "Does Navi Lyrics work with Spotify?",
+      "a1": "Yes. Navi Lyrics works with the Spotify web player (open.spotify.com) and shows its synchronized lyrics in a floating window. The Spotify desktop app is not supported, because Chrome extensions only run inside the browser.",
+      "q2": "Does Navi Lyrics work with YouTube Music?",
+      "a2": "Yes. Open music.youtube.com in Chrome, play a song and Navi shows its lyrics line by line in the floating window.",
+      "q3": "Does Navi Lyrics work with Apple Music?",
+      "a3": "Yes. Since version 1.6.0, Navi Lyrics supports the Apple Music web player at music.apple.com.",
+      "q4": "Can the lyrics stay on top of other apps?",
+      "a4": "Yes. Navi opens the lyrics in Chrome's Document Picture-in-Picture window, which floats above your other windows, even outside the browser. You can move and resize it anywhere on your screen.",
+      "q5": "Which browsers are supported?",
+      "a5": "Up-to-date Chrome, Microsoft Edge and Brave. Opera works after enabling the flag opera://flags/#new-auto-pip-for-documents. Firefox is not supported yet.",
+      "q6": "Can Navi Lyrics translate song lyrics?",
+      "a6": "Yes. Press the translate button and each line shows its translation underneath, in real time. You can translate into 12 languages: English, Spanish, Portuguese, French, German, Italian, Russian, Japanese, Korean, Chinese, Arabic and Hindi.",
+      "q7": "Where do the lyrics come from? What if they are wrong?",
+      "a7": "Lyrics come from LRCLIB, a free, community-built lyrics database. If a song shows the wrong lyrics, press the thumbs-down button and Navi switches to the next available version.",
+      "q8": "Is Navi Lyrics free? Does it collect my data?",
+      "a8": "Navi Lyrics is free and needs no account. It does not collect personal data: your settings and cached lyrics are stored locally in your browser."
     }
   },
   "es": {
@@ -74,7 +107,8 @@
       "features": "Características",
       "roadmap": "Hoja de Ruta",
       "support": "Soporte",
-      "getExtension": "Obtener Extensión"
+      "getExtension": "Obtener Extensión",
+      "faq": "Preguntas"
     },
     "hero": {
       "badge": "Nuevo en v1.6.0 — Ahora en Apple Music, además de skins retro y temas adaptativos",
@@ -83,11 +117,12 @@
       "heading3": ", pero tu interior ",
       "heading4": "karaoke",
       "heading5": " necesita.",
-      "description": "Letras flotantes y sincronizadas para YouTube Music, Spotify y Apple Music. Trae el concierto a tus hojas de cálculo, sesiones de estudio o prácticas de baile sin perder el ritmo.",
+      "description": "Una extensión gratuita para Chrome que mantiene la letra en una ventana Picture-in-Picture siempre visible. Trae el concierto a tus hojas de cálculo, sesiones de estudio o prácticas de baile sin perder el ritmo.",
       "addChrome": "Agregar a Chrome",
       "supportDev": "Apoya al desarrollador",
       "skinPicker": "Vista en vivo · elige una skin",
-      "themePicker": "Temas de color · skin Navi"
+      "themePicker": "Temas de color · skin Navi",
+      "h1": "Letras flotantes y sincronizadas para Spotify, YouTube Music y Apple Music"
     },
     "features": {
       "title": "Especificaciones y Capacidades",
@@ -105,9 +140,9 @@
       "feature6Title": "Interfaz Multilingüe",
       "feature6Desc": "Interfaz completa disponible en inglés y español. La extensión se adapta automáticamente al idioma de tu navegador.",
       "feature7Title": "Temas y Skins",
-      "feature7Desc": "Siete temas de color (Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum, más un tema Adaptativo que sale de tu carátula) y seis skins retro — CRT Amber, Y2K, E-Ink, ASCII y Arcade. Haz tuya la ventana.",
+      "feature7Desc": "Siete temas de color (Navi Cyan, Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum), un tema Adaptativo que sale de tu carátula y cinco skins retro — CRT Amber, Y2K, E-Ink, ASCII y Arcade. Haz tuya la ventana.",
       "feature8Title": "Traducción de Letras",
-      "feature8Desc": "Traduce cualquier letra en tiempo real en 13 idiomas — coreano, japonés, chino, árabe, hindi y más — dentro de la ventana flotante."
+      "feature8Desc": "Traduce cualquier letra en tiempo real a 12 idiomas — coreano, japonés, chino, árabe, hindi y más — dentro de la ventana flotante."
     },
     "roadmap": {
       "title": "¿Qué se Está Preparando?",
@@ -130,11 +165,42 @@
     },
     "footer": {
       "supportProject": "Apoya el proyecto",
-      "copyright": "© 2026 Navi Lyrics. De código abierto bajo licencia MIT.",
+      "copyright": "© 2026 Navi Lyrics, por Ivan Delfin.",
       "madeWith": "Hecho con",
       "and": "y una buena dosis de prueba y error en",
       "privacyPolicy": "Política de Privacidad",
       "poweredBy": "Las letras son gentilmente proporcionadas por la increíble"
+    },
+    "about": {
+      "title": "¿Qué es Navi Lyrics?",
+      "p1": "Navi Lyrics es una extensión gratuita para Chrome que muestra letras sincronizadas, estilo karaoke, en una ventana flotante Picture-in-Picture mientras escuchas Spotify, YouTube Music o Apple Music en el navegador. La ventana se queda encima de tus otras ventanas y apps, así que la letra sigue avanzando mientras trabajas, estudias o navegas.",
+      "p2": "Las letras vienen de LRCLIB, una base de datos abierta de letras. Navi resalta cada línea en tiempo real, traduce la letra a 12 idiomas y te deja cambiar el estilo de la ventana con temas de color y skins retro. No necesitas cuenta.",
+      "worksOn": "Funciona en",
+      "worksOnValue": "Spotify Web · YouTube Music · Apple Music",
+      "browsers": "Navegadores",
+      "browsersValue": "Chrome · Edge · Brave",
+      "price": "Precio",
+      "priceValue": "Gratis, sin cuenta"
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "privacyLink": "Lee la política de privacidad",
+      "q1": "¿Navi Lyrics funciona con Spotify?",
+      "a1": "Sí. Navi Lyrics funciona con el reproductor web de Spotify (open.spotify.com) y muestra la letra sincronizada en una ventana flotante. La app de escritorio de Spotify no es compatible, porque las extensiones de Chrome solo funcionan dentro del navegador.",
+      "q2": "¿Navi Lyrics funciona con YouTube Music?",
+      "a2": "Sí. Abre music.youtube.com en Chrome, reproduce una canción y Navi muestra la letra línea por línea en la ventana flotante.",
+      "q3": "¿Navi Lyrics funciona con Apple Music?",
+      "a3": "Sí. Desde la versión 1.6.0, Navi Lyrics es compatible con el reproductor web de Apple Music en music.apple.com.",
+      "q4": "¿La letra puede quedarse encima de otras apps?",
+      "a4": "Sí. Navi abre la letra en la ventana Document Picture-in-Picture de Chrome, que flota encima de tus otras ventanas, incluso fuera del navegador. Puedes moverla y cambiarle el tamaño donde quieras.",
+      "q5": "¿Qué navegadores son compatibles?",
+      "a5": "Chrome, Microsoft Edge y Brave actualizados. Opera funciona después de activar el flag opera://flags/#new-auto-pip-for-documents. Firefox todavía no es compatible.",
+      "q6": "¿Navi Lyrics puede traducir letras de canciones?",
+      "a6": "Sí. Presiona el botón de traducir y cada línea muestra su traducción debajo, en tiempo real. Puedes traducir a 12 idiomas: inglés, español, portugués, francés, alemán, italiano, ruso, japonés, coreano, chino, árabe e hindi.",
+      "q7": "¿De dónde salen las letras? ¿Y si están mal?",
+      "a7": "Las letras vienen de LRCLIB, una base de datos de letras gratuita y construida por la comunidad. Si una canción muestra la letra equivocada, presiona el botón de pulgar abajo y Navi cambia a la siguiente versión disponible.",
+      "q8": "¿Navi Lyrics es gratis? ¿Recopila mis datos?",
+      "a8": "Navi Lyrics es gratis y no necesita cuenta. No recopila datos personales: tu configuración y las letras en caché se guardan localmente en tu navegador."
     }
   }
 }

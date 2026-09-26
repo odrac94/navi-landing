@@ -4,36 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Privacy Policy - Navi Lyrics</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#0df2f2",
-                        "primary-dark": "#0bcbcb",
-                        "background-light": "#f5f8f8",
-                        "background-dark": "#102222",
-                        "glass-border": "rgba(255, 255, 255, 0.1)",
-                        "glass-surface": "rgba(255, 255, 255, 0.03)",
-                    },
-                    fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"]
-                    },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
-                    backgroundImage: {
-                        'hero-gradient': 'linear-gradient(to bottom right, #0a192f, #000000)',
-                        'cyber-grid': 'linear-gradient(rgba(13, 242, 242, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 242, 242, 0.03) 1px, transparent 1px)',
-                    }
-                },
-            },
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <title>Privacy Policy — Navi Lyrics</title>
+    <meta name="description" content="Navi Lyrics does not collect personal data. Learn what the extension stores locally and which services it contacts (LRCLIB, Google Translate, music platforms)." />
+    <link rel="canonical" href="https://navilyrics.com/privacy-policy" />
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/icon-96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/icon-48.png" />
     <style>
         body {
             font-family: 'Space Grotesk', sans-serif;
@@ -96,6 +71,8 @@
             margin-bottom: 0.5rem;
         }
     </style>
+    <!-- Después de los <style> propios: Tailwind debe ganar, como con el CDN -->
+    <link href="assets/site.css" rel="stylesheet" />
 </head>
 
 <body class="bg-hero-gradient min-h-screen text-white overflow-x-hidden selection:bg-primary selection:text-black">
@@ -311,7 +288,7 @@
                 </div>
 
                 <div class="text-xs sm:text-sm text-gray-500 font-mono border-t border-white/5 pt-6 sm:pt-8 pb-3 sm:pb-4">
-                    <p>© 2026 Navi Lyrics. Open Source under MIT License.</p>
+                    <p>© 2026 Navi Lyrics by Ivan Delfin.</p>
                 </div>
             </div>
         </footer>

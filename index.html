@@ -4,36 +4,84 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Navi Lyrics - The Floating Karaoke Companion</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#0df2f2",
-                        "primary-dark": "#0bcbcb",
-                        "background-light": "#f5f8f8",
-                        "background-dark": "#102222",
-                        "glass-border": "rgba(255, 255, 255, 0.1)",
-                        "glass-surface": "rgba(255, 255, 255, 0.03)",
-                    },
-                    fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"]
-                    },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
-                    backgroundImage: {
-                        'hero-gradient': 'linear-gradient(to bottom right, #0a192f, #000000)',
-                        'cyber-grid': 'linear-gradient(rgba(13, 242, 242, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 242, 242, 0.03) 1px, transparent 1px)',
-                    }
-                },
+    <title>Navi Lyrics — Floating Lyrics for Spotify, YouTube Music &amp; Apple Music</title>
+    <meta name="description"
+        content="Free Chrome extension: floating, synchronized lyrics for Spotify Web, YouTube Music and Apple Music in an always-on-top window. Translation, themes and skins." />
+    <link rel="canonical" href="https://navilyrics.com/" />
+    <meta name="theme-color" content="#0a192f" />
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/icon-96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/icon-48.png" />
+    <link rel="apple-touch-icon" href="assets/icon-128.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Navi Lyrics" />
+    <meta property="og:url" content="https://navilyrics.com/" />
+    <meta property="og:title" content="Navi Lyrics — Floating Lyrics for Spotify, YouTube Music &amp; Apple Music" />
+    <meta property="og:description"
+        content="Synchronized lyrics in an always-on-top Picture-in-Picture window. Free Chrome extension with real-time translation, themes and retro skins." />
+    <meta property="og:image" content="https://navilyrics.com/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Navi Lyrics floating lyrics window next to the Navi Lyrics headline" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@navilyrics_" />
+
+    <!-- Datos estructurados: deben coincidir con lo visible en la página -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://navilyrics.com/#website",
+                "url": "https://navilyrics.com/",
+                "name": "Navi Lyrics",
+                "inLanguage": ["en", "es"],
+                "publisher": { "@id": "https://navilyrics.com/#author" }
             },
-        }
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://navilyrics.com/#app",
+                "name": "Navi Lyrics",
+                "url": "https://navilyrics.com/",
+                "description": "Chrome extension that shows synchronized, karaoke-style lyrics in a floating, always-on-top Picture-in-Picture window for Spotify Web, YouTube Music and Apple Music.",
+                "applicationCategory": "MultimediaApplication",
+                "applicationSubCategory": "Browser extension",
+                "operatingSystem": "Windows, macOS, Linux, ChromeOS",
+                "browserRequirements": "Requires Google Chrome, Microsoft Edge or Brave with Document Picture-in-Picture support",
+                "softwareVersion": "1.6.4",
+                "downloadUrl": "https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp",
+                "installUrl": "https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp",
+                "image": "https://navilyrics.com/assets/og-image.png",
+                "screenshot": "https://navilyrics.com/assets/og-image.png",
+                "inLanguage": ["en", "es"],
+                "isAccessibleForFree": true,
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                "featureList": [
+                    "Floating always-on-top Picture-in-Picture lyrics window",
+                    "Synchronized line-by-line lyrics for Spotify Web, YouTube Music and Apple Music",
+                    "Real-time lyric translation into 12 languages",
+                    "Seven color themes plus an adaptive theme from album art",
+                    "Five retro skins: CRT Amber, Y2K, E-Ink, ASCII and Arcade",
+                    "Local lyrics cache and ad detection"
+                ],
+                "author": { "@id": "https://navilyrics.com/#author" },
+                "sameAs": [
+                    "https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp",
+                    "https://x.com/navilyrics_",
+                    "https://www.instagram.com/navilyrics__/"
+                ]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://navilyrics.com/#author",
+                "name": "Ivan Delfin",
+                "homeLocation": { "@type": "Place", "name": "Tijuana, Mexico" },
+                "sameAs": ["https://buymeacoffee.com/ivandelfin"]
+            }
+        ]
+    }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script src="i18n.js"></script>
     <style>
         body {
@@ -104,6 +152,15 @@
             border-color: #0df2f2;
         }
 
+        /* La barra de navegación es fija: que los anclajes (#faq, #features…) no queden tapados */
+        section[id] {
+            scroll-margin-top: 6rem;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
         .skin-chip {
             display: inline-flex;
             align-items: center;
@@ -169,6 +226,8 @@
             outline-offset: 2px;
         }
     </style>
+    <!-- Después de los <style> propios: Tailwind debe ganar, como con el CDN -->
+    <link href="assets/site.css" rel="stylesheet" />
 </head>
 
 <body class="bg-hero-gradient min-h-screen text-white overflow-x-hidden selection:bg-primary selection:text-black">
@@ -203,6 +262,8 @@
                             <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
                                 href="#roadmap" data-i18n="nav.roadmap">Roadmap</a>
                             <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                                href="#faq" data-i18n="nav.faq">FAQ</a>
+                            <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
                                 href="#support" data-i18n="nav.support">Support</a>
                         </div>
                     </div>
@@ -227,16 +288,20 @@
                         class="inline-flex items-center px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-medium mb-4 sm:mb-6 uppercase tracking-wider">
                         <span class="w-2 h-2 rounded-full bg-primary mr-2 animate-pulse"></span><span data-i18n="hero.badge">New in v1.6.0 — Now on Apple Music, plus retro skins & adaptive themes</span>
                     </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 leading-tight">
+                    <!-- Frase de marca: grande pero no es el H1 (el H1 dice qué es el producto) -->
+                    <p class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 leading-tight">
                         <span data-i18n="hero.heading1">The tool your productivity</span>
                         <span
                             class="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-700 decoration-line-through line-through decoration-primary/50 decoration-4" data-i18n="hero.heading2">didn't
                             ask for</span><span data-i18n="hero.heading3">,
                         but your inner </span><span class="text-primary neon-text-glow" data-i18n="hero.heading4">karaoke</span><span data-i18n="hero.heading5"> needs.</span>
+                    </p>
+                    <h1 class="text-lg sm:text-xl lg:text-2xl font-semibold text-white max-w-2xl mx-auto lg:mx-0 leading-snug" data-i18n="hero.h1">
+                        Floating, synchronized lyrics for Spotify, YouTube Music &amp; Apple Music
                     </h1>
                     <p class="mt-3 sm:mt-4 text-base sm:text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed" data-i18n="hero.description">
-                        Floating, synchronized lyrics for YouTube Music, Spotify and Apple Music. Bring the concert to your spreadsheets, study
-                        sessions, or dance practices without losing your rhythm.
+                        A free Chrome extension that keeps the lyrics in an always-on-top Picture-in-Picture window. Bring the concert to your
+                        spreadsheets, study sessions, or dance practices without losing your rhythm.
                     </p>
                     <div class="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                         <a class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-base sm:text-lg font-bold rounded-xl text-black bg-primary hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(13,242,242,0.4)] hover:shadow-[0_0_30px_rgba(13,242,242,0.6)] transform hover:-translate-y-1"
@@ -341,6 +406,36 @@
             </div>
         </section>
 
+        <!-- Respuesta directa a "¿qué es Navi Lyrics?" (buscadores y asistentes de IA la citan) -->
+        <section class="relative z-10 py-12 sm:py-16 px-3 sm:px-6 lg:px-8 max-w-4xl mx-auto" id="what-is-navi">
+            <div class="glass-panel rounded-2xl p-6 sm:p-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6" data-i18n="about.title">What is Navi Lyrics?</h2>
+                <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-4" data-i18n="about.p1">
+                    Navi Lyrics is a free Chrome extension that shows synchronized, karaoke-style lyrics in a floating Picture-in-Picture window
+                    while you listen to Spotify, YouTube Music or Apple Music in your browser. The window stays on top of your other windows and
+                    apps, so the lyrics keep scrolling while you work, study or browse.
+                </p>
+                <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="about.p2">
+                    Lyrics come from LRCLIB, an open lyrics database. Navi highlights each line in real time, translates lyrics into 12
+                    languages, and lets you restyle the window with color themes and retro skins. No account needed.
+                </p>
+                <dl class="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                        <dt class="text-xs uppercase tracking-widest text-gray-500 mb-1" data-i18n="about.worksOn">Works on</dt>
+                        <dd class="text-sm font-medium text-white" data-i18n="about.worksOnValue">Spotify Web · YouTube Music · Apple Music</dd>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                        <dt class="text-xs uppercase tracking-widest text-gray-500 mb-1" data-i18n="about.browsers">Browsers</dt>
+                        <dd class="text-sm font-medium text-white" data-i18n="about.browsersValue">Chrome · Edge · Brave</dd>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                        <dt class="text-xs uppercase tracking-widest text-gray-500 mb-1" data-i18n="about.price">Price</dt>
+                        <dd class="text-sm font-medium text-white" data-i18n="about.priceValue">Free, no account</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
         <section class="relative z-10 py-16 sm:py-24 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="features">
             <div class="text-center mb-12 sm:mb-16">
                 <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3 sm:mb-4" data-i18n="features.title">Specs & Capabilities</h2>
@@ -431,7 +526,8 @@
                     </div>
                     <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3" data-i18n="features.feature7Title">Themes & Skins</h3>
                     <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature7Desc">
-                        Seven color themes (Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum, plus an Adaptive theme drawn from your album art) and six retro skins — CRT Amber, Y2K, E-Ink, ASCII and Arcade. Make the window yours.
+                        Seven color themes (Navi Cyan, Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum), an Adaptive theme drawn from your
+                        album art, and five retro skins — CRT Amber, Y2K, E-Ink, ASCII and Arcade. Make the window yours.
                     </p>
                 </div>
 
@@ -443,7 +539,8 @@
                     </div>
                     <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3" data-i18n="features.feature8Title">Lyric Translation</h3>
                     <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature8Desc">
-                        Translate any lyric in real time across 13 languages — Korean, Japanese, Chinese, Arabic, Hindi and more — right inside the floating window.
+                        Translate any lyric in real time into 12 languages — Korean, Japanese, Chinese, Arabic, Hindi and more — right inside the
+                        floating window.
                     </p>
                 </div>
             </div>
@@ -573,6 +670,71 @@
             </div>
         </section>
 
+        <section class="relative z-10 py-16 sm:py-24 px-3 sm:px-6 lg:px-8 max-w-3xl mx-auto" id="faq">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-8 sm:mb-12" data-i18n="faq.title">Frequently Asked Questions</h2>
+            <div class="flex flex-col gap-3 sm:gap-4">
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q1">Does Navi Lyrics work with Spotify?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a1">Yes. Navi Lyrics works with the Spotify web player (open.spotify.com) and shows its synchronized lyrics in a floating window. The Spotify desktop app is not supported, because Chrome extensions only run inside the browser.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q2">Does Navi Lyrics work with YouTube Music?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a2">Yes. Open music.youtube.com in Chrome, play a song and Navi shows its lyrics line by line in the floating window.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q3">Does Navi Lyrics work with Apple Music?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a3">Yes. Since version 1.6.0, Navi Lyrics supports the Apple Music web player at music.apple.com.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q4">Can the lyrics stay on top of other apps?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a4">Yes. Navi opens the lyrics in Chrome's Document Picture-in-Picture window, which floats above your other windows, even outside the browser. You can move and resize it anywhere on your screen.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q5">Which browsers are supported?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a5">Up-to-date Chrome, Microsoft Edge and Brave. Opera works after enabling the flag opera://flags/#new-auto-pip-for-documents. Firefox is not supported yet.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q6">Can Navi Lyrics translate song lyrics?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a6">Yes. Press the translate button and each line shows its translation underneath, in real time. You can translate into 12 languages: English, Spanish, Portuguese, French, German, Italian, Russian, Japanese, Korean, Chinese, Arabic and Hindi.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q7">Where do the lyrics come from? What if they are wrong?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a7">Lyrics come from LRCLIB, a free, community-built lyrics database. If a song shows the wrong lyrics, press the thumbs-down button and Navi switches to the next available version.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q8">Is Navi Lyrics free? Does it collect my data?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a8">Navi Lyrics is free and needs no account. It does not collect personal data: your settings and cached lyrics are stored locally in your browser.</p>
+                </details>
+            </div>
+            <p class="mt-6 text-center text-sm">
+                <a href="privacy-policy" class="text-primary hover:text-white transition-colors underline decoration-primary/30 underline-offset-2" data-i18n="faq.privacyLink">Read the privacy policy</a>
+            </p>
+        </section>
+
         <footer class="relative z-10 border-t border-white/5 bg-black/40 backdrop-blur-sm mt-8 sm:mt-12" id="support">
             <div class="max-w-7xl mx-auto py-8 sm:py-12 px-3 sm:px-6 lg:px-8 text-center">
                 <div class="mb-6 sm:mb-8 flex flex-col items-center justify-center gap-3 sm:gap-4">
@@ -586,7 +748,7 @@
                 <div class="flex justify-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
                     <a class="text-gray-400 hover:text-white transition-colors"
                         href="https://github.com/odrac94/navi-landing" target="_blank">
-                        <span class="sr-only">GitHub</span>
+                        <span class="sr-only">GitHub (website source)</span>
                         <svg aria-hidden="true" class="h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" viewBox="0 0 24 24">
                             <path clip-rule="evenodd"
                                 d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
@@ -616,7 +778,7 @@
                 </div>
 
                 <div class="text-xs sm:text-sm text-gray-500 font-mono border-t border-white/5 pt-6 sm:pt-8 pb-3 sm:pb-4">
-                    <p class="mb-1 sm:mb-2" data-i18n="footer.copyright">© 2026 Navi Lyrics. Open Source under MIT License.</p>
+                    <p class="mb-1 sm:mb-2" data-i18n="footer.copyright">© 2026 Navi Lyrics by Ivan Delfin.</p>
                     <p><span data-i18n="footer.madeWith">Made with</span> <span class="text-red-500">❤️</span> <span data-i18n="footer.and">and a healthy dose of trial and error in</span> <span class="text-green-500">Tijuana, Mexico</span>.</p>
                     <p class="mt-2">
                         <a href="privacy-policy" class="text-primary hover:text-white transition-colors underline decoration-primary/30 underline-offset-2" data-i18n="footer.privacyPolicy">Privacy Policy</a>
@@ -632,63 +794,6 @@
         </footer>
     </div>
 
-    <script>
-        // Lyrics animation loop - Run after DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            const lyricsContainer = document.getElementById('lyrics-container-navi');
-            const playBtn = document.querySelector('.btn-control-play');
-            
-            if (!playBtn || !lyricsContainer) return;
-            
-            const playIcon = playBtn.querySelector('.material-icons');
-            let isPlaying = false;
-            let currentLineIndex = 2; // Start with the "active" line
-            let animationInterval = null;
-            const totalLines = lyricsContainer.querySelectorAll('.navi-line').length;
-            const lineChangeInterval = 2000; // Change line every 2 seconds
-            const totalPadding = 240; // padding-top + padding-bottom total
-            const containerHeightMobile = 160;
-            const containerHeightDesktop = 280;
-
-            function updateActiveLine() {
-                const lines = lyricsContainer.querySelectorAll('.navi-line');
-                lines.forEach((line, index) => {
-                    line.classList.remove('active');
-                });
-                lines[currentLineIndex].classList.add('active');
-                
-                // Calcular el padding-top dinámico para centrar la línea activa
-                const containerHeight = window.innerWidth >= 640 ? containerHeightDesktop : containerHeightMobile;
-                const activeLine = lines[currentLineIndex];
-                const lineHeight = activeLine.clientHeight;
-                
-                // El padding-top necesario para centrar la línea
-                // = centerPosition - linha_relativa_pos = (containerHeight / 2) - 0
-                const paddingTopNeeded = Math.max(0, containerHeight / 2 - lineHeight / 2);
-                const paddingBottomNeeded = totalPadding - paddingTopNeeded;
-                
-                lyricsContainer.style.paddingTop = paddingTopNeeded + 'px';
-                lyricsContainer.style.paddingBottom = paddingBottomNeeded + 'px';
-            }
-
-            function togglePlayback() {
-                isPlaying = !isPlaying;
-
-                if (isPlaying) {
-                    playIcon.textContent = 'pause';
-                    animationInterval = setInterval(() => {
-                        currentLineIndex = (currentLineIndex + 1) % totalLines;
-                        updateActiveLine();
-                    }, lineChangeInterval);
-                } else {
-                    playIcon.textContent = 'play_arrow';
-                    clearInterval(animationInterval);
-                }
-            }
-
-            playBtn.addEventListener('click', togglePlayback);
-        });
-    </script>
 </body>
 
 </html>

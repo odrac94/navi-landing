@@ -4,3 +4,9 @@
 .env
 compose.yaml
 Dockerfile
+node_modules
+src
+scripts
+package.json
+package-lock.json
+tailwind.config.cjs

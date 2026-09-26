@@ -1,0 +1,25 @@
+# navilyrics.com: todo el sitio es público.
+# Los bots de IA se nombran explícitamente para dejar clara la decisión:
+# OAI-SearchBot / ChatGPT-User (citas en ChatGPT Search) y GPTBot (entrenamiento) permitidos.
+User-agent: *
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://navilyrics.com/sitemap.xml
