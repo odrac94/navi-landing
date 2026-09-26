@@ -99,6 +99,17 @@
       "a7": "Lyrics come from LRCLIB, a free, community-built lyrics database. If a song shows the wrong lyrics, press the thumbs-down button and Navi switches to the next available version.",
       "q8": "Is Navi Lyrics free? Does it collect my data?",
       "a8": "Navi Lyrics is free and needs no account. It does not collect personal data: your settings and cached lyrics are stored locally in your browser."
+    },
+    "meta": {
+      "title": "Navi Lyrics — Floating Lyrics for Spotify, YouTube Music & Apple Music",
+      "description": "Free Chrome extension: floating, synchronized lyrics for Spotify Web, YouTube Music and Apple Music in an always-on-top window. Translation, themes and skins.",
+      "ogDescription": "Synchronized lyrics in an always-on-top Picture-in-Picture window. Free Chrome extension with real-time translation, themes and retro skins.",
+      "ogImageAlt": "Navi Lyrics floating lyrics window next to the Navi Lyrics headline"
+    },
+    "langSuggest": {
+      "text": "¿Prefieres leer en español?",
+      "cta": "Ver en español",
+      "close": "Cerrar"
     }
   },
   "es": {
@@ -201,6 +212,17 @@
       "a7": "Las letras vienen de LRCLIB, una base de datos de letras gratuita y construida por la comunidad. Si una canción muestra la letra equivocada, presiona el botón de pulgar abajo y Navi cambia a la siguiente versión disponible.",
       "q8": "¿Navi Lyrics es gratis? ¿Recopila mis datos?",
       "a8": "Navi Lyrics es gratis y no necesita cuenta. No recopila datos personales: tu configuración y las letras en caché se guardan localmente en tu navegador."
+    },
+    "meta": {
+      "title": "Navi Lyrics — Letras flotantes para Spotify, YouTube Music y Apple Music",
+      "description": "Extensión gratis para Chrome: letras flotantes y sincronizadas de Spotify Web, YouTube Music y Apple Music en una ventana siempre visible. Traducción y temas.",
+      "ogDescription": "Letras sincronizadas en una ventana Picture-in-Picture siempre visible. Extensión gratuita para Chrome con traducción en tiempo real, temas y skins retro.",
+      "ogImageAlt": "Ventana flotante de letras de Navi Lyrics junto al titular de Navi Lyrics"
+    },
+    "langSuggest": {
+      "text": "Prefer to read in English?",
+      "cta": "View in English",
+      "close": "Close"
     }
   }
 }

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<!-- GENERADO por scripts/build-i18n.mjs desde index.html + translations.json. No editar a mano. -->
+<html class="dark overflow-x-hidden" lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Navi Lyrics — Letras flotantes para Spotify, YouTube Music y Apple Music</title>
+    <meta name="description" content="Extensión gratis para Chrome: letras flotantes y sincronizadas de Spotify Web, YouTube Music y Apple Music en una ventana siempre visible. Traducción y temas.">
+    <link rel="canonical" href="https://navilyrics.com/es/">
+    <link rel="alternate" hreflang="en" href="https://navilyrics.com/">
+    <link rel="alternate" hreflang="es" href="https://navilyrics.com/es/">
+    <link rel="alternate" hreflang="x-default" href="https://navilyrics.com/">
+    <meta name="theme-color" content="#0a192f">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/icon-96.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48.png">
+    <link rel="apple-touch-icon" href="/assets/icon-128.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Navi Lyrics">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:url" content="https://navilyrics.com/es/">
+    <meta property="og:title" content="Navi Lyrics — Letras flotantes para Spotify, YouTube Music y Apple Music">
+    <meta property="og:description" content="Letras sincronizadas en una ventana Picture-in-Picture siempre visible. Extensión gratuita para Chrome con traducción en tiempo real, temas y skins retro.">
+    <meta property="og:image" content="https://navilyrics.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Ventana flotante de letras de Navi Lyrics junto al titular de Navi Lyrics">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@navilyrics_">
+
+    <!-- Datos estructurados: deben coincidir con lo visible en la página -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://navilyrics.com/#website",
+                "url": "https://navilyrics.com/",
+                "name": "Navi Lyrics",
+                "inLanguage": ["en", "es"],
+                "publisher": { "@id": "https://navilyrics.com/#author" }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://navilyrics.com/#app",
+                "name": "Navi Lyrics",
+                "url": "https://navilyrics.com/",
+                "description": "Chrome extension that shows synchronized, karaoke-style lyrics in a floating, always-on-top Picture-in-Picture window for Spotify Web, YouTube Music and Apple Music.",
+                "applicationCategory": "MultimediaApplication",
+                "applicationSubCategory": "Browser extension",
+                "operatingSystem": "Windows, macOS, Linux, ChromeOS",
+                "browserRequirements": "Requires Google Chrome, Microsoft Edge or Brave with Document Picture-in-Picture support",
+                "softwareVersion": "1.6.4",
+                "downloadUrl": "https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp",
+                "installUrl": "https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp",
+                "image": "https://navilyrics.com/assets/og-image.png",
+                "screenshot": "https://navilyrics.com/assets/og-image.png",
+                "inLanguage": ["en", "es"],
+                "isAccessibleForFree": true,
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                "featureList": [
+                    "Floating always-on-top Picture-in-Picture lyrics window",
+                    "Synchronized line-by-line lyrics for Spotify Web, YouTube Music and Apple Music",
+                    "Real-time lyric translation into 12 languages",
+                    "Seven color themes plus an adaptive theme from album art",
+                    "Five retro skins: CRT Amber, Y2K, E-Ink, ASCII and Arcade",
+                    "Local lyrics cache and ad detection"
+                ],
+                "author": { "@id": "https://navilyrics.com/#author" },
+                "sameAs": [
+                    "https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp",
+                    "https://x.com/navilyrics_",
+                    "https://www.instagram.com/navilyrics__/"
+                ]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://navilyrics.com/#author",
+                "name": "Ivan Delfin",
+                "homeLocation": { "@type": "Place", "name": "Tijuana, Mexico" },
+                "sameAs": ["https://buymeacoffee.com/ivandelfin"]
+            }
+        ]
+    }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(16, 34, 34, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(13, 242, 242, 0.3);
+        }
+
+        .neon-text-glow {
+            text-shadow: 0 0 10px rgba(13, 242, 242, 0.5);
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        .cyber-grid-bg {
+            background-size: 40px 40px;
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .language-switcher a {
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            color: #9ca3af;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-switcher a.active {
+            background: #0df2f2;
+            color: black;
+            border-color: #0df2f2;
+            box-shadow: 0 0 10px rgba(13, 242, 242, 0.3);
+        }
+
+        .language-switcher a.inactive {
+            background: rgba(255, 255, 255, 0.03);
+            color: #9ca3af;
+        }
+
+        .language-switcher a:hover:not(.active) {
+            background: rgba(13, 242, 242, 0.1);
+            color: #0df2f2;
+            border-color: #0df2f2;
+        }
+
+        /* La barra de navegación es fija: que los anclajes (#faq, #features…) no queden tapados */
+        section[id] {
+            scroll-margin-top: 6rem;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .skin-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.75rem 0.375rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: #9ca3af;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        /* Muestra de color de cada skin: fondo + acento */
+        .skin-chip::before {
+            content: "";
+            width: 0.875rem;
+            height: 0.875rem;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, var(--sw-bg) 50%, var(--sw-fg) 50%);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+        }
+
+        .skin-chip:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .skin-chip[aria-pressed="true"] {
+            color: #0df2f2;
+            border-color: #0df2f2;
+            background: rgba(13, 242, 242, 0.1);
+        }
+
+        .theme-dot {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 9999px;
+            background: var(--dot);
+            border: 2px solid rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .theme-dot:hover {
+            transform: scale(1.12);
+        }
+
+        .theme-dot[aria-pressed="true"] {
+            box-shadow: 0 0 0 2px #fff;
+        }
+
+        #theme-picker-wrap[hidden] {
+            display: none;
+        }
+
+        .skin-chip:focus-visible,
+        .theme-dot:focus-visible {
+            outline: 2px solid #0df2f2;
+            outline-offset: 2px;
+        }
+    </style>
+    <!-- Después de los <style> propios: Tailwind debe ganar, como con el CDN -->
+    <link href="/assets/site.css" rel="stylesheet">
+</head>
+
+<body class="bg-hero-gradient min-h-screen text-white overflow-x-hidden selection:bg-primary selection:text-black">
+
+    <div class="relative w-full overflow-x-hidden">
+
+        <div class="fixed inset-0 pointer-events-none z-0">
+            <div class="absolute top-0 left-0 w-full h-full cyber-grid-bg opacity-20"></div>
+            <div class="blob bg-primary w-96 h-96 rounded-full top-[-100px] left-[-100px] opacity-20 animate-pulse">
+            </div>
+            <div class="blob bg-purple-600 w-80 h-80 rounded-full bottom-0 right-0 opacity-20"></div>
+            <div class="blob bg-blue-600 w-64 h-64 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-10">
+            </div>
+        </div>
+
+        <nav class="fixed inset-x-0 z-50 top-0 transition-all duration-300">
+            <div class="glass-panel mx-auto w-[calc(100%-1rem)] sm:w-[calc(100%-2rem)] max-w-7xl px-4 sm:px-6 lg:px-8 border-b border-white/5 rounded-2xl mt-2 sm:mt-4">
+                <div class="flex h-16 items-center justify-between">
+                    <div class="flex items-center">
+                        <a class="flex-shrink-0 flex items-center gap-2 group" href="#">
+                            <span class="text-2xl font-bold tracking-tighter text-white group-hover:text-primary transition-colors">Navi
+                                <span class="text-xl">Lyrics</span></span>
+                        </a>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-8">
+                            <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#features" data-i18n="nav.features">Características</a>
+                            <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#roadmap" data-i18n="nav.roadmap">Hoja de Ruta</a>
+                            <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#faq" data-i18n="nav.faq">Preguntas</a>
+                            <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#support" data-i18n="nav.support">Soporte</a>
+                        </div>
+                    </div>
+                    <div class="language-switcher" id="language-switcher">
+                        <a href="/" hreflang="en" lang="en" data-lang="en" class="inactive">EN</a>
+                        <a aria-current="page" href="/es/" hreflang="es" lang="es" data-lang="es" class="active">ES</a>
+                    </div>
+                    <div>
+                        <a class="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-primary/30 rounded-lg shadow-sm text-sm font-medium text-primary bg-primary/10 hover:bg-primary hover:text-black transition-all duration-300 neon-glow" href="https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp" target="_blank" data-i18n="nav.getExtension">Obtener Extensión</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="relative z-10 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:pt-48 lg:pb-32 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+                <div class="lg:col-span-6 text-center lg:text-left mb-8 sm:mb-12 lg:mb-0">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-medium mb-4 sm:mb-6 uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-primary mr-2 animate-pulse"></span><span data-i18n="hero.badge">Nuevo en v1.6.0 — Ahora en Apple Music, además de skins retro y temas adaptativos</span>
+                    </div>
+                    <!-- Frase de marca: grande pero no es el H1 (el H1 dice qué es el producto) -->
+                    <p class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 leading-tight">
+                        <span data-i18n="hero.heading1">La herramienta que tu productividad</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-700 decoration-line-through line-through decoration-primary/50 decoration-4" data-i18n="hero.heading2">no pidió</span><span data-i18n="hero.heading3">, pero tu interior </span><span class="text-primary neon-text-glow" data-i18n="hero.heading4">karaoke</span><span data-i18n="hero.heading5"> necesita.</span>
+                    </p>
+                    <h1 class="text-lg sm:text-xl lg:text-2xl font-semibold text-white max-w-2xl mx-auto lg:mx-0 leading-snug" data-i18n="hero.h1">Letras flotantes y sincronizadas para Spotify, YouTube Music y Apple Music</h1>
+                    <p class="mt-3 sm:mt-4 text-base sm:text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed" data-i18n="hero.description">Una extensión gratuita para Chrome que mantiene la letra en una ventana Picture-in-Picture siempre visible. Trae el concierto a tus hojas de cálculo, sesiones de estudio o prácticas de baile sin perder el ritmo.</p>
+                    <div class="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                        <a class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-base sm:text-lg font-bold rounded-xl text-black bg-primary hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(13,242,242,0.4)] hover:shadow-[0_0_30px_rgba(13,242,242,0.6)] transform hover:-translate-y-1" href="https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp" target="_blank">
+                            <span class="material-icons mr-2">add_to_queue</span>
+                            <span data-i18n="hero.addChrome">Agregar a Chrome</span>
+                        </a>
+                        <a class="glass-panel inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border border-white/20 text-base sm:text-lg font-medium rounded-xl text-white hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1" href="https://buymeacoffee.com/ivandelfin" target="_blank">
+                            <span class="material-icons mr-2 text-pink-500">favorite</span>
+                            <span data-i18n="hero.supportDev">Apoya al desarrollador</span>
+                        </a>
+                    </div>
+                    <!-- <div class="mt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500">
+                        <div class="flex -space-x-2">
+                            <img alt="User avatar"
+                                class="inline-block h-8 w-8 rounded-full ring-2 ring-background-dark grayscale opacity-70"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9D43mJOR6CduCcJCpTHJBytbyCu4F7O-Y7IPTvxXo--xrciq3DWEQ0z-4SA8cHrx7b68bliLV4vYI9mj_DaJ6H1N4JiqzG0pja6OSYe6_jpam5ywbpY6y-gUiw7zVNYewFOgG_xVyyIomLQyOhdl5lD9GwZVRN2oqNd6_r7jGNItlIasMRwgYIjWB0otr2cAEYLSxMKpvBrEFXiq8PaLkhy0cZUPnHeQJ68n2ywYCKOIUVVeE2tInpjx89IucDctGy7v4PLaElECd" />
+                            <img alt="User avatar"
+                                class="inline-block h-8 w-8 rounded-full ring-2 ring-background-dark grayscale opacity-70"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqR7kuH9hJSTZZlniYfOFe1BY4Jtw3uLa5pNAxSloh1NrUmOFK38EcUgeoTOybDK_nRdu3Wi9yTFNAfOlrl9j-gum42h0OfFoSk9Yl80sc6VIcDmNxrTybqIcfznnLMenq_LdZk8pt1SrFSRaJFO7l90OEk2YQMKsa6Z8-OOyb73nDA48sa1QYgz1olpa4yEgSwpuO5eHyWg6FCKXy7ShsIiN2eN0zKyIxLJw4NCucLiFREc6kiDdk2IFSb1Ldz217pjgtkrIGs-jW" />
+                            <img alt="User avatar"
+                                class="inline-block h-8 w-8 rounded-full ring-2 ring-background-dark grayscale opacity-70"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh1UqSvK6v3qm325baFXI1_y18ybIuoD90ko8F_LsAYhrcZWXJ9Kk4eV3sK9wjt6uFI7XcKZfzAVwvfRgDyO6QnlXBzcjCzlrwj5YX7beyeqZFeDmRANLT88hAbIzZz6q_DjxprBRieLIp-mq4s7pjGjrwJDJoOSfhKMK85dQNBVWEG0VesJUk7gjr1Q3d_CKsIom3ymMq2rbYx-n-4YjYY7TLNGmva7IYjyoI6pph4QBd_pmbNpPDIS_g7_j_ZUf7exOcqyOeGWDO" />
+                        </div>
+                        <p>Loved by 10,000+ happy singers</p>
+                    </div> -->
+                </div>
+
+                <div class="lg:col-span-6 relative">
+                    <div class="absolute -top-10 -right-5 sm:right-0 lg:-right-10 w-24 h-24 sm:w-40 sm:h-40 border border-primary/20 rounded-full animate-spin-slow pointer-events-none">
+                    </div>
+                    <div class="absolute -bottom-5 -left-5 lg:-left-5 w-16 h-16 sm:w-24 sm:h-24 bg-purple-500/20 rounded-full blur-2xl pointer-events-none">
+                    </div>
+
+                    <!-- PiP en vivo: skins reales de la extensión (skins/, ver scripts/sync-skins.mjs) -->
+                    <div class="relative mx-auto w-full max-w-[400px]">
+                        <div class="rounded-xl sm:rounded-2xl overflow-hidden ring-1 ring-white/15 shadow-2xl shadow-black/60 bg-black">
+                            <iframe id="skin-demo" src="/skins/demo.html?skin=navi&lang=es" title="Navi Lyrics live preview" class="block w-full h-[500px] sm:h-[540px] border-0"></iframe>
+                        </div>
+
+                        <p class="mt-5 mb-3 text-center text-xs uppercase tracking-widest text-gray-500" data-i18n="hero.skinPicker">Vista en vivo · elige una skin</p>
+                        <div id="skin-picker" class="flex flex-wrap justify-center gap-2" role="group" aria-label="Skins">
+                            <button type="button" class="skin-chip" data-skin="navi" aria-pressed="true" style="--sw-bg:#102222;--sw-fg:#0df2f2">Navi</button>
+                            <button type="button" class="skin-chip" data-skin="crt-amber" aria-pressed="false" style="--sw-bg:#0a0500;--sw-fg:#ffb000">CRT Amber</button>
+                            <button type="button" class="skin-chip" data-skin="y2k" aria-pressed="false" style="--sw-bg:#fff0fa;--sw-fg:#ff2e9a">Y2K Webcore</button>
+                            <button type="button" class="skin-chip" data-skin="eink" aria-pressed="false" style="--sw-bg:#e8e6e0;--sw-fg:#1a1a1a">E-Ink Paper</button>
+                            <button type="button" class="skin-chip" data-skin="ascii" aria-pressed="false" style="--sw-bg:#000000;--sw-fg:#d8d8d8">ASCII / BBS</button>
+                            <button type="button" class="skin-chip" data-skin="arcade" aria-pressed="false" style="--sw-bg:#06080f;--sw-fg:#ff2e88">Arcade</button>
+                        </div>
+
+                        <!-- Temas de color: solo existen en la skin Navi -->
+                        <div id="theme-picker-wrap" class="mt-4">
+                            <p class="mb-2 text-center text-xs uppercase tracking-widest text-gray-500" data-i18n="hero.themePicker">Temas de color · skin Navi</p>
+                            <div id="theme-picker" class="flex flex-wrap justify-center gap-2" role="group" aria-label="Themes">
+                                <button type="button" class="theme-dot" data-theme="navi" aria-pressed="true" title="Navi Cyan" aria-label="Navi Cyan" style="--dot:#0df2f2"></button>
+                                <button type="button" class="theme-dot" data-theme="spotify" aria-pressed="false" title="Spotify" aria-label="Spotify" style="--dot:#1DB954"></button>
+                                <button type="button" class="theme-dot" data-theme="apple" aria-pressed="false" title="Apple Music" aria-label="Apple Music" style="--dot:#FA243C"></button>
+                                <button type="button" class="theme-dot" data-theme="amoled" aria-pressed="false" title="AMOLED Black" aria-label="AMOLED Black" style="--dot:#ffffff"></button>
+                                <button type="button" class="theme-dot" data-theme="sunset" aria-pressed="false" title="Sunset" aria-label="Sunset" style="--dot:#f97316"></button>
+                                <button type="button" class="theme-dot" data-theme="forest" aria-pressed="false" title="Forest" aria-label="Forest" style="--dot:#10b981"></button>
+                                <button type="button" class="theme-dot" data-theme="bubblegum" aria-pressed="false" title="Bubblegum Pink" aria-label="Bubblegum Pink" style="--dot:#ff5cb8"></button>
+                                <button type="button" class="theme-dot" data-theme="adaptive" aria-pressed="false" title="Adaptive (album art)" aria-label="Adaptive (album art)" style="--dot:conic-gradient(#ff5cb8, #0df2f2, #10b981, #f97316, #ff5cb8)"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        (function () {
+                            const frame = document.getElementById('skin-demo');
+                            const chips = document.querySelectorAll('#skin-picker .skin-chip');
+                            const send = (data) => frame.contentWindow?.postMessage({ type: 'navi-demo', ...data }, location.origin);
+
+                            const themeWrap = document.getElementById('theme-picker-wrap');
+                            const dots = document.querySelectorAll('#theme-picker .theme-dot');
+
+                            chips.forEach((chip) => chip.addEventListener('click', () => {
+                                chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+                                themeWrap.hidden = chip.dataset.skin !== 'navi';
+                                send({ skin: chip.dataset.skin });
+                            }));
+
+                            dots.forEach((dot) => dot.addEventListener('click', () => {
+                                dots.forEach((d) => d.setAttribute('aria-pressed', String(d === dot)));
+                                send({ theme: dot.dataset.theme });
+                            }));
+
+                            frame.addEventListener('load', () => send({ lang: document.documentElement.lang }));
+
+                            // Pausar la animación cuando el demo no está en pantalla
+                            new IntersectionObserver(([entry]) => send({ visible: entry.isIntersecting }))
+                                .observe(frame);
+                        })();
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Respuesta directa a "¿qué es Navi Lyrics?" (buscadores y asistentes de IA la citan) -->
+        <section class="relative z-10 py-12 sm:py-16 px-3 sm:px-6 lg:px-8 max-w-4xl mx-auto" id="what-is-navi">
+            <div class="glass-panel rounded-2xl p-6 sm:p-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6" data-i18n="about.title">¿Qué es Navi Lyrics?</h2>
+                <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-4" data-i18n="about.p1">Navi Lyrics es una extensión gratuita para Chrome que muestra letras sincronizadas, estilo karaoke, en una ventana flotante Picture-in-Picture mientras escuchas Spotify, YouTube Music o Apple Music en el navegador. La ventana se queda encima de tus otras ventanas y apps, así que la letra sigue avanzando mientras trabajas, estudias o navegas.</p>
+                <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="about.p2">Las letras vienen de LRCLIB, una base de datos abierta de letras. Navi resalta cada línea en tiempo real, traduce la letra a 12 idiomas y te deja cambiar el estilo de la ventana con temas de color y skins retro. No necesitas cuenta.</p>
+                <dl class="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                        <dt class="text-xs uppercase tracking-widest text-gray-500 mb-1" data-i18n="about.worksOn">Funciona en</dt>
+                        <dd class="text-sm font-medium text-white" data-i18n="about.worksOnValue">Spotify Web · YouTube Music · Apple Music</dd>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                        <dt class="text-xs uppercase tracking-widest text-gray-500 mb-1" data-i18n="about.browsers">Navegadores</dt>
+                        <dd class="text-sm font-medium text-white" data-i18n="about.browsersValue">Chrome · Edge · Brave</dd>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                        <dt class="text-xs uppercase tracking-widest text-gray-500 mb-1" data-i18n="about.price">Precio</dt>
+                        <dd class="text-sm font-medium text-white" data-i18n="about.priceValue">Gratis, sin cuenta</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="relative z-10 py-16 sm:py-24 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="features">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3 sm:mb-4" data-i18n="features.title">Especificaciones y Capacidades</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base" data-i18n="features.subtitle">Diseñado para estar en silencio en la esquina hasta que llegue el estribillo.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/30 transition-colors">
+                        <span class="material-icons text-primary text-xl sm:text-2xl">layers</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3" data-i18n="features.feature1Title">Siempre en la Parte Superior</h3>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature1Desc">Utiliza la tecnología nativa de Picture-in-Picture para flotar sobre tus hojas de Excel, notas de estudio o pestañas de navegador infinitas. Multitarea sin perder una letra.</p>
+                </div>
+
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/30 transition-colors">
+                        <span class="material-icons text-primary text-xl sm:text-2xl">sync</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3" data-i18n="features.feature2Title">Sincronización Perfecta</h3>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature2Desc">Ya sea que estés cantando notas altas o aprendiendo un rap rápido, Navi se sincroniza perfectamente con YouTube Music y Spotify en tiempo real. Nunca pierdas el ritmo.</p>
+                </div>
+
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/30 transition-colors">
+                        <span class="material-icons text-primary text-xl sm:text-2xl">offline_bolt</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3" data-i18n="features.feature3Title">Caché Inteligente</h3>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature3Desc">Las letras se almacenan en caché localmente con desalojo inteligente LRU. Ahorra ancho de banda y continúa cantando incluso si tu conexión se cae en tu viaje.</p>
+                </div>
+
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/30 transition-colors">
+                        <span class="material-icons text-primary text-xl sm:text-2xl">music_note</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3" data-i18n="features.feature4Title">Multiplataforma</h3>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature4Desc">Funciona perfectamente en YouTube Music, Spotify y Apple Music. Una extensión, tres plataformas, todas tus letras.</p>
+                </div>
+
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/30 transition-colors">
+                        <span class="material-icons text-primary text-xl sm:text-2xl">auto_fix_high</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3" data-i18n="features.feature5Title">Detección de Anuncios</h3>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature5Desc">Detecta cuando se están reproduciendo anuncios y muestra una animación de hada amigable en lugar de letras rotas. Se reanuda automáticamente cuando vuelve la música.</p>
+                </div>
+
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/30 transition-colors">
+                        <span class="material-icons text-primary text-xl sm:text-2xl">translate</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3" data-i18n="features.feature6Title">Interfaz Multilingüe</h3>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature6Desc">Interfaz completa disponible en inglés y español. La extensión se adapta automáticamente al idioma de tu navegador.</p>
+                </div>
+
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/30 transition-colors">
+                        <span class="material-icons text-primary text-xl sm:text-2xl">palette</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3" data-i18n="features.feature7Title">Temas y Skins</h3>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature7Desc">Siete temas de color (Navi Cyan, Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum), un tema Adaptativo que sale de tu carátula y cinco skins retro — CRT Amber, Y2K, E-Ink, ASCII y Arcade. Haz tuya la ventana.</p>
+                </div>
+
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/30 transition-colors">
+                        <span class="material-icons text-primary text-xl sm:text-2xl">g_translate</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3" data-i18n="features.feature8Title">Traducción de Letras</h3>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature8Desc">Traduce cualquier letra en tiempo real a 12 idiomas — coreano, japonés, chino, árabe, hindi y más — dentro de la ventana flotante.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative z-10 py-16 sm:py-24 px-3 sm:px-6 lg:px-8 max-w-5xl mx-auto" id="roadmap">
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="flex gap-2 justify-center items-center mb-3 sm:mb-4">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white" data-i18n="roadmap.title">¿Qué se Está Preparando?</h2>
+                    <span class="text-2xl sm:text-3xl align-middle">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" class="sm:h-10 sm:w-10" fill="#e3e3e3">
+                            <path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z" />
+                        </svg>
+                    </span>
+                </div>
+                <p class="text-gray-400 text-sm sm:text-base" data-i18n="roadmap.subtitle">El plan maestro para la dominación mundial (a través del karaoke).</p>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <div class="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary via-purple-500 to-transparent opacity-30 rounded-full">
+                </div>
+
+                <!-- Phase 1: Launch — DONE -->
+                <div class="relative mb-8 sm:mb-12 flex flex-col md:flex-row items-center justify-between w-full">
+                    <div class="w-[calc(100%-3.5rem)] ml-auto md:ml-0 md:w-5/12 glass-panel p-4 sm:p-6 rounded-xl border-l-4 md:border-l-0 md:border-r-4 border-primary text-left md:text-right shadow-[0_0_15px_rgba(13,242,242,0.1)]">
+                        <div class="flex flex-wrap gap-2 mb-2 sm:mb-3 items-center md:justify-end">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary border border-primary/20" data-i18n="roadmap.phase1Label">HECHO</span>
+                            <h3 class="font-bold text-white text-lg sm:text-xl" data-i18n="roadmap.phase1Title">Fase 1: Lanzamiento</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-400 leading-relaxed" data-i18n="roadmap.phase1Desc">Funcionalidad principal de PiP, integración de YouTube Music, letras sincronizadas, caché inteligente y controles de reproducción.</p>
+                    </div>
+
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 z-20 w-10 h-10 bg-primary rounded-full border-4 border-background-dark flex items-center justify-center shadow-[0_0_15px_rgba(13,242,242,0.4)]">
+                        <span class="material-icons text-black text-sm font-bold">check</span>
+                    </div>
+
+                    <div class="hidden md:block w-5/12"></div>
+                </div>
+
+                <!-- Phase 2: Expansion — DONE -->
+                <div class="relative mb-8 sm:mb-12 flex flex-col md:flex-row items-center justify-between w-full">
+                    <div class="hidden md:block w-5/12"></div>
+
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 z-20 w-10 h-10 bg-primary rounded-full border-4 border-background-dark flex items-center justify-center shadow-[0_0_15px_rgba(13,242,242,0.4)]">
+                        <span class="material-icons text-black text-sm font-bold">check</span>
+                    </div>
+
+                    <div class="w-[calc(100%-3.5rem)] ml-auto md:ml-0 md:w-5/12 glass-panel p-4 sm:p-6 rounded-xl border-l-4 border-primary shadow-[0_0_15px_rgba(13,242,242,0.1)] text-left">
+                        <div class="flex flex-wrap gap-2 mb-2 sm:mb-3 items-center">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary border border-primary/20" data-i18n="roadmap.phase2Label">HECHO</span>
+                            <h3 class="font-bold text-white text-lg sm:text-xl" data-i18n="roadmap.phase2Title">Fase 2: Expansión</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-400 leading-relaxed" data-i18n="roadmap.phase2Desc">Soporte de Spotify Web, detección de anuncios con animación de hada, interfaz multilingüe (EN/ES), fuentes locales y desalojo de caché LRU.</p>
+                    </div>
+                </div>
+
+                <!-- Phase 3: Translation — DONE -->
+                <div class="relative mb-8 sm:mb-12 flex flex-col md:flex-row items-center justify-between w-full">
+                    <div class="w-[calc(100%-3.5rem)] ml-auto md:ml-0 md:w-5/12 glass-panel p-4 sm:p-6 rounded-xl border-l-4 md:border-l-0 md:border-r-4 border-primary text-left md:text-right shadow-[0_0_15px_rgba(13,242,242,0.1)]">
+                        <div class="flex flex-wrap gap-2 mb-2 sm:mb-3 items-center md:justify-end">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary border border-primary/20" data-i18n="roadmap.phase3Label">HECHO</span>
+                            <h3 class="font-bold text-white text-lg sm:text-xl" data-i18n="roadmap.phase3Title">Fase 3: Traducción</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-400 leading-relaxed" data-i18n="roadmap.phase3Desc">Traducciones de letras en tiempo real en 13 idiomas (coreano, japonés, chino, árabe, hindi y más) con caché inteligente. Lanzado en v1.3.0.</p>
+                    </div>
+
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 z-20 w-10 h-10 bg-primary rounded-full border-4 border-background-dark flex items-center justify-center shadow-[0_0_15px_rgba(13,242,242,0.4)]">
+                        <span class="material-icons text-black text-sm font-bold">check</span>
+                    </div>
+
+                    <div class="hidden md:block w-5/12"></div>
+                </div>
+
+                <!-- Phase 4: Customization — IN PROGRESS -->
+                <div class="relative mb-8 sm:mb-12 flex flex-col md:flex-row items-center justify-between w-full">
+                    <div class="hidden md:block w-5/12"></div>
+
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 z-20 w-10 h-10 bg-primary rounded-full border-4 border-background-dark flex items-center justify-center shadow-[0_0_15px_rgba(13,242,242,0.4)]">
+                        <span class="material-icons text-black text-sm font-bold">check</span>
+                    </div>
+
+                    <div class="w-[calc(100%-3.5rem)] ml-auto md:ml-0 md:w-5/12 glass-panel p-4 sm:p-6 rounded-xl border-l-4 border-primary shadow-[0_0_15px_rgba(13,242,242,0.15)] text-left">
+                        <div class="flex flex-wrap gap-2 mb-2 sm:mb-3 items-center">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary border border-primary/20" data-i18n="roadmap.phase4Label">HECHO</span>
+                            <h3 class="font-bold text-white text-lg sm:text-xl" data-i18n="roadmap.phase4Title">Fase 4: Personalización</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-400 leading-relaxed" data-i18n="roadmap.phase4Desc">Siete temas de color más un tema adaptativo que sale de tu carátula, seis skins retro (CRT Amber, Y2K, E-Ink, ASCII, Arcade), atajos de teclado dentro del PiP y un gran trabajo de rendimiento. Lanzado en v1.5.0.</p>
+                    </div>
+                </div>
+
+                <!-- Phase 5: Beyond — PLANNED -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between w-full">
+                    <div class="w-[calc(100%-3.5rem)] ml-auto md:ml-0 md:w-5/12 glass-panel p-4 sm:p-6 rounded-xl border-l-4 md:border-l-0 md:border-r-4 border-primary shadow-[0_0_15px_rgba(13,242,242,0.15)] text-left md:text-right">
+                        <div class="flex flex-wrap gap-2 mb-2 sm:mb-3 items-center md:justify-end">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary border border-primary/20" data-i18n="roadmap.phase5Label">HECHO</span>
+                            <h3 class="font-bold text-white text-lg sm:text-xl" data-i18n="roadmap.phase5Title">Fase 5: Más Allá</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-400 leading-relaxed" data-i18n="roadmap.phase5Desc">El soporte para Apple Music se lanzó en v1.6.0. Tidal y las funciones de la comunidad son lo siguiente.</p>
+                    </div>
+
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 z-20 w-10 h-10 bg-primary rounded-full border-4 border-background-dark flex items-center justify-center shadow-[0_0_15px_rgba(13,242,242,0.4)]">
+                        <span class="material-icons text-black text-sm font-bold">check</span>
+                    </div>
+
+                    <div class="hidden md:block w-5/12"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative z-10 py-16 sm:py-24 px-3 sm:px-6 lg:px-8 max-w-3xl mx-auto" id="faq">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-8 sm:mb-12" data-i18n="faq.title">Preguntas frecuentes</h2>
+            <div class="flex flex-col gap-3 sm:gap-4">
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q1">¿Navi Lyrics funciona con Spotify?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a1">Sí. Navi Lyrics funciona con el reproductor web de Spotify (open.spotify.com) y muestra la letra sincronizada en una ventana flotante. La app de escritorio de Spotify no es compatible, porque las extensiones de Chrome solo funcionan dentro del navegador.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q2">¿Navi Lyrics funciona con YouTube Music?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a2">Sí. Abre music.youtube.com en Chrome, reproduce una canción y Navi muestra la letra línea por línea en la ventana flotante.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q3">¿Navi Lyrics funciona con Apple Music?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a3">Sí. Desde la versión 1.6.0, Navi Lyrics es compatible con el reproductor web de Apple Music en music.apple.com.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q4">¿La letra puede quedarse encima de otras apps?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a4">Sí. Navi abre la letra en la ventana Document Picture-in-Picture de Chrome, que flota encima de tus otras ventanas, incluso fuera del navegador. Puedes moverla y cambiarle el tamaño donde quieras.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q5">¿Qué navegadores son compatibles?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a5">Chrome, Microsoft Edge y Brave actualizados. Opera funciona después de activar el flag opera://flags/#new-auto-pip-for-documents. Firefox todavía no es compatible.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q6">¿Navi Lyrics puede traducir letras de canciones?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a6">Sí. Presiona el botón de traducir y cada línea muestra su traducción debajo, en tiempo real. Puedes traducir a 12 idiomas: inglés, español, portugués, francés, alemán, italiano, ruso, japonés, coreano, chino, árabe e hindi.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q7">¿De dónde salen las letras? ¿Y si están mal?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a7">Las letras vienen de LRCLIB, una base de datos de letras gratuita y construida por la comunidad. Si una canción muestra la letra equivocada, presiona el botón de pulgar abajo y Navi cambia a la siguiente versión disponible.</p>
+                </details>
+                <details class="faq-item glass-panel rounded-xl group">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-4 sm:p-5">
+                        <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="faq.q8">¿Navi Lyrics es gratis? ¿Recopila mis datos?</h3>
+                        <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-45" aria-hidden="true">add</span>
+                    </summary>
+                    <p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="faq.a8">Navi Lyrics es gratis y no necesita cuenta. No recopila datos personales: tu configuración y las letras en caché se guardan localmente en tu navegador.</p>
+                </details>
+            </div>
+            <p class="mt-6 text-center text-sm">
+                <a href="/privacy-policy" class="text-primary hover:text-white transition-colors underline decoration-primary/30 underline-offset-2" data-i18n="faq.privacyLink">Lee la política de privacidad</a>
+            </p>
+        </section>
+
+        <footer class="relative z-10 border-t border-white/5 bg-black/40 backdrop-blur-sm mt-8 sm:mt-12" id="support">
+            <div class="max-w-7xl mx-auto py-8 sm:py-12 px-3 sm:px-6 lg:px-8 text-center">
+                <div class="mb-6 sm:mb-8 flex flex-col items-center justify-center gap-3 sm:gap-4">
+                    <a class="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 border border-pink-500/30 text-sm sm:text-base font-medium rounded-lg text-pink-400 bg-pink-500/10 hover:bg-pink-500/20 transition-all duration-300" href="https://buymeacoffee.com/ivandelfin" target="_blank">
+                        <span class="material-icons mr-2 text-pink-400 text-xs sm:text-sm">favorite</span>
+                        <span data-i18n="footer.supportProject">Apoya el proyecto</span>
+                    </a>
+                </div>
+
+                <div class="flex justify-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
+                    <a class="text-gray-400 hover:text-white transition-colors" href="https://github.com/odrac94/navi-landing" target="_blank">
+                        <span class="sr-only">GitHub (website source)</span>
+                        <svg aria-hidden="true" class="h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd" />
+                        </svg>
+                    </a>
+
+                    <a class="text-gray-400 hover:text-blue-400 transition-colors" href="https://x.com/navilyrics_" target="_blank">
+                        <span class="sr-only">Twitter</span>
+                        <svg aria-hidden="true" class="h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
+                            </path>
+                        </svg>
+                    </a>
+
+                    <a class="text-gray-400 hover:text-pink-500 transition-colors" href="https://www.instagram.com/navilyrics__/" target="_blank">
+                        <span class="sr-only">Instagram</span>
+                        <svg aria-hidden="true" class="h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 011.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.153 1.772 4.915 4.915 0 01-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 01-1.772-1.153 4.904 4.904 0 01-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 011.153-1.772A4.897 4.897 0 015.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1.25 1.25 0 10-2.5 0 1.25 1.25 0 002.5 0zM12 9a3 3 0 110 6 3 3 0 010-6z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="text-xs sm:text-sm text-gray-500 font-mono border-t border-white/5 pt-6 sm:pt-8 pb-3 sm:pb-4">
+                    <p class="mb-1 sm:mb-2" data-i18n="footer.copyright">© 2026 Navi Lyrics, por Ivan Delfin.</p>
+                    <p><span data-i18n="footer.madeWith">Hecho con</span> <span class="text-red-500">❤️</span> <span data-i18n="footer.and">y una buena dosis de prueba y error en</span> <span class="text-green-500">Tijuana, Mexico</span>.</p>
+                    <p class="mt-2">
+                        <a href="/privacy-policy" class="text-primary hover:text-white transition-colors underline decoration-primary/30 underline-offset-2" data-i18n="footer.privacyPolicy">Política de Privacidad</a>
+                    </p>
+                </div>
+
+                <div class="text-xs text-gray-600 font-mono">
+                    <p><span data-i18n="footer.poweredBy">Las letras son gentilmente proporcionadas por la increíble</span> <a href="https://lrclib.net/" target="_blank" class="text-primary hover:text-white transition-colors underline decoration-primary/30 underline-offset-2">LRCLIB
+                            API</a>.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Sugerencia de idioma. El texto va en el OTRO idioma (el que se sugiere).
+         Sin redirección automática: Google recomienda no redirigir por idioma. -->
+    <div id="lang-suggest" class="fixed bottom-4 inset-x-0 z-50 px-3" hidden>
+        <div class="glass-panel mx-auto w-fit max-w-full rounded-xl px-4 py-3 flex items-center gap-3 text-sm shadow-2xl" lang="en">
+            <span class="text-gray-300" data-i18n="langSuggest.text">Prefer to read in English?</span>
+            <a href="/" hreflang="en" data-lang="en" class="font-bold text-primary hover:text-white transition-colors whitespace-nowrap" data-i18n="langSuggest.cta">View in English</a>
+            <button type="button" id="lang-suggest-close" class="text-gray-400 hover:text-white transition-colors flex" aria-label="Close" data-i18n-attr="aria-label:langSuggest.close">
+                <span class="material-icons text-lg" aria-hidden="true">close</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var page = document.documentElement.lang;
+            var other = page === 'es' ? 'en' : 'es';
+            var save = function (lang) { try { localStorage.setItem('navi-language', lang); } catch (e) {} };
+            var stored = null;
+            try { stored = localStorage.getItem('navi-language'); } catch (e) {}
+
+            // Recordar la elección al usar el selector EN/ES o el aviso
+            document.querySelectorAll('a[data-lang]').forEach(function (a) {
+                a.addEventListener('click', function () { save(a.getAttribute('data-lang')); });
+            });
+
+            var box = document.getElementById('lang-suggest');
+            var browser = ((navigator.languages && navigator.languages[0]) || navigator.language || '').slice(0, 2).toLowerCase();
+            if (stored === page || (stored !== other && browser !== other)) return;
+            box.hidden = false;
+            document.getElementById('lang-suggest-close').addEventListener('click', function () {
+                box.hidden = true;
+                save(page);
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

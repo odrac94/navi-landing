@@ -1,130 +1,41 @@
-# Sistema de Traducción Multi-idioma - Navi Lyrics
+# Traducciones (EN / ES)
 
-## ¿Cómo funciona?
+Cada idioma es una página HTML estática con su propia URL, para que Google y los
+asistentes de IA indexen las dos:
 
-El sitio ahora tiene un sistema de traducción basado en **JSON** que permite cambiar entre **inglés (EN)** y **español (ES)** con un botón selector en la navegación.
+| Idioma | URL | Archivo |
+|---|---|---|
+| Inglés (fuente) | `https://navilyrics.com/` | `index.html` |
+| Español | `https://navilyrics.com/es/` | `es/index.html` (**generado**) |
 
-## Archivos creados/modificados
+## Cómo funciona
 
-### 1. **translations.json**
-Contiene todas las traducciones en formato de estructura anidada:
-```json
-{
-  "en": { ... },
-  "es": { ... }
-}
-```
+- `index.html` está escrito en inglés. Todo texto traducible lleva `data-i18n="clave"`
+  (o `data-i18n-attr="atributo:clave"` para atributos).
+- `translations.json` tiene los textos de ambos idiomas: `{ "en": {...}, "es": {...} }`.
+  Las claves `meta.*` son el `<title>`, la description y Open Graph de cada idioma.
+- `npm run build` ejecuta `scripts/build-i18n.mjs`, que toma `index.html`, reemplaza
+  cada `data-i18n` por el texto en español y ajusta `lang`, canonical, Open Graph,
+  el selector EN/ES y el demo del hero. El resultado es `es/index.html`.
+- Si falta una clave en español, el build falla y dice cuál.
+- Ambas páginas se enlazan con `<link rel="alternate" hreflang>` y en `sitemap.xml`.
 
-### 2. **i18n.js**
-Motor de traducción que:
-- Carga automáticamente las traducciones
-- Detecta el idioma del navegador (fallback a inglés)
-- Guarda la preferencia de idioma en `localStorage`
-- Reemplaza el contenido usando atributos `data-i18n`
+## Flujo para cambiar texto
 
-### 3. **index.html** (actualizado)
-- Se agregó `<script src="i18n.js"></script>` en el `<head>`
-- Se agregó selector de idioma en la navegación (botones EN/ES)
-- Todos los textos dinámicos tienen `data-i18n="clave.subkey"`
+1. Edita `index.html` (inglés) y/o `translations.json` (ambos idiomas).
+2. Si agregas un texto nuevo: ponle `data-i18n="seccion.clave"` y agrega la clave en
+   `en` y `es` dentro de `translations.json`.
+3. `npm run build`
+4. Commit de todo, incluido `es/index.html` y `assets/site.css`.
 
-## Cómo agregar nuevas traducciones
+**Nunca edites `es/index.html` a mano**: se sobrescribe en cada build.
 
-### Paso 1: Agregar la traducción en `translations.json`
+## Selector de idioma
 
-```json
-{
-  "en": {
-    "seccion": {
-      "clave": "English text"
-    }
-  },
-  "es": {
-    "seccion": {
-      "clave": "Texto en español"
-    }
-  }
-}
-```
-
-### Paso 2: Agregar el atributo en el HTML
-
-```html
-<h1 data-i18n="seccion.clave">English text</h1>
-```
-
-## Caracteres especiales en traducciones
-
-Para textos con múltiples partes (como títulos con estilos), divide el contenido:
-
-```html
-<h1>
-  <span data-i18n="hero.heading1">The tool your productivity</span>
-  <span data-i18n="hero.heading2">didn't ask for</span>
-  <!-- etc -->
-</h1>
-```
-
-## Atributos dinámicos
-
-Si necesitas traducir atributos (como `title` o `placeholder`), usa `data-i18n-attr`:
-
-```html
-<input 
-  type="text"
-  data-i18n-attr="placeholder:form.email|title:form.emailTitle"
-  placeholder="Enter your email"
-/>
-```
-
-## Cambiar idioma programáticamente
-
-```javascript
-// Cambiar a español
-window.languageManager.setLanguage('es');
-
-// Cambiar a inglés
-window.languageManager.setLanguage('en');
-
-// Obtener idioma actual
-console.log(window.languageManager.currentLanguage);
-
-// Obtener texto traducido
-const texto = window.languageManager.getText('nav.features');
-```
-
-## Características del sistema
-
-✅ **Auto-detección**: Detecta automáticamente el idioma del navegador  
-✅ **Persistencia**: Guarda la preferencia en localStorage  
-✅ **Rendimiento**: Carga las traducciones una sola vez  
-✅ **Facilidad**: Solo necesitas agregar atributos `data-i18n`  
-✅ **Selector visual**: Botones EN/ES que muestran el idioma activo  
-
-## Cómo extender a más idiomas
-
-1. Agrega la estructura en `translations.json`:
-```json
-{
-  "en": { ... },
-  "es": { ... },
-  "fr": { ... }  // Nuevo idioma
-}
-```
-
-2. Actualiza el selector en el HTML:
-```html
-<div class="language-switcher" id="language-switcher">
-  <button data-lang="en" class="active">EN</button>
-  <button data-lang="es" class="inactive">ES</button>
-  <button data-lang="fr" class="inactive">FR</button>
-</div>
-```
-
-3. El sistema funcionará automáticamente sin cambios adicionales en `i18n.js`
-
-## Notas técnicas
-
-- El sistema usa `fetch()` para cargar `translations.json`
-- Los elementos se actualizan dinámicamente cuando cambias de idioma
-- El `localStorage` se usa para persistencia entre sesiones
-- Compatible con todos los navegadores modernos
+- EN/ES son enlaces normales a `/` y `/es/`. La elección se guarda en
+  `localStorage` (`navi-language`).
+- No hay redirección automática por idioma del navegador (Google la desaconseja porque
+  oculta páginas al crawler). En su lugar, si el navegador está en el otro idioma, aparece
+  un aviso discreto abajo ("¿Prefieres leer en español?"). Al cerrarlo, no vuelve a salir.
+- Las claves `langSuggest.*` van invertidas a propósito: `en.langSuggest` es el texto que
+  se muestra en la página inglesa, así que está en español (y viceversa).
