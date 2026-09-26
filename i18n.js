@@ -68,6 +68,9 @@ class LanguageManager {
 
     // Actualizar indicador de idioma activo
     this.updateLanguageSwitcher();
+
+    // Avisar a componentes que no usan data-i18n (ej. el demo de skins del hero)
+    document.dispatchEvent(new CustomEvent('navi:languagechange', { detail: lang }));
   }
 
   setupLanguageSwitcher() {

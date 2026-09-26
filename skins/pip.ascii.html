@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navi Lyrics PiP</title>
+    <link rel="stylesheet" href="styles.ascii.css">
+</head>
+
+<!--
+  Skin: ASCII / BBS (terminal gótico cyberpunk).
+  IMPORTANTE: reutiliza EXACTAMENTE los mismos IDs/clases que pip.html
+  (btn-prev, btn-play con .play-icon/.pause-icon, btn-next, btn-font-*,
+  btn-offset-*, offset-value, version-badge, btn-dislike, btn-translate,
+  song-*, album-thumbnail, progress-bar, lyrics-container, skeleton-loading,
+  ad-overlay-modal, ad-message-text) para que el wiring de content.entry.js
+  funcione sin cambios. Solo cambian el orden y el estilo: arte ASCII
+  monocromo, dither, box-drawing, caret parpadeante.
+-->
+
+<body class="ascii">
+
+    <!-- Masthead BBS -->
+    <div class="ascii-masthead">
+        <span class="ascii-dither" aria-hidden="true">░▒▓</span>
+        <span class="ascii-title">N A V I &nbsp;·&nbsp; L Y R I C S</span>
+        <span class="ascii-dither" aria-hidden="true">▓▒░</span>
+    </div>
+
+    <!-- Cabecera: carátula (dithered) + info -->
+    <div class="header">
+        <div class="ascii-label" aria-hidden="true">┌─[ now_playing ]──</div>
+        <div class="album-thumbnail-container">
+            <div class="album-frame">
+                <img id="album-thumbnail" class="album-thumbnail"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%23000' width='64' height='64'/%3E%3C/svg%3E"
+                    alt="Album art" />
+            </div>
+            <div class="song-info">
+                <div id="song-title">__MSG_loading__</div>
+                <div id="song-artist">-</div>
+                <div class="song-details">
+                    <div id="song-album">-</div>
+                    <div id="song-year">-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Letras -->
+    <div class="ascii-label ascii-label-lyrics" aria-hidden="true">┌─[ lyrics.log ]──────────────</div>
+    <div id="lyrics-container">
+        <div id="skeleton-loading" class="loading show-skeleton">
+            <div class="skeleton-loader">
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line skeleton-short"></div>
+                <div class="skeleton-line" style="margin-top: 20px;"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line skeleton-short"></div>
+            </div>
+            <div class="skeleton-caption">&gt; searching<span class="ascii-caret">_</span></div>
+        </div>
+    </div>
+
+    <!-- Línea de tiempo -->
+    <div class="ascii-progress">
+        <span id="current-time" class="ascii-time">00:00</span>
+        <div class="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+        <span id="total-time" class="ascii-time">00:00</span>
+    </div>
+
+    <!-- Controles utilitarios -->
+    <div class="toolbar">
+        <div class="toolbar-group">
+            <button id="btn-font-minus" class="toolbar-btn" title="__MSG_decreaseFontSize__" aria-label="__MSG_decreaseFontSize__">
+                <span class="material-icons-round" aria-hidden="true">text_decrease</span>
+            </button>
+            <button id="btn-font-plus" class="toolbar-btn" title="__MSG_increaseFontSize__" aria-label="__MSG_increaseFontSize__">
+                <span class="material-icons-round" aria-hidden="true">text_increase</span>
+            </button>
+        </div>
+
+        <span class="ascii-divider" aria-hidden="true">│</span>
+
+        <div class="toolbar-group">
+            <button id="btn-offset-slow" class="toolbar-btn" title="__MSG_syncEarlier__" aria-label="__MSG_syncEarlier__">
+                <span class="material-icons-round" aria-hidden="true">fast_rewind</span>
+            </button>
+            <div class="offset-display">
+                <span class="ascii-sync-label">SYNC</span>
+                <span id="offset-value">0s</span>
+            </div>
+            <button id="btn-offset-fast" class="toolbar-btn" title="__MSG_syncLater__" aria-label="__MSG_syncLater__">
+                <span class="material-icons-round" aria-hidden="true">fast_forward</span>
+            </button>
+        </div>
+
+        <span class="ascii-divider" aria-hidden="true">│</span>
+
+        <div class="toolbar-group">
+            <button id="btn-translate" class="toolbar-btn" title="__MSG_translateLyrics__" aria-label="__MSG_translateLyrics__">
+                <span class="material-icons-round" aria-hidden="true">translate</span>
+            </button>
+        </div>
+
+        <span class="ascii-divider" aria-hidden="true">│</span>
+
+        <div class="toolbar-group">
+            <div class="version-counter" id="version-badge">1/20</div>
+            <button id="btn-dislike" class="toolbar-btn btn-dislike" title="__MSG_markAsWrongLyrics__" aria-label="__MSG_markAsWrongLyrics__">
+                <span class="material-icons-round" aria-hidden="true">thumb_down</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Controles de reproducción -->
+    <div class="controls">
+        <button id="btn-prev" title="__MSG_previous__" aria-label="__MSG_previous__">
+            <span class="material-icons-round" aria-hidden="true">skip_previous</span>
+        </button>
+
+        <button id="btn-play" title="__MSG_playPause__" aria-label="__MSG_playPause__">
+            <span class="material-icons-round play-icon" aria-hidden="true" style="display:block;">play_arrow</span>
+            <span class="material-icons-round pause-icon" aria-hidden="true" style="display:none;">pause</span>
+        </button>
+
+        <button id="btn-next" title="__MSG_next__" aria-label="__MSG_next__">
+            <span class="material-icons-round" aria-hidden="true">skip_next</span>
+        </button>
+    </div>
+
+    <!-- AD MODAL OVERLAY -->
+    <div id="ad-overlay-modal" class="ad-overlay-modal" role="status" aria-live="polite">
+        <pre class="ad-ascii-art" aria-hidden="true">
+   .--.
+  |o_o |
+  |:_/ |
+ //   \ \
+(|     | )
+/'\_   _/`\
+\___)=(___/</pre>
+        <!-- Wrapper conservado por compatibilidad con el wiring (oculto vía CSS) -->
+        <div class="ad-fairy-wrapper" aria-hidden="true">
+            <svg class="ad-fairy ad-fairy-frame1" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"></svg>
+            <svg class="ad-fairy ad-fairy-frame2" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+
+        <div class="ad-message-container">
+            <div id="ad-message-text" class="ad-message-text">__MSG_adPlaying__</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

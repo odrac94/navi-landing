@@ -1,0 +1,820 @@
+/* =========================================================================
+   Navi Lyrics — Skin: CRT Amber
+   Estética de monitor de fósforo ámbar: scanlines, glow, monoespaciado.
+   Reutiliza los mismos IDs/clases que styles.css; solo cambia el look.
+   ========================================================================= */
+
+@font-face {
+    font-family: 'Material Icons Round';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/MaterialIconsRound.woff2') format('woff2');
+}
+
+:root {
+    --amber: #ffb000;
+    --amber-dim: #a86b08;
+    --amber-faint: #6b4505;
+    --track: #3a2604;
+    --bg: #0a0500;
+    --border: #4a3104;
+    --flag: #ff6b3d;
+    --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+    --font-size: 14px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.material-icons-round {
+    font-family: 'Material Icons Round';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+}
+
+html, body {
+    height: 100%;
+}
+
+body.crt {
+    position: relative;
+    background: var(--bg);
+    color: var(--amber);
+    font-family: var(--font-mono);
+    display: flex;
+    flex-direction: column;
+    padding: 14px 18px 16px;
+    overflow: hidden;
+}
+
+/* Scanlines sutiles del tubo (todo el PiP) */
+body.crt::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9;
+    background: repeating-linear-gradient(to bottom,
+        rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 2px,
+        rgba(0, 0, 0, 0.22) 3px, rgba(0, 0, 0, 0) 4px);
+}
+
+/* Viñeta de tubo */
+body.crt::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9;
+    box-shadow: inset 0 0 70px 12px rgba(0, 0, 0, 0.7);
+}
+
+body.crt > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ----- Topbar ----- */
+.crt-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--amber-faint);
+    margin-bottom: 12px;
+    flex-shrink: 0;
+}
+
+/* ----- Cabecera: carátula + info ----- */
+.header {
+    flex-shrink: 0;
+    margin-bottom: 12px;
+}
+
+.album-thumbnail-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Pantallita CRT alrededor de la carátula: todo el efecto de monitor
+   (scanlines, glow de fósforo, parpadeo y línea de refresco rodante)
+   vive AQUÍ, no en todo el PiP. */
+.album-crt {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    /* Glow de fósforo ámbar alrededor de la pantallita */
+    box-shadow: 0 0 8px rgba(255, 176, 0, 0.18);
+}
+
+.album-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: sepia(0.4) saturate(1.2) brightness(0.95);
+    /* Glitch CRT: ráfagas cortas e infrecuentes (pérdida de sync vertical,
+       separación de croma RGB, jitter). El resto del ciclo está quieto. */
+    animation: crt-album-glitch 8s steps(1, end) infinite;
+    will-change: transform, filter;
+}
+
+@keyframes crt-album-glitch {
+    /* Reposo (mayor parte del ciclo) */
+    0%, 58% {
+        transform: none;
+        filter: sepia(0.4) saturate(1.2) brightness(0.95);
+    }
+    /* Ráfaga 1: salto + separación de croma (rojo/cian) */
+    59% {
+        transform: translate(-2px, 1px);
+        filter: sepia(0.4) saturate(1.5) brightness(1.12)
+            drop-shadow(1.5px 0 rgba(255, 70, 0, 0.6))
+            drop-shadow(-1.5px 0 rgba(0, 200, 255, 0.5));
+    }
+    60.5% {
+        transform: translate(2px, -2px) skewX(-4deg);
+        filter: sepia(0.4) saturate(1.3) brightness(1.05)
+            drop-shadow(-1px 0 rgba(255, 70, 0, 0.5))
+            drop-shadow(1px 0 rgba(0, 200, 255, 0.4));
+    }
+    62% {
+        transform: translate(-1px, 2px);
+        filter: sepia(0.4) saturate(1.2) brightness(0.95);
+    }
+    63% {
+        transform: none;
+        filter: sepia(0.4) saturate(1.2) brightness(0.95);
+    }
+    /* Ráfaga 2: roll vertical breve */
+    84% {
+        transform: translateY(-4px) scaleY(1.04);
+        filter: sepia(0.4) saturate(1.4) brightness(1.15)
+            drop-shadow(1px 0 rgba(255, 70, 0, 0.5))
+            drop-shadow(-1px 0 rgba(0, 200, 255, 0.45));
+    }
+    85.5% {
+        transform: translateY(3px);
+        filter: sepia(0.4) saturate(1.2) brightness(0.95);
+    }
+    87% {
+        transform: none;
+        filter: sepia(0.4) saturate(1.2) brightness(0.95);
+    }
+}
+
+/* Capa de artefactos sobre la carátula: scanlines + viñeta/glow internos +
+   parpadeo del tubo. pointer-events:none para no bloquear nada. */
+.album-crt-fx {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background: repeating-linear-gradient(to bottom,
+        rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 1px,
+        rgba(0, 0, 0, 0.30) 2px, rgba(0, 0, 0, 0) 3px);
+    box-shadow:
+        inset 0 0 8px 1px rgba(0, 0, 0, 0.6),
+        inset 0 0 10px 2px rgba(255, 176, 0, 0.12);
+    animation: crt-album-flicker 5s steps(1, end) infinite;
+    will-change: opacity;
+}
+
+/* Línea de refresco horizontal: ámbar cálido, semitransparente, desenfocada
+   y despareja; rueda lentamente hacia abajo dentro de la carátula. */
+.album-crt-fx::before {
+    content: "";
+    position: absolute;
+    left: -15%;
+    right: -15%;
+    height: 16px;
+    background: linear-gradient(to bottom,
+        rgba(255, 176, 0, 0) 0%,
+        rgba(255, 176, 0, 0.10) 35%,
+        rgba(255, 200, 90, 0.30) 50%,
+        rgba(255, 176, 0, 0.10) 65%,
+        rgba(255, 176, 0, 0) 100%);
+    filter: blur(1.5px);
+    mix-blend-mode: screen;
+    animation: crt-album-roll 6s linear infinite;
+    will-change: transform, opacity;
+}
+
+/* Banda de "tear" / ruptura de señal: rebanada brillante que aparece y se
+   desplaza durante las ráfagas de glitch, a distintas alturas. */
+.album-crt-fx::after {
+    content: "";
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    top: 38%;
+    height: 4px;
+    background: rgba(255, 214, 130, 0.4);
+    mix-blend-mode: screen;
+    opacity: 0;
+    animation: crt-album-tear 8s steps(1, end) infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes crt-album-tear {
+    0%, 58% { opacity: 0; transform: translate(0, 0); }
+    59%     { opacity: 0.9; transform: translate(5px, -10px); }
+    60.5%   { opacity: 0.75; transform: translate(-6px, 4px); }
+    62%     { opacity: 0.5; transform: translate(3px, 12px); }
+    63%, 83%{ opacity: 0; transform: translate(0, 0); }
+    84%     { opacity: 0.8; transform: translate(-5px, -6px); }
+    85.5%   { opacity: 0; transform: translate(0, 0); }
+    100%    { opacity: 0; transform: translate(0, 0); }
+}
+
+@keyframes crt-album-flicker {
+    0%   { opacity: 1; }
+    3%   { opacity: 0.82; }
+    6%   { opacity: 1; }
+    34%  { opacity: 1; }
+    36%  { opacity: 0.9; }
+    38%  { opacity: 1; }
+    66%  { opacity: 1; }
+    67%  { opacity: 0.78; }
+    69%  { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+@keyframes crt-album-roll {
+    0%   { transform: translateY(-20px) scaleY(1);    opacity: 0.5; }
+    20%  { opacity: 0.9; }
+    55%  { transform: translateY(26px) scaleY(1.2);   opacity: 0.6; }
+    80%  { opacity: 0.85; }
+    100% { transform: translateY(60px) scaleY(0.95);  opacity: 0.55; }
+}
+
+/* Burst de glitch one-shot que el JS aplica a un elemento aleatorio del PiP
+   (botones, título, badges, tiempos — nunca las líneas de letra). Mismo look
+   que el glitch de la carátula: salto + skew + separación de croma RGB. */
+.crt-glitch-burst {
+    animation: crt-glitch-burst 0.5s steps(1, end) 1;
+}
+
+@keyframes crt-glitch-burst {
+    0%   { transform: none; filter: none; }
+    12%  {
+        transform: translate(-2px, 1px) skewX(-5deg);
+        filter: brightness(1.25)
+            drop-shadow(1.5px 0 rgba(255, 70, 0, 0.7))
+            drop-shadow(-1.5px 0 rgba(0, 200, 255, 0.6));
+    }
+    30%  {
+        transform: translate(3px, -2px);
+        filter: brightness(1.1)
+            drop-shadow(-1px 0 rgba(255, 70, 0, 0.6))
+            drop-shadow(1px 0 rgba(0, 200, 255, 0.5));
+    }
+    48%  {
+        transform: translate(-1px, 2px) skewX(3deg);
+        filter: none;
+    }
+    62%  { transform: translate(1px, -1px); filter: none; }
+    100% { transform: none; filter: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .album-thumbnail,
+    .album-crt-fx,
+    .album-crt-fx::before,
+    .album-crt-fx::after,
+    .crt-glitch-burst {
+        animation: none;
+    }
+}
+
+.song-info {
+    min-width: 0;
+    flex: 1;
+}
+
+#song-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--amber);
+    text-shadow: 0 0 10px rgba(255, 176, 0, 0.7);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#song-artist {
+    font-size: 11px;
+    color: var(--amber-dim);
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-details {
+    display: flex;
+    gap: 8px;
+    font-size: 9px;
+    color: var(--amber-faint);
+    letter-spacing: 1px;
+    margin-top: 3px;
+}
+
+.song-details > div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ----- Letras ----- */
+#lyrics-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+    /* Padding > distancia de fade del mask: garantiza que la primera/última
+       línea queden visibles durante el intro (sin línea activa, scrollTop=0).
+       El fade es FIJO en px (no %), así el borde opaco no depende del alto. */
+    padding: 50px 4px;
+    /* Centro visual: la línea activa hace scrollIntoView block:center */
+    scrollbar-width: thin;
+    scrollbar-color: var(--track) transparent;
+    mask-image: linear-gradient(to bottom, transparent 0, #000 44px, #000 calc(100% - 44px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 44px, #000 calc(100% - 44px), transparent 100%);
+}
+
+#lyrics-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+#lyrics-container::-webkit-scrollbar-thumb {
+    background: var(--track);
+    border-radius: 2px;
+}
+
+.line {
+    font-size: var(--font-size, 14px);
+    line-height: 1.5;
+    color: var(--amber-faint);
+    padding: 6px 0;
+    letter-spacing: 0.5px;
+    transition: color 0.2s, text-shadow 0.2s, opacity 0.2s;
+    opacity: 0.55;
+    cursor: pointer;
+}
+
+.line:hover {
+    color: var(--amber-dim);
+    opacity: 0.85;
+}
+
+.line.active {
+    color: var(--amber);
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(255, 176, 0, 0.7);
+}
+
+/* Línea instrumental (silencio): cursor de terminal parpadeante */
+.line-instrumental { color: transparent; }
+.line-instrumental::after {
+    content: "> _";
+    color: var(--amber-dim);
+    letter-spacing: 2px;
+    font-family: var(--font-mono);
+}
+.line-instrumental.active::after {
+    content: "> ♪ _";
+    color: var(--amber);
+    text-shadow: 0 0 8px rgba(255, 176, 0, 0.7);
+    animation: crt-instr-blink 1s steps(1) infinite;
+}
+@keyframes crt-instr-blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0.35; } }
+
+.line-original {
+    display: block;
+}
+
+.line-translation {
+    display: block;
+    font-size: 0.8em;
+    color: var(--amber-dim);
+    margin-top: 3px;
+    font-style: italic;
+}
+
+.plain {
+    font-size: var(--font-size, 14px);
+    line-height: 1.6;
+    color: var(--amber-dim);
+    padding: 4px 0;
+    white-space: pre-wrap;
+}
+
+.error, .no-results {
+    color: var(--flag);
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 20px;
+    text-shadow: 0 0 8px rgba(255, 107, 61, 0.5);
+}
+
+.error small {
+    display: block;
+    margin-top: 8px;
+    color: var(--amber-faint);
+}
+
+/* ----- Skeleton ----- */
+.loading {
+    text-align: center;
+    padding: 16px 0;
+}
+
+.loading:not(.show-skeleton) {
+    display: none;
+}
+
+.skeleton-loader {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.skeleton-line {
+    height: 12px;
+    width: 80%;
+    border-radius: 2px;
+    background: linear-gradient(90deg,
+        var(--track) 25%, var(--amber-faint) 37%, var(--track) 63%);
+    background-size: 400% 100%;
+    animation: crt-shimmer 1.4s ease infinite;
+}
+
+.skeleton-line.skeleton-short {
+    width: 55%;
+}
+
+@keyframes crt-shimmer {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
+}
+
+/* ----- 1. Línea de tiempo ----- */
+.crt-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 14px 0 16px;
+    flex-shrink: 0;
+}
+
+.crt-time {
+    font-size: 10px;
+    color: var(--amber-dim);
+    min-width: 40px;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.crt-time-right {
+    color: var(--amber-faint);
+    text-align: right;
+}
+
+.progress-container {
+    flex: 1;
+    height: 1px;
+    background: var(--track);
+    position: relative;
+}
+
+#progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1px;
+    width: 0%;
+    background: var(--amber);
+    box-shadow: 0 0 6px rgba(255, 176, 0, 0.8);
+    transition: width 0.1s linear;
+}
+
+/* Punto al final de la barra de progreso */
+#progress-bar::after {
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    width: 5px;
+    height: 5px;
+    background: var(--amber);
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(255, 176, 0, 0.9);
+}
+
+/* ----- 2. Controles utilitarios ----- */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+}
+
+.toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.crt-divider {
+    width: 1px;
+    height: 14px;
+    background: var(--track);
+    flex-shrink: 0;
+}
+
+.toolbar-btn {
+    background: transparent;
+    border: none;
+    color: var(--amber-dim);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    padding: 3px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.12s, transform 0.12s, filter 0.12s;
+}
+
+.toolbar-btn:hover {
+    color: var(--amber);
+    filter: drop-shadow(0 0 6px rgba(255, 176, 0, 0.6));
+}
+
+.toolbar-btn:active {
+    transform: scale(0.9);
+}
+
+.offset-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.1;
+    min-width: 52px;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.crt-sync-label {
+    color: var(--amber-dim);
+    font-size: 9px;
+}
+
+#offset-value {
+    color: var(--amber);
+    font-size: 11px;
+}
+
+.version-counter {
+    font-size: 10px;
+    color: var(--amber-faint);
+    min-width: 28px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* Estado activo: letra marcada como incorrecta (icono replay) */
+.btn-dislike.active {
+    color: var(--flag);
+    filter: drop-shadow(0 0 8px rgba(255, 107, 61, 0.8));
+}
+
+/* Estados del botón de traducción (toggle desde content.entry.js) */
+#btn-translate.btn-translate-active {
+    color: var(--amber);
+    filter: drop-shadow(0 0 8px rgba(255, 176, 0, 0.9));
+}
+
+#btn-translate.btn-translate-loading {
+    color: var(--amber-dim);
+    animation: crt-pulse 1s ease-in-out infinite;
+}
+
+#btn-translate.btn-translate-error {
+    color: var(--flag);
+}
+
+@keyframes crt-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* ----- 3. Controles de reproducción ----- */
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-shrink: 0;
+}
+
+.controls button {
+    background: transparent;
+    border: none;
+    color: var(--amber);
+    cursor: pointer;
+    padding: 4px;
+    line-height: 0;
+    opacity: 0.85;
+    transition: opacity 0.12s, transform 0.12s;
+    filter: drop-shadow(0 0 6px rgba(255, 176, 0, 0.5));
+}
+
+.controls button:hover {
+    opacity: 1;
+}
+
+.controls button:active {
+    transform: scale(0.9);
+}
+
+#btn-prev .material-icons-round,
+#btn-next .material-icons-round {
+    font-size: 24px;
+}
+
+#btn-play .material-icons-round {
+    font-size: 30px;
+}
+
+/* ----- AD MODAL ----- */
+/* Scope con `body.crt >` (0,2,1) para ganarle a `body.crt > *` (0,1,1),
+   que si no fuerza position:relative + z-index:2 y rompe el overlay. */
+body.crt > .ad-overlay-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: rgba(10, 5, 0, 0.94);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    text-align: center;
+    padding: 24px;
+}
+
+body.crt > .ad-overlay-modal.active {
+    display: flex;
+}
+
+.ad-fairy-wrapper {
+    position: relative;
+    width: 90px;
+    height: 105px;
+    filter: drop-shadow(0 0 14px rgba(255, 176, 0, 0.6));
+}
+
+.ad-fairy {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ad-fairy-frame2 {
+    opacity: 0;
+    animation: crt-blink 2.4s steps(1) infinite;
+}
+
+@keyframes crt-blink {
+    0%, 92% { opacity: 0; }
+    93%, 100% { opacity: 1; }
+}
+
+.ad-message-text {
+    color: var(--amber);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(255, 176, 0, 0.6);
+}
+
+/* =========================================================================
+   BREAKPOINTS POR ALTO
+   El PiP es una ventana propia con su propio viewport, así que las media
+   queries de alto evalúan contra el tamaño del PiP. Al encoger el alto se
+   ocultan elementos del MENOS al MÁS importante. Las letras siempre quedan;
+   prev/play/next quedan visibles hasta que el alto es demasiado pequeño, y
+   ahí pasan a modo hover (overlay inferior).
+
+   Orden de ocultado (de menos a más importante):
+   detalles (álbum/año) → topbar → carátula → tiempos → meta (título/artista)
+   → utilidades → línea de tiempo → transporte (hover).
+   ========================================================================= */
+
+/* 1. Detalles del álbum/año (lo más prescindible) */
+@media (max-height: 460px) {
+    .song-details { display: none; }
+}
+
+/* 2. "NOW PLAYING" */
+@media (max-height: 410px) {
+    .crt-topbar { display: none; }
+    body.crt { padding-top: 12px; }
+}
+
+/* 3. Carátula del álbum */
+@media (max-height: 370px) {
+    .album-crt { display: none; }
+    .header { margin-bottom: 8px; }
+}
+
+/* 4. Etiquetas de tiempo (la barra de progreso se queda) */
+@media (max-height: 330px) {
+    .crt-time { display: none; }
+    .crt-progress { gap: 0; }
+}
+
+/* 5. Meta de la canción (título + artista). Reducimos padding/fade del mask
+   para no comer demasiado alto, manteniéndolos coherentes (padding > fade). */
+@media (max-height: 300px) {
+    .header { display: none; }
+    #lyrics-container {
+        padding: 30px 4px;
+        mask-image: linear-gradient(to bottom, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
+    }
+}
+
+/* 6. Controles utilitarios (font, sync, traducir, dislike) */
+@media (max-height: 265px) {
+    .toolbar { display: none; }
+}
+
+/* 7. Línea de tiempo */
+@media (max-height: 230px) {
+    .crt-progress { display: none; }
+}
+
+/* 8. Transporte: alto demasiado bajo → SALE del flujo del documento
+   (position:absolute) para que las letras ocupen TODO el alto disponible.
+   Queda oculto y se revela al hacer hover, como overlay inferior. */
+@media (max-height: 250px) {
+    body.crt { padding: 8px 14px; }
+
+    /* IMPORTANTE: usar `body.crt > .controls` (especificidad 0,2,1) para ganarle
+       a `body.crt > *` (0,1,1), que fija position:relative. Las media queries NO
+       suman especificidad, así que `.controls` solo (0,1,0) perdía. */
+    body.crt > .controls {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        padding: 6px 0;
+        gap: 26px;
+        background: linear-gradient(to top, rgba(10, 5, 0, 0.96), rgba(10, 5, 0, 0));
+        opacity: 0;
+        transform: translateY(8px);
+        pointer-events: none;
+        transition: opacity 0.15s, transform 0.15s;
+        z-index: 8;
+    }
+
+    body.crt:hover > .controls {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    /* Letras ocupan TODO el alto (transporte fuera del flujo). Padding/fade
+       chicos para no malgastar alto, manteniendo padding > fade. */
+    #lyrics-container {
+        padding: 18px 4px;
+        mask-image: linear-gradient(to bottom, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+    }
+}

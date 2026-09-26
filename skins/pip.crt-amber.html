@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navi Lyrics PiP</title>
+    <link rel="stylesheet" href="styles.crt-amber.css">
+</head>
+
+<!--
+  Skin: CRT Amber.
+  IMPORTANTE: reutiliza EXACTAMENTE los mismos IDs/clases que pip.html
+  (btn-prev, btn-play con .play-icon/.pause-icon, btn-next, btn-font-*,
+  btn-offset-*, offset-value, version-badge, btn-dislike, btn-translate,
+  song-*, album-thumbnail, progress-bar, lyrics-container, skeleton-loading,
+  ad-overlay-modal, ad-message-text) para que todo el wiring de
+  content.entry.js funcione sin cambios. Solo cambian el orden y el estilo.
+-->
+
+<body class="crt">
+
+    <div class="crt-topbar">
+        <span class="crt-now">NOW PLAYING</span>
+    </div>
+
+    <!-- Cabecera: carátula + info de la canción -->
+    <div class="header">
+        <div class="album-thumbnail-container">
+            <!-- Pantallita CRT: el efecto de monitor (scanlines, glow, flicker,
+                 línea de refresco) se aplica SOLO aquí, no a todo el PiP. -->
+            <div class="album-crt">
+                <img id="album-thumbnail" class="album-thumbnail"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%23241803' width='64' height='64'/%3E%3C/svg%3E"
+                    alt="Album art" />
+                <div class="album-crt-fx" aria-hidden="true"></div>
+            </div>
+
+            <div class="song-info">
+                <div id="song-title">__MSG_loading__</div>
+                <div id="song-artist">-</div>
+                <div class="song-details">
+                    <div id="song-album">-</div>
+                    <div id="song-year">-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Letras -->
+    <div id="lyrics-container">
+        <div id="skeleton-loading" class="loading show-skeleton">
+            <div class="skeleton-loader">
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line skeleton-short"></div>
+                <div class="skeleton-line" style="margin-top: 20px;"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line skeleton-short"></div>
+            </div>
+            <div data-navi-status style="margin-top: 20px; font-size: 12px; color: var(--amber-dim);">__MSG_searchingLyrics__</div>
+        </div>
+    </div>
+
+    <!-- 1. Línea de tiempo -->
+    <div class="crt-progress">
+        <span id="current-time" class="crt-time">00:00</span>
+        <div class="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+        <span id="total-time" class="crt-time crt-time-right">00:00</span>
+    </div>
+
+    <!-- 2. Controles utilitarios -->
+    <div class="toolbar">
+        <div class="toolbar-group">
+            <button id="btn-font-minus" class="toolbar-btn" title="__MSG_decreaseFontSize__" aria-label="__MSG_decreaseFontSize__">
+                <span class="material-icons-round" aria-hidden="true">text_decrease</span>
+            </button>
+            <button id="btn-font-plus" class="toolbar-btn" title="__MSG_increaseFontSize__" aria-label="__MSG_increaseFontSize__">
+                <span class="material-icons-round" aria-hidden="true">text_increase</span>
+            </button>
+        </div>
+
+        <span class="crt-divider"></span>
+
+        <div class="toolbar-group">
+            <button id="btn-offset-slow" class="toolbar-btn" title="__MSG_syncEarlier__" aria-label="__MSG_syncEarlier__">
+                <span class="material-icons-round" aria-hidden="true">fast_rewind</span>
+            </button>
+            <div class="offset-display">
+                <span class="crt-sync-label">SYNC</span>
+                <span id="offset-value">0s</span>
+            </div>
+            <button id="btn-offset-fast" class="toolbar-btn" title="__MSG_syncLater__" aria-label="__MSG_syncLater__">
+                <span class="material-icons-round" aria-hidden="true">fast_forward</span>
+            </button>
+        </div>
+
+        <span class="crt-divider"></span>
+
+        <div class="toolbar-group">
+            <button id="btn-translate" class="toolbar-btn" title="__MSG_translateLyrics__" aria-label="__MSG_translateLyrics__">
+                <span class="material-icons-round" aria-hidden="true">translate</span>
+            </button>
+        </div>
+
+        <span class="crt-divider"></span>
+
+        <div class="toolbar-group">
+            <div class="version-counter" id="version-badge">1/20</div>
+            <button id="btn-dislike" class="toolbar-btn btn-dislike" title="__MSG_markAsWrongLyrics__" aria-label="__MSG_markAsWrongLyrics__">
+                <span class="material-icons-round" aria-hidden="true">thumb_down</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 3. Controles de reproducción -->
+    <div class="controls">
+        <button id="btn-prev" title="__MSG_previous__" aria-label="__MSG_previous__">
+            <span class="material-icons-round" aria-hidden="true">skip_previous</span>
+        </button>
+
+        <button id="btn-play" title="__MSG_playPause__" aria-label="__MSG_playPause__">
+            <span class="material-icons-round play-icon" aria-hidden="true" style="display:block;">play_arrow</span>
+            <span class="material-icons-round pause-icon" aria-hidden="true" style="display:none;">pause</span>
+        </button>
+
+        <button id="btn-next" title="__MSG_next__" aria-label="__MSG_next__">
+            <span class="material-icons-round" aria-hidden="true">skip_next</span>
+        </button>
+    </div>
+
+    <!-- AD MODAL OVERLAY -->
+    <div id="ad-overlay-modal" class="ad-overlay-modal" role="status" aria-live="polite">
+        <div class="ad-fairy-wrapper">
+            <svg class="ad-fairy ad-fairy-frame1" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="70" r="40" fill="rgba(255, 176, 0, 0.7)"/>
+                <circle cx="48" cy="60" r="7" fill="#2a1c00"/>
+                <circle cx="72" cy="60" r="7" fill="#2a1c00"/>
+                <circle cx="51" cy="57" r="2.5" fill="#1a1000"/>
+                <circle cx="75" cy="63" r="2.5" fill="#1a1000"/>
+            </svg>
+            <svg class="ad-fairy ad-fairy-frame2" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="70" r="40" fill="rgba(255, 176, 0, 0.7)"/>
+                <circle cx="48" cy="60" r="7" fill="#2a1c00"/>
+                <circle cx="72" cy="60" r="7" fill="#2a1c00"/>
+                <circle cx="51" cy="63" r="2.5" fill="#1a1000"/>
+                <circle cx="69" cy="57" r="2.5" fill="#1a1000"/>
+            </svg>
+        </div>
+
+        <div class="ad-message-container">
+            <div id="ad-message-text" class="ad-message-text">__MSG_adPlaying__</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

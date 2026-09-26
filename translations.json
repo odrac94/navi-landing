@@ -16,7 +16,9 @@
       "heading5": " needs.",
       "description": "Floating, synchronized lyrics for YouTube Music, Spotify and Apple Music. Bring the concert to your spreadsheets, study sessions, or dance practices without losing your rhythm.",
       "addChrome": "Add to Chrome",
-      "supportDev": "Support the dev"
+      "supportDev": "Support the dev",
+      "skinPicker": "Live preview · pick a skin",
+      "themePicker": "Color themes · Navi skin"
     },
     "features": {
       "title": "Specs & Capabilities",
@@ -83,7 +85,9 @@
       "heading5": " necesita.",
       "description": "Letras flotantes y sincronizadas para YouTube Music, Spotify y Apple Music. Trae el concierto a tus hojas de cálculo, sesiones de estudio o prácticas de baile sin perder el ritmo.",
       "addChrome": "Agregar a Chrome",
-      "supportDev": "Apoya al desarrollador"
+      "supportDev": "Apoya al desarrollador",
+      "skinPicker": "Vista en vivo · elige una skin",
+      "themePicker": "Temas de color · skin Navi"
     },
     "features": {
       "title": "Especificaciones y Capacidades",

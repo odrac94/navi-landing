@@ -1,0 +1,567 @@
+/* =========================================================================
+   Navi Lyrics — Skin: E-Ink Paper
+   Estética de papel electrónico (e-paper / Kindle / periódico): monocromo,
+   tinta sobre papel, plano (sin glossy ni sombras suaves), bordes negros
+   finos y rectos, serif de periódico. Línea activa INVERTIDA (selección
+   e-ink). Transiciones secas; pequeño parpadeo "refresh" al cambiar línea.
+   Reutiliza los mismos IDs/clases que styles.css; solo cambia el look.
+   ========================================================================= */
+
+@font-face {
+    font-family: 'Material Icons Round';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/MaterialIconsRound.woff2') format('woff2');
+}
+
+:root {
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-faint: #8a8a86;
+    --paper: #e8e6e0;
+    --paper-2: #d8d6cf;
+    --paper-3: #c9c7c0;
+    --hair: #1a1a1a;
+    --font-serif: Georgia, 'Times New Roman', 'Noto Serif', serif;
+    --font-sans: 'Helvetica Neue', Arial, 'Segoe UI', sans-serif;
+    --font-size: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.material-icons-round {
+    font-family: 'Material Icons Round';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+}
+
+html, body {
+    height: 100%;
+}
+
+body.eink {
+    position: relative;
+    color: var(--ink);
+    font-family: var(--font-sans);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px 14px;
+    overflow: hidden;
+    background: var(--paper);
+    /* Textura sutil de papel (puntos finísimos), sin color */
+    background-image: radial-gradient(rgba(0, 0, 0, 0.05) 0.5px, transparent 0.5px);
+    background-size: 4px 4px;
+}
+
+/* =======================================================================
+   Masthead tipo periódico
+   ======================================================================= */
+.eink-masthead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-shrink: 0;
+    padding-bottom: 6px;
+    border-bottom: 3px double var(--ink);
+}
+.eink-title {
+    font-family: var(--font-serif);
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.eink-badge {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 1px 5px;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+}
+
+/* =======================================================================
+   Cabecera: carátula + dateline
+   ======================================================================= */
+.header { flex-shrink: 0; }
+
+.album-thumbnail-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.album-frame {
+    flex-shrink: 0;
+    padding: 3px;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+}
+.album-thumbnail {
+    display: block;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    /* Clave e-ink: carátula a escala de grises y alto contraste */
+    filter: grayscale(1) contrast(1.15) brightness(1.02);
+    image-rendering: auto;
+}
+
+.song-info {
+    min-width: 0;
+    flex: 1;
+}
+#song-title {
+    font-family: var(--font-serif);
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#song-artist {
+    font-size: 12px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.song-details {
+    display: flex;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.song-details > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* =======================================================================
+   Letras
+   ======================================================================= */
+#lyrics-container {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 12px 10px;
+    border-top: 1.5px solid var(--ink);
+    border-bottom: 1.5px solid var(--ink);
+    text-align: center;
+    scroll-behavior: smooth;
+}
+
+#lyrics-container::-webkit-scrollbar { width: 10px; }
+#lyrics-container::-webkit-scrollbar-track {
+    background: var(--paper-2);
+    border-left: 1.5px solid var(--ink);
+}
+#lyrics-container::-webkit-scrollbar-thumb {
+    background: var(--ink-faint);
+    border: 1.5px solid var(--ink);
+}
+
+/* Líneas de letra (serif, lectura cómoda) */
+.line {
+    padding: 5px 10px;
+    margin: 4px auto;
+    max-width: 96%;
+    font-family: var(--font-serif);
+    font-size: var(--font-size);
+    line-height: 1.4;
+    color: var(--ink-faint);
+    /* Transiciones secas: e-ink no hace fundidos suaves */
+    transition: none;
+}
+
+.line-original { display: block; }
+.line-translation {
+    display: block;
+    font-size: 0.78em;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-top: 2px;
+}
+
+/* Línea activa = selección invertida (tinta sólida, texto papel) */
+.line.active {
+    color: var(--paper);
+    background: var(--ink);
+    /* Parpadeo de refresco e-ink: invierte una vez al activarse */
+    animation: eink-refresh 0.22s steps(1, end) 1;
+}
+.line.active .line-translation { color: var(--paper-2); }
+
+@keyframes eink-refresh {
+    0%   { filter: invert(1); }
+    100% { filter: invert(0); }
+}
+
+/* Skeleton de carga: bloques tramados grises */
+.loading {
+    text-align: center;
+    padding: 16px 0;
+}
+.loading:not(.show-skeleton) { display: none; }
+
+.skeleton-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.skeleton-line {
+    width: 80%;
+    height: 13px;
+    border: 1.5px solid var(--ink);
+    background-color: var(--paper-2);
+    background-image: repeating-linear-gradient(45deg,
+        var(--ink-faint) 0, var(--ink-faint) 1px, transparent 1px, transparent 4px);
+    animation: eink-blink 1.1s steps(2, end) infinite;
+}
+.skeleton-short { width: 60%; align-self: center; }
+.skeleton-caption {
+    margin-top: 18px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+@keyframes eink-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+
+/* Línea instrumental (silencio): glifo de papel/marca de párrafo */
+.line-instrumental { color: transparent; }
+.line-instrumental::after {
+    content: "* * *";
+    color: var(--ink-faint);
+    letter-spacing: 6px;
+    font-family: var(--font-serif);
+}
+.line-instrumental.active {
+    background: none;
+    color: transparent;
+    animation: none;
+}
+.line-instrumental.active::after { color: var(--ink); }
+
+/* Error */
+.error {
+    margin: auto;
+    padding: 14px;
+    font-family: var(--font-serif);
+    color: var(--ink);
+    text-align: center;
+}
+
+/* =======================================================================
+   Barra de progreso (en bloques)
+   ======================================================================= */
+.eink-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+.eink-time {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: var(--ink);
+    min-width: 36px;
+    text-align: center;
+}
+.progress-container {
+    position: relative;
+    flex: 1;
+    height: 12px;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    overflow: hidden;
+}
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--ink);
+    /* "bloques" e-ink: la barra se ve segmentada */
+    background-image: repeating-linear-gradient(90deg,
+        var(--ink) 0, var(--ink) 6px, var(--paper) 6px, var(--paper) 8px);
+    transition: width 0.2s steps(8, end);
+}
+
+/* =======================================================================
+   Toolbar de utilidades
+   ======================================================================= */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex-shrink: 0;
+}
+.toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.eink-divider {
+    width: 1.5px;
+    height: 18px;
+    background: var(--ink);
+    opacity: 0.5;
+}
+
+/* Botón plano bordeado; invierte al hover/activar */
+.toolbar-btn,
+.controls button {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    transition: none;
+}
+.toolbar-btn {
+    width: 30px;
+    height: 30px;
+}
+.toolbar-btn .material-icons-round { font-size: 17px; }
+
+.toolbar-btn:hover,
+.controls button:hover {
+    color: var(--paper);
+    background: var(--ink);
+}
+.toolbar-btn:active,
+.controls button:active { filter: invert(1); }
+
+/* Display de offset/sync */
+.offset-display {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 7px;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+}
+.eink-sync-label {
+    font-size: 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--ink-soft);
+}
+#offset-value {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--ink);
+    min-width: 26px;
+    text-align: center;
+}
+
+/* Contador de versiones */
+.version-counter {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--ink);
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Estados del botón de traducción (sin color: usa invertido/punteado) */
+#btn-translate.btn-translate-active {
+    color: var(--paper);
+    background: var(--ink);
+}
+#btn-translate.btn-translate-loading {
+    animation: eink-blink 0.8s steps(2, end) infinite;
+}
+#btn-translate.btn-translate-error {
+    border-style: dashed;
+    animation: eink-blink 0.4s steps(2, end) 3;
+}
+
+/* Dislike/ciclo de versión */
+#btn-dislike.btn-dislike-cycle {
+    animation: eink-blink 0.7s steps(2, end) infinite;
+}
+
+/* =======================================================================
+   Controles de reproducción
+   ======================================================================= */
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+.controls button {
+    width: 40px;
+    height: 40px;
+}
+.controls button .material-icons-round { font-size: 22px; }
+
+#btn-play {
+    width: 48px;
+    height: 48px;
+    color: var(--paper);
+    background: var(--ink);
+}
+#btn-play:hover {
+    color: var(--ink);
+    background: var(--paper);
+}
+#btn-play .material-icons-round { font-size: 26px; }
+
+/* =======================================================================
+   AD MODAL OVERLAY
+   ======================================================================= */
+/* Scope con body.eink (0,2,1) para ganarle a `body.eink > *` (0,1,1), que si no
+   pisa position/z-index y mete el modal de anuncio en el flujo (área de letras). */
+body.eink .ad-overlay-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: var(--paper);
+    background-image: radial-gradient(rgba(0, 0, 0, 0.06) 0.5px, transparent 0.5px);
+    background-size: 4px 4px;
+}
+body.eink .ad-overlay-modal.active { display: flex; }
+
+.ad-fairy-wrapper {
+    position: relative;
+    width: 84px;
+    height: 84px;
+}
+.ad-fairy {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.ad-fairy-frame2 { opacity: 0; }
+.ad-overlay-modal.active .ad-fairy {
+    animation: eink-fairy-blink 1.6s steps(1) infinite;
+}
+.ad-overlay-modal.active .ad-fairy-frame2 {
+    animation: eink-fairy-blink2 1.6s steps(1) infinite;
+}
+@keyframes eink-fairy-blink  { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0; } }
+@keyframes eink-fairy-blink2 { 0%, 60% { opacity: 0; } 61%, 100% { opacity: 1; } }
+
+.ad-message-container {
+    padding: 8px 16px;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+}
+.ad-message-text {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    color: var(--ink);
+    text-align: center;
+}
+
+/* =========================================================================
+   Responsive por alto (referencia: skin CRT Amber).
+   Oculta del elemento MENOS al MÁS importante a medida que baja el alto.
+   Las media queries NO suman especificidad; para ganarle a `body.eink > *`
+   (0,1,1) usamos selectores de igual o mayor especificidad.
+   ========================================================================= */
+body.eink > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* 1. Detalles del álbum/año */
+@media (max-height: 470px) {
+    .song-details { display: none; }
+}
+
+/* 2. Masthead */
+@media (max-height: 430px) {
+    .eink-masthead { display: none; }
+}
+
+/* 3. Carátula */
+@media (max-height: 380px) {
+    .album-frame { display: none; }
+}
+
+/* 4. Etiquetas de tiempo (la barra se queda) */
+@media (max-height: 340px) {
+    .eink-time { display: none; }
+    .eink-progress { gap: 0; }
+}
+
+/* 5. Cabecera completa (título + artista) */
+@media (max-height: 300px) {
+    .header { display: none; }
+}
+
+/* 6. Controles utilitarios */
+@media (max-height: 265px) {
+    .toolbar { display: none; }
+}
+
+/* 7. Transporte sale del flujo → oculto, aparece al hover */
+@media (max-height: 250px) {
+    body.eink { padding: 8px 12px; gap: 6px; }
+
+    /* `body.eink > .controls` (0,2,1) le gana a `body.eink > *` (0,1,1). */
+    body.eink > .controls {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        padding: 8px 0;
+        gap: 16px;
+        background: var(--paper);
+        border-top: 1.5px solid var(--ink);
+        opacity: 0;
+        transform: translateY(8px);
+        pointer-events: none;
+        transition: opacity 0.12s, transform 0.12s;
+        z-index: 8;
+    }
+    body.eink:hover > .controls {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+/* 8. Línea de tiempo */
+@media (max-height: 230px) {
+    .eink-progress { display: none; }
+}

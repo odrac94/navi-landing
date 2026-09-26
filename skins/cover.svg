@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- Portada ficticia: "Ctrl+Alt+Chorus" de The Pivot Tables (demo del hero) -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff5c8a"/>
+      <stop offset="1" stop-color="#7a1fd6"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" fill="url(#bg)"/>
+  <g stroke="#ffffff" stroke-opacity="0.18" stroke-width="1">
+    <path d="M0 32H128M0 64H128M0 96H128M32 0V128M64 0V128M96 0V128"/>
+  </g>
+  <rect x="32" y="64" width="32" height="32" fill="#ffffff" fill-opacity="0.9"/>
+  <path d="M40 90V72l16-4v18" fill="none" stroke="#7a1fd6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="38" cy="90" r="4" fill="#7a1fd6"/>
+  <circle cx="54" cy="86" r="4" fill="#7a1fd6"/>
+</svg>

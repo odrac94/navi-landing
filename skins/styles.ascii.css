@@ -1,0 +1,646 @@
+/* =========================================================================
+   Navi Lyrics — Skin: ASCII / BBS
+   Terminal gótico cyberpunk: negro puro, texto blanco monoespaciado, arte
+   ASCII, dither (░▒▓), box-drawing, caret parpadeante, glow de fósforo tenue
+   y flicker eerie. Monocromo total.
+   Reutiliza los mismos IDs/clases que styles.css; solo cambia el look.
+   ========================================================================= */
+
+@font-face {
+    font-family: 'Material Icons Round';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/MaterialIconsRound.woff2') format('woff2');
+}
+
+:root {
+    --fg: #d8d8d8;
+    --fg-dim: #7a7a7a;
+    --fg-faint: #4a4a4a;
+    --fg-bright: #ffffff;
+    --bg: #000000;
+    --bg-soft: #0c0c0c;
+    --line: #2e2e2e;
+    --glow: rgba(255, 255, 255, 0.22);
+    --font-mono: 'IBM Plex Mono', 'Cascadia Mono', Consolas, 'Courier New', ui-monospace, monospace;
+    --font-size: 15px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.material-icons-round {
+    font-family: 'Material Icons Round';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+}
+
+html, body {
+    height: 100%;
+}
+
+body.ascii {
+    position: relative;
+    color: var(--fg);
+    font-family: var(--font-mono);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 14px 14px;
+    overflow: hidden;
+    background: var(--bg);
+    text-shadow: 0 0 2px var(--glow);
+}
+
+/* Fondo: matriz de puntos tipo halftone (ref. portada Deftones).
+   Una "mancha" oscura suave deriva muy lento por la rejilla, atenuando los
+   puntos a su paso → forma fantasmal que respira. Monocromo, sutil. */
+body.ascii::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: radial-gradient(circle at center,
+        rgba(255, 255, 255, 0.14) 0.9px, transparent 1.5px);
+    background-size: 13px 13px;
+    /* La máscara (mayor que el viewport) define dónde los puntos brillan u
+       oscurecen; al animar su posición, la zona tenue se desplaza. */
+    -webkit-mask-image: radial-gradient(58% 44% at 50% 42%,
+        rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.5) 48%, #000 100%);
+    mask-image: radial-gradient(58% 44% at 50% 42%,
+        rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.5) 48%, #000 100%);
+    -webkit-mask-size: 200% 200%;
+    mask-size: 200% 200%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    animation: ascii-haze 22s ease-in-out infinite alternate;
+}
+@keyframes ascii-haze {
+    0%   { -webkit-mask-position: 32% 28%; mask-position: 32% 28%; opacity: 0.55; }
+    50%  { opacity: 0.85; }
+    100% { -webkit-mask-position: 68% 64%; mask-position: 68% 64%; opacity: 0.65; }
+}
+
+/* Flicker eerie + viñeta de tubo */
+body.ascii::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9;
+    box-shadow: inset 0 0 90px 14px rgba(0, 0, 0, 0.9);
+    animation: ascii-flicker 5s steps(60) infinite;
+}
+@keyframes ascii-flicker {
+    0%, 97%, 100% { opacity: 1; }
+    98%           { opacity: 0.82; }
+    99%           { opacity: 0.92; }
+}
+
+body.ascii > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Respeta usuarios sensibles al movimiento: fondo y flicker quietos */
+@media (prefers-reduced-motion: reduce) {
+    body.ascii::before { animation: none; opacity: 0.7; }
+    body.ascii::after  { animation: none; }
+}
+
+/* =======================================================================
+   Masthead BBS
+   ======================================================================= */
+.ascii-masthead {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed var(--line);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+.ascii-title {
+    color: var(--fg-bright);
+    font-weight: bold;
+}
+.ascii-dither {
+    color: var(--fg-dim);
+    letter-spacing: 0;
+}
+
+/* Etiquetas de sección estilo box-drawing */
+.ascii-label {
+    font-size: 10px;
+    color: var(--fg-dim);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 2px;
+    flex-shrink: 0;
+}
+
+/* =======================================================================
+   Cabecera
+   ======================================================================= */
+.header { flex-shrink: 0; }
+
+.album-thumbnail-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.album-frame {
+    flex-shrink: 0;
+    padding: 2px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+}
+.album-thumbnail {
+    display: block;
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    /* Look ASCII: monocromo, alto contraste, leve dither por contraste */
+    filter: grayscale(1) contrast(1.4) brightness(0.95);
+    image-rendering: auto;
+}
+
+.song-info {
+    min-width: 0;
+    flex: 1;
+}
+#song-title {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--fg-bright);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#song-title::before { content: "> "; color: var(--fg-dim); }
+#song-artist {
+    font-size: 12px;
+    color: var(--fg);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.song-details {
+    display: flex;
+    gap: 8px;
+    font-size: 10px;
+    color: var(--fg-dim);
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.song-details > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* =======================================================================
+   Letras
+   ======================================================================= */
+#lyrics-container {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    background: var(--bg-soft);
+    text-align: center;
+    scroll-behavior: smooth;
+}
+
+#lyrics-container::-webkit-scrollbar { width: 10px; }
+#lyrics-container::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-left: 1px solid var(--line);
+}
+#lyrics-container::-webkit-scrollbar-thumb {
+    background: var(--fg-faint);
+    border: 1px solid var(--line);
+}
+
+/* Líneas de letra */
+.line {
+    padding: 4px 10px;
+    margin: 3px auto;
+    max-width: 96%;
+    font-size: var(--font-size);
+    line-height: 1.45;
+    color: var(--fg-dim);
+    transition: none;
+}
+
+.line-original { display: block; }
+.line-translation {
+    display: block;
+    font-size: 0.78em;
+    color: var(--fg-faint);
+    margin-top: 2px;
+}
+
+/* Línea activa = selección de terminal invertida + caret parpadeante */
+.line.active {
+    color: var(--bg);
+    background: var(--fg-bright);
+    text-shadow: none;
+    font-weight: bold;
+}
+.line.active:not(.line-instrumental) .line-original::after {
+    content: "█";
+    margin-left: 2px;
+    animation: ascii-blink 1s steps(1) infinite;
+}
+.line.active:not(.line-instrumental):not(:has(.line-original))::after {
+    content: "█";
+    margin-left: 2px;
+    animation: ascii-blink 1s steps(1) infinite;
+}
+.line.active .line-translation { color: #333; }
+
+@keyframes ascii-blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+/* Caret genérico (skeleton/labels) */
+.ascii-caret { animation: ascii-blink 1s steps(1) infinite; }
+
+/* Skeleton: filas de caracteres dither (datos cargando en terminal) */
+.loading {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.loading.show-skeleton { display: flex; }
+
+.skeleton-loader {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+/* Cada fila se encoge a su texto (width auto) y se centra por el flex.
+   El largo lo da el contenido del ::before, no un % → centrado fiable. */
+.skeleton-line {
+    width: auto !important;
+    max-width: 92%;
+    height: auto;
+    font-size: 16px;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    color: var(--fg-faint);
+    overflow: hidden;
+    white-space: nowrap;
+    border: none;
+    background: none;
+    margin: 0 !important;
+    animation: ascii-skel 1s steps(2, end) infinite;
+}
+.skeleton-line::before { content: "▓▒░▒▓▓▒░░▒▓█▒░▓▒▒░▓▓▒░▒▓"; }
+
+/* Largos variados (organic) + parpadeo escalonado = barrido de datos */
+.skeleton-line:nth-child(1) { animation-delay: 0s; }
+.skeleton-line:nth-child(1)::before { content: "▓▒░▒▓▓▒░░▒▓█▒░▓▒▒░▓▓▒░▒▓░▒▓▓▒░░▒▓█"; }
+.skeleton-line:nth-child(2) { animation-delay: 0.12s; }
+.skeleton-line:nth-child(2)::before { content: "▓▒░▒▓▓▒░░▒▓█▒░▓▒▒"; }
+.skeleton-line:nth-child(3) { animation-delay: 0.24s; }
+.skeleton-line:nth-child(3)::before { content: "▓▒░▒▓▓▒░"; }
+.skeleton-line:nth-child(4) { animation-delay: 0.36s; }
+.skeleton-line:nth-child(4)::before { content: "▓▒░▒▓▓▒░░▒▓█▒░▓▒▒░▓▓▒░▒▓░▒▓"; }
+.skeleton-line:nth-child(5) { animation-delay: 0.48s; }
+.skeleton-line:nth-child(5)::before { content: "▓▒░▒▓▓▒░░▒▓█▒░"; }
+.skeleton-line:nth-child(6) { animation-delay: 0.60s; }
+.skeleton-line:nth-child(6)::before { content: "▓▒░▒▓"; }
+
+.skeleton-caption {
+    margin-top: 20px;
+    align-self: center;
+    font-size: 13px;
+    color: var(--fg-dim);
+}
+@keyframes ascii-skel { 0%, 100% { opacity: 0.9; } 50% { opacity: 0.3; } }
+
+/* Línea instrumental (silencio): tres puntos suspensivos de terminal */
+.line-instrumental { color: transparent; }
+.line-instrumental::after {
+    content: "[ ... ]";
+    color: var(--fg-faint);
+    letter-spacing: 2px;
+}
+.line-instrumental.active {
+    background: none;
+    color: transparent;
+    font-weight: normal;
+}
+.line-instrumental.active::after {
+    content: "[ ~~~ ]";
+    color: var(--fg-bright);
+    animation: ascii-blink 0.8s steps(1) infinite;
+}
+
+/* Error */
+.error {
+    margin: auto;
+    padding: 14px;
+    color: var(--fg);
+    text-align: center;
+}
+.error::before { content: "!! "; color: var(--fg-bright); }
+
+/* =======================================================================
+   Barra de progreso (bloques ASCII)
+   ======================================================================= */
+.ascii-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+.ascii-time {
+    font-size: 11px;
+    color: var(--fg);
+    min-width: 38px;
+    text-align: center;
+}
+.progress-container {
+    position: relative;
+    flex: 1;
+    height: 14px;
+    border: 1px solid var(--line);
+    /* Pista vacía: dither de puntos ░ */
+    background-image: repeating-linear-gradient(90deg,
+        var(--fg-faint) 0 1px, transparent 1px 4px);
+    overflow: hidden;
+}
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    /* Relleno en bloques █ */
+    background-image: repeating-linear-gradient(90deg,
+        var(--fg-bright) 0 5px, var(--bg) 5px 6px);
+    transition: width 0.2s steps(10, end);
+}
+
+/* =======================================================================
+   Toolbar
+   ======================================================================= */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex-shrink: 0;
+}
+.toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.ascii-divider {
+    color: var(--fg-faint);
+    font-size: 16px;
+    user-select: none;
+}
+
+/* Botón plano monocromo; invierte al hover/activar */
+.toolbar-btn,
+.controls button {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: var(--fg);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    transition: none;
+}
+.toolbar-btn {
+    width: 30px;
+    height: 30px;
+}
+.toolbar-btn .material-icons-round { font-size: 16px; }
+
+.toolbar-btn:hover,
+.controls button:hover {
+    color: var(--bg);
+    background: var(--fg-bright);
+    border-color: var(--fg-bright);
+}
+.toolbar-btn:active,
+.controls button:active { filter: invert(1); }
+
+/* Offset/sync */
+.offset-display {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 7px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+}
+.ascii-sync-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: var(--fg-dim);
+}
+#offset-value {
+    font-size: 11px;
+    color: var(--fg-bright);
+    min-width: 26px;
+    text-align: center;
+}
+
+/* Contador de versiones */
+.version-counter {
+    font-size: 10px;
+    color: var(--fg);
+    min-width: 30px;
+    text-align: center;
+}
+.version-counter::before { content: "["; color: var(--fg-faint); }
+.version-counter::after  { content: "]"; color: var(--fg-faint); }
+
+/* Estados del botón de traducción (monocromo: invert/dashed/blink) */
+#btn-translate.btn-translate-active {
+    color: var(--bg);
+    background: var(--fg-bright);
+    border-color: var(--fg-bright);
+}
+#btn-translate.btn-translate-loading {
+    animation: ascii-skel 0.7s steps(2, end) infinite;
+}
+#btn-translate.btn-translate-error {
+    border-style: dashed;
+    animation: ascii-blink 0.4s steps(1) 4;
+}
+
+/* Dislike/ciclo */
+#btn-dislike.btn-dislike-cycle {
+    animation: ascii-skel 0.6s steps(2, end) infinite;
+}
+
+/* =======================================================================
+   Controles de reproducción
+   ======================================================================= */
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+.controls button {
+    width: 40px;
+    height: 40px;
+}
+.controls button .material-icons-round { font-size: 22px; }
+
+#btn-play {
+    width: 48px;
+    height: 48px;
+    color: var(--bg);
+    background: var(--fg-bright);
+    border-color: var(--fg-bright);
+}
+#btn-play:hover {
+    color: var(--fg-bright);
+    background: var(--bg);
+}
+#btn-play .material-icons-round { font-size: 26px; }
+
+/* =======================================================================
+   AD MODAL OVERLAY (arte ASCII)
+   ======================================================================= */
+/* Scope con body.ascii (0,2,1) para ganarle a `body.ascii > *` (0,1,1), que si no
+   pisa position/z-index y mete el modal de anuncio en el flujo (área de letras). */
+body.ascii .ad-overlay-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: var(--bg);
+    color: var(--fg);
+    text-shadow: 0 0 2px var(--glow);
+}
+body.ascii .ad-overlay-modal.active { display: flex; }
+
+/* Ocultamos el hada SVG; usamos arte ASCII en su lugar */
+.ad-fairy-wrapper { display: none; }
+
+.ad-ascii-art {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.1;
+    color: var(--fg-bright);
+    white-space: pre;
+    text-align: left;
+    animation: ascii-skel 1.4s steps(2, end) infinite;
+}
+
+.ad-message-container {
+    padding: 6px 14px;
+    border: 1px solid var(--line);
+}
+.ad-message-text {
+    font-size: 13px;
+    color: var(--fg);
+    text-align: center;
+}
+.ad-message-text::before { content: "[ "; color: var(--fg-dim); }
+.ad-message-text::after  { content: " ]"; color: var(--fg-dim); }
+
+/* =========================================================================
+   Responsive por alto (referencia: skin CRT Amber).
+   Oculta del elemento MENOS al MÁS importante al bajar el alto.
+   ========================================================================= */
+
+/* 1. Detalles del álbum/año */
+@media (max-height: 470px) {
+    .song-details { display: none; }
+}
+
+/* 2. Masthead */
+@media (max-height: 430px) {
+    .ascii-masthead { display: none; }
+}
+
+/* 3. Carátula + etiqueta now_playing */
+@media (max-height: 380px) {
+    .album-frame { display: none; }
+    .header .ascii-label { display: none; }
+}
+
+/* 4. Etiquetas de tiempo (la barra se queda) */
+@media (max-height: 340px) {
+    .ascii-time { display: none; }
+    .ascii-progress { gap: 0; }
+}
+
+/* 5. Cabecera completa */
+@media (max-height: 300px) {
+    .header { display: none; }
+    .ascii-label-lyrics { display: none; }
+}
+
+/* 6. Controles utilitarios */
+@media (max-height: 265px) {
+    .toolbar { display: none; }
+}
+
+/* 7. Transporte sale del flujo → oculto, aparece al hover */
+@media (max-height: 250px) {
+    body.ascii { padding: 8px 12px; gap: 6px; }
+
+    /* `body.ascii > .controls` (0,2,1) le gana a `body.ascii > *` (0,1,1). */
+    body.ascii > .controls {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        padding: 8px 0;
+        gap: 16px;
+        background: var(--bg);
+        border-top: 1px solid var(--line);
+        opacity: 0;
+        transform: translateY(8px);
+        pointer-events: none;
+        transition: opacity 0.12s, transform 0.12s;
+        z-index: 8;
+    }
+    body.ascii:hover > .controls {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+/* 8. Línea de tiempo */
+@media (max-height: 230px) {
+    .ascii-progress { display: none; }
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navi Lyrics PiP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+    <div class="header">
+        <!-- Album Thumbnail -->
+        <div class="album-thumbnail-container">
+            <img id="album-thumbnail" class="album-thumbnail"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%23333' width='64' height='64'/%3E%3C/svg%3E"
+                alt="Album art" />
+
+            <!-- Song Info -->
+            <div class="song-info">
+                <div id="song-title">__MSG_loading__</div>
+                <div id="song-artist">-</div>
+                <div class="song-details">
+                    <div id="song-album">-</div>
+                    <div id="song-year">-</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="toolbar">
+            <div class="toolbar-group">
+                <button id="btn-font-minus" class="toolbar-btn" title="__MSG_decreaseFontSize__" aria-label="__MSG_decreaseFontSize__">
+                    <span class="material-icons-round" aria-hidden="true" style="font-size: 18px;">text_decrease</span>
+                </button>
+                <button id="btn-font-plus" class="toolbar-btn" title="__MSG_increaseFontSize__" aria-label="__MSG_increaseFontSize__">
+                    <span class="material-icons-round" aria-hidden="true" style="font-size: 18px;">text_increase</span>
+                </button>
+            </div>
+
+            <div class="toolbar-group">
+                <button id="btn-offset-slow" class="toolbar-btn" title="__MSG_syncEarlier__" aria-label="__MSG_syncEarlier__">
+                    <span class="material-icons-round" aria-hidden="true" style="font-size: 18px;">fast_rewind</span>
+                </button>
+                <div class="offset-display">
+                    <span id="offset-value">0s</span>
+                </div>
+                <button id="btn-offset-fast" class="toolbar-btn" title="__MSG_syncLater__" aria-label="__MSG_syncLater__">
+                    <span class="material-icons-round" aria-hidden="true" style="font-size: 18px;">fast_forward</span>
+                </button>
+            </div>
+
+            <div class="toolbar-group">
+                <div class="version-counter" id="version-badge"
+                    style="font-size: 11px; color: #9ca3af; margin-right: 4px; width: 30px; text-align: center;">1/20
+                </div>
+                <button id="btn-dislike" class="toolbar-btn btn-dislike" title="__MSG_markAsWrongLyrics__" aria-label="__MSG_markAsWrongLyrics__">
+                    <span class="material-icons-round" aria-hidden="true" style="font-size: 16px;">thumb_down</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón flotante de traducción (fuera del scroll) -->
+    <button id="btn-translate" class="btn-translate-fab" title="__MSG_translateLyrics__" aria-label="__MSG_translateLyrics__">
+        <span class="material-icons-round" aria-hidden="true" style="font-size: 18px;">translate</span>
+    </button>
+
+    <div id="lyrics-container">
+        <div id="skeleton-loading" class="loading show-skeleton">
+            <div class="skeleton-loader">
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line skeleton-short"></div>
+                <div class="skeleton-line" style="margin-top: 20px;"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line skeleton-short"></div>
+            </div>
+            <div data-navi-status style="margin-top: 20px; font-size: 14px; color: var(--text-secondary);">__MSG_searchingLyrics__</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="btn-prev" title="__MSG_previous__" aria-label="__MSG_previous__">
+            <span class="material-icons-round" aria-hidden="true">skip_previous</span>
+        </button>
+
+        <button id="btn-play" title="__MSG_playPause__" aria-label="__MSG_playPause__">
+            <span class="material-icons-round play-icon" aria-hidden="true" style="display:block; font-size: 28px;">play_arrow</span>
+            <span class="material-icons-round pause-icon" aria-hidden="true" style="display:none; font-size: 28px;">pause</span>
+        </button>
+
+        <button id="btn-next" title="__MSG_next__" aria-label="__MSG_next__">
+            <span class="material-icons-round" aria-hidden="true">skip_next</span>
+        </button>
+    </div>
+
+    <!-- AD MODAL OVERLAY -->
+    <div id="ad-overlay-modal" class="ad-overlay-modal" role="status" aria-live="polite">
+        <!-- SVG Hada Derpy (2 frames para animación de pupilas) -->
+        <div class="ad-fairy-wrapper">
+            <svg class="ad-fairy ad-fairy-frame1" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="70" r="40" fill="rgba(13, 242, 242, 0.7)"/>
+                <circle cx="48" cy="60" r="7" fill="#102222"/>
+                <circle cx="72" cy="60" r="7" fill="#102222"/>
+                <circle cx="51" cy="57" r="2.5" fill="#ffffff"/>
+                <circle cx="75" cy="63" r="2.5" fill="#ffffff"/>
+            </svg>
+            <svg class="ad-fairy ad-fairy-frame2" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="70" r="40" fill="rgba(13, 242, 242, 0.7)"/>
+                <circle cx="48" cy="60" r="7" fill="#102222"/>
+                <circle cx="72" cy="60" r="7" fill="#102222"/>
+                <circle cx="51" cy="63" r="2.5" fill="#ffffff"/>
+                <circle cx="69" cy="57" r="2.5" fill="#ffffff"/>
+            </svg>
+        </div>
+
+        <!-- Message Container -->
+        <div class="ad-message-container">
+            <div id="ad-message-text" class="ad-message-text">__MSG_adPlaying__</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

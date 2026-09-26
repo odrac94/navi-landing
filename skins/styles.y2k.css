@@ -1,0 +1,686 @@
+/* =========================================================================
+   Navi Lyrics — Skin: Y2K Webcore
+   OS kawaii cyber de inicios de los 2000: ventanas flotantes, rejilla de
+   fondo, rosa caliente + magenta, contornos negros gruesos, botones glossy
+   pero planos, corazones y estrellas.
+   Reutiliza los mismos IDs/clases que styles.css; solo cambia el look.
+   ========================================================================= */
+
+@font-face {
+    font-family: 'Material Icons Round';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/MaterialIconsRound.woff2') format('woff2');
+}
+
+:root {
+    --pink: #ff2e9a;
+    --pink-hot: #ff5cbf;
+    --pink-deep: #d6178a;
+    --magenta: #c01f8a;
+    --ink: #16001a;
+    --paper: #fff0fa;
+    --paper-2: #ffd9f1;
+    --grid: rgba(192, 31, 138, 0.22);
+    --bar-text: #fff;
+    --shadow: 4px 4px 0 #000;
+    --shadow-sm: 3px 3px 0 #000;
+    --radius: 10px;
+    --font-ui: 'Trebuchet MS', 'Segoe UI', Verdana, sans-serif;
+    --font-pixel: 'Courier New', ui-monospace, monospace;
+    --font-size: 15px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.material-icons-round {
+    font-family: 'Material Icons Round';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+}
+
+html, body {
+    height: 100%;
+}
+
+body.y2k {
+    position: relative;
+    color: var(--ink);
+    font-family: var(--font-ui);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px 14px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 15% 0%, #ffb3e6 0%, transparent 55%),
+        radial-gradient(circle at 100% 100%, #ff79cf 0%, transparent 50%),
+        linear-gradient(160deg, #ff9fe0 0%, #ff5cbf 100%);
+}
+
+/* Rejilla visible del "escritorio" */
+body.y2k::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 22px 22px;
+}
+
+body.y2k > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ----- Stickers flotantes ----- */
+/* Especificidad body.y2k para ganarle a `body.y2k > *` (que pone relative);
+   si no, los stickers quedan en flujo y ocupan espacio. */
+body.y2k .y2k-sticker {
+    position: fixed;
+    z-index: 5;
+    font-size: 26px;
+    color: #fff;
+    text-shadow: 2px 2px 0 #000, 0 0 6px var(--pink);
+    pointer-events: none;
+    opacity: 0.85;
+    animation: y2k-bob 3.5s ease-in-out infinite;
+}
+.y2k-sticker-1 { top: -2px; right: 50%; animation-delay: 0s; }
+.y2k-sticker-2 { bottom: 64px; left: 8px; font-size: 20px; animation-delay: .8s; }
+.y2k-sticker-3 { top: 44%; right: 6px; font-size: 18px; animation-delay: 1.6s; }
+
+@keyframes y2k-bob {
+    0%, 100% { transform: translateY(0) rotate(-6deg); }
+    50%      { transform: translateY(-5px) rotate(6deg); }
+}
+
+/* =======================================================================
+   Ventanas flotantes (estilo OS retro)
+   ======================================================================= */
+.win {
+    background: var(--paper);
+    border: 3px solid #000;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.win-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+    border-bottom: 3px solid #000;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 48%),
+        linear-gradient(180deg, var(--pink-hot), var(--pink-deep));
+    color: var(--bar-text);
+    user-select: none;
+}
+
+.win-title {
+    font-weight: bold;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.55);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.win-ico { margin-right: 2px; }
+
+.win-btns {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+.win-btns i {
+    width: 15px;
+    height: 14px;
+    display: grid;
+    place-items: center;
+    font-style: normal;
+    font-size: 10px;
+    font-weight: bold;
+    color: #000;
+    background: linear-gradient(180deg, #fff, var(--paper-2));
+    border: 2px solid #000;
+    border-radius: 3px;
+    line-height: 1;
+}
+
+.win-body {
+    padding: 8px 10px;
+}
+
+/* ----- Cabecera (now_playing) ----- */
+.header { flex-shrink: 0; }
+
+.album-thumbnail-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.album-frame {
+    flex-shrink: 0;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--pink-hot), var(--magenta));
+    border: 3px solid #000;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+}
+.album-thumbnail {
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+    image-rendering: auto;
+}
+
+.song-info {
+    min-width: 0;
+    flex: 1;
+}
+#song-title {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--pink-deep);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#song-artist {
+    font-size: 12px;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.song-details {
+    display: flex;
+    gap: 6px;
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    color: var(--magenta);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.song-details > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* =======================================================================
+   Ventana de letras
+   ======================================================================= */
+.win-lyrics {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#lyrics-container {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 12px;
+    background:
+        repeating-linear-gradient(180deg, transparent 0 27px, rgba(192, 31, 138, 0.08) 27px 28px),
+        var(--paper);
+    text-align: center;
+    scroll-behavior: smooth;
+}
+
+#lyrics-container::-webkit-scrollbar { width: 12px; }
+#lyrics-container::-webkit-scrollbar-track {
+    background: var(--paper-2);
+    border-left: 2px solid #000;
+}
+#lyrics-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--pink-hot), var(--pink-deep));
+    border: 2px solid #000;
+    border-radius: 6px;
+}
+
+/* Líneas de letra */
+.line {
+    padding: 6px 10px;
+    margin: 5px auto;
+    max-width: 95%;
+    font-size: var(--font-size);
+    font-weight: bold;
+    color: var(--magenta);
+    opacity: 0.6;
+    border-radius: 14px;
+    transition: all 0.18s ease;
+}
+
+.line-original { display: block; }
+.line-translation {
+    display: block;
+    font-size: 0.8em;
+    font-weight: normal;
+    font-style: italic;
+    color: var(--pink-deep);
+    opacity: 0.85;
+    margin-top: 2px;
+}
+
+/* Línea activa = burbuja de chat glossy rosa caliente */
+.line.active {
+    opacity: 1;
+    color: #fff;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 50%),
+        linear-gradient(180deg, var(--pink-hot), var(--pink));
+    border: 3px solid #000;
+    box-shadow: var(--shadow-sm);
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+    transform: scale(1.02);
+}
+.line.active .line-translation {
+    color: #fff4fb;
+    opacity: 0.95;
+}
+
+/* Línea instrumental (silencio): corazones/notas bailando, muy kawaii */
+.line-instrumental { color: transparent; }
+.line-instrumental::after {
+    content: "♥ ♪ ★";
+    display: inline-block;
+    letter-spacing: 4px;
+    font-size: 0.85em;
+    color: var(--pink);
+    -webkit-text-fill-color: var(--pink);
+    text-shadow: 1px 1px 0 #000;
+}
+.line-instrumental.active {
+    background: none;
+    border: none;
+    box-shadow: none;
+    transform: none;
+}
+.line-instrumental.active::after {
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    animation: y2k-bob 0.9s ease-in-out infinite;
+}
+
+/* Skeleton de carga */
+.loading {
+    text-align: center;
+    padding: 16px 0;
+}
+.loading:not(.show-skeleton) { display: none; }
+
+.skeleton-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.skeleton-line {
+    width: 80%;
+    height: 14px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--paper-2) 25%, var(--pink-hot) 50%, var(--paper-2) 75%);
+    background-size: 200% 100%;
+    animation: y2k-shimmer 1.3s linear infinite;
+}
+.skeleton-short { width: 60%; align-self: center; }
+.skeleton-caption {
+    margin-top: 18px;
+    font-family: var(--font-pixel);
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--pink-deep);
+}
+
+@keyframes y2k-shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Error */
+.error {
+    margin: auto;
+    padding: 14px;
+    font-weight: bold;
+    color: var(--pink-deep);
+    text-align: center;
+}
+
+/* =======================================================================
+   Barra de progreso (con corazón)
+   ======================================================================= */
+.y2k-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+.y2k-time {
+    font-family: var(--font-pixel);
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+    min-width: 36px;
+    text-align: center;
+}
+
+.progress-container {
+    position: relative;
+    flex: 1;
+    height: 14px;
+    background: var(--paper);
+    border: 3px solid #000;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 50%),
+        linear-gradient(90deg, var(--pink-hot), var(--pink-deep));
+    border-right: 2px solid #000;
+    transition: width 0.2s linear;
+}
+
+/* =======================================================================
+   Toolbar de utilidades
+   ======================================================================= */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-shrink: 0;
+}
+.toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Botón glossy chunky con borde negro */
+.toolbar-btn,
+.controls button {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: #fff;
+    border: 3px solid #000;
+    border-radius: 9px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 48%),
+        linear-gradient(180deg, var(--pink-hot), var(--pink-deep));
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.12s ease;
+}
+.toolbar-btn {
+    width: 30px;
+    height: 30px;
+}
+.toolbar-btn .material-icons-round { font-size: 17px; }
+
+.toolbar-btn:hover,
+.controls button:hover { filter: brightness(1.08); }
+
+.toolbar-btn:active,
+.controls button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #000;
+}
+
+/* Display de offset/sync */
+.offset-display {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    background: var(--paper);
+    border: 3px solid #000;
+    border-radius: 9px;
+    box-shadow: var(--shadow-sm);
+}
+.y2k-sync-label {
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--magenta);
+}
+#offset-value {
+    font-family: var(--font-pixel);
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--pink-deep);
+    min-width: 26px;
+    text-align: center;
+}
+
+/* Contador de versiones (badge) */
+.version-counter {
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Estados del botón de traducción */
+#btn-translate.btn-translate-active {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 48%),
+        linear-gradient(180deg, #6ee7ff, #1fa8d6);
+}
+#btn-translate.btn-translate-loading {
+    animation: y2k-spin-pulse 0.9s ease-in-out infinite;
+}
+#btn-translate.btn-translate-error {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 48%),
+        linear-gradient(180deg, #ff6b6b, #c01f1f);
+}
+@keyframes y2k-spin-pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(0.9); filter: brightness(1.25); }
+}
+
+/* Estado de dislike/ciclo de versión */
+#btn-dislike.btn-dislike-cycle {
+    animation: y2k-spin-pulse 0.7s ease-in-out infinite;
+}
+
+/* =======================================================================
+   Controles de reproducción
+   ======================================================================= */
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+.controls button {
+    width: 40px;
+    height: 40px;
+}
+.controls button .material-icons-round { font-size: 22px; }
+
+/* Botón play más grande y destacado (corazón-botón central) */
+#btn-play {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 50%),
+        linear-gradient(180deg, var(--pink-hot), var(--magenta));
+}
+#btn-play .material-icons-round { font-size: 28px; }
+
+/* =======================================================================
+   AD MODAL OVERLAY
+   ======================================================================= */
+/* Scope con body.y2k (0,2,1) para ganarle a `body.y2k > *` (0,1,1), que si no
+   pisa position/z-index y mete el modal de anuncio en el flujo (área de letras). */
+body.y2k .ad-overlay-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+        linear-gradient(160deg, #ff9fe0, #ff5cbf);
+    background-size: 22px 22px, 22px 22px, 100% 100%;
+}
+body.y2k .ad-overlay-modal.active { display: flex; }
+
+.ad-fairy-wrapper {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    filter: drop-shadow(3px 3px 0 #000);
+}
+.ad-fairy {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.ad-fairy-frame2 { opacity: 0; }
+.ad-overlay-modal.active .ad-fairy {
+    animation: y2k-fairy-blink 1.4s steps(1) infinite;
+}
+.ad-overlay-modal.active .ad-fairy-frame2 {
+    animation: y2k-fairy-blink2 1.4s steps(1) infinite;
+}
+@keyframes y2k-fairy-blink  { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0; } }
+@keyframes y2k-fairy-blink2 { 0%, 60% { opacity: 0; } 61%, 100% { opacity: 1; } }
+
+.ad-message-container {
+    padding: 8px 16px;
+    background: var(--paper);
+    border: 3px solid #000;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+.ad-message-text {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--pink-deep);
+    text-align: center;
+}
+
+/* =========================================================================
+   Responsive por alto (referencia: skin CRT Amber).
+   A medida que el PiP se hace más bajo, ocultamos del elemento MENOS al MÁS
+   importante: stickers → detalles → barras de ventana → carátula → tiempos →
+   cabecera → utilidades → línea de tiempo → transporte (sale del flujo, hover).
+   Las media queries NO suman especificidad: para ganarle a reglas como
+   `body.y2k > *` (0,1,1) usamos selectores con la misma o mayor especificidad.
+   ========================================================================= */
+
+/* 1. Stickers decorativos + detalles del álbum/año (lo más prescindible) */
+@media (max-height: 470px) {
+    .y2k-sticker { display: none; }
+    .song-details { display: none; }
+}
+
+/* 2. Barras de título de las ventanas (cromo decorativo) */
+@media (max-height: 430px) {
+    .win-bar { display: none; }
+    body.y2k { gap: 8px; }
+}
+
+/* 3. Carátula del álbum */
+@media (max-height: 380px) {
+    .album-frame { display: none; }
+    .win-body { padding: 6px 10px; }
+}
+
+/* 4. Etiquetas de tiempo (la barra de progreso se queda) */
+@media (max-height: 340px) {
+    .y2k-time { display: none; }
+    .y2k-progress { gap: 0; }
+}
+
+/* 5. Cabecera completa (título + artista). Las letras toman su lugar. */
+@media (max-height: 300px) {
+    .header { display: none; }
+    #lyrics-container { padding: 8px 8px; }
+}
+
+/* 6. Controles utilitarios (font, sync, traducir, dislike) */
+@media (max-height: 265px) {
+    .toolbar { display: none; }
+}
+
+/* 7. Línea de tiempo */
+@media (max-height: 230px) {
+    .y2k-progress { display: none; }
+}
+
+/* 8. Transporte: alto demasiado bajo → SALE del flujo (position:absolute)
+   para que las letras ocupen TODO el alto. Oculto, aparece al hover. */
+@media (max-height: 250px) {
+    body.y2k { padding: 8px 12px; gap: 6px; }
+
+    /* `body.y2k > .controls` (0,2,1) le gana a `body.y2k > *` (0,1,1). */
+    body.y2k > .controls {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        padding: 8px 0;
+        gap: 18px;
+        background: linear-gradient(to top, rgba(214, 23, 138, 0.96), rgba(214, 23, 138, 0));
+        opacity: 0;
+        transform: translateY(8px);
+        pointer-events: none;
+        transition: opacity 0.15s, transform 0.15s;
+        z-index: 8;
+    }
+
+    body.y2k:hover > .controls {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
