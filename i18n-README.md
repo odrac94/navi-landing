@@ -39,3 +39,22 @@ asistentes de IA indexen las dos:
   un aviso discreto abajo ("¿Prefieres leer en español?"). Al cerrarlo, no vuelve a salir.
 - Las claves `langSuggest.*` van invertidas a propósito: `en.langSuggest` es el texto que
   se muestra en la página inglesa, así que está en español (y viceversa).
+
+## Páginas de contenido (guías, about, changelog, privacidad, 404)
+
+No se editan en HTML: se generan con `scripts/build-pages.mjs` desde `src/pages/`:
+
+| Archivo | Qué contiene |
+|---|---|
+| `src/pages/routes.mjs` | URL de cada página en inglés y español |
+| `src/pages/layout.mjs` | `<head>` (SEO, hreflang, Open Graph), navegación, footer, aviso de idioma |
+| `src/pages/platforms.mjs` | Contenido de las guías de Spotify, YouTube Music y Apple Music |
+| `src/pages/about.mjs`, `changelog.mjs`, `privacy.mjs` | Contenido de esas páginas |
+
+- `npm run build` genera `*.html`, `es/*.html`, `404.html` y `sitemap.xml`.
+- **Nueva versión de la extensión:** agrégala arriba de `RELEASES` en `changelog.mjs`
+  y actualiza `softwareVersion` en el JSON-LD de `index.html`.
+- **Cambiaste el contenido de una página:** actualiza su fecha en `LASTMOD`
+  (`scripts/build-pages.mjs`) para que el sitemap lo refleje.
+- Todo lo que dicen las guías sale del código de la extensión (adapters, atajos,
+  límites de caché). Si cambia el comportamiento de la extensión, revisa estos textos.

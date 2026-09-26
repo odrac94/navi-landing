@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- GENERADO por scripts/build-pages.mjs. No editar a mano. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
@@ -16,7 +17,87 @@
         <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/"/>
     </url>
     <url>
+        <loc>https://navilyrics.com/spotify-floating-lyrics</loc>
+        <lastmod>2026-09-26</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/spotify-floating-lyrics"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/letras-flotantes-spotify"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/spotify-floating-lyrics"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/es/letras-flotantes-spotify</loc>
+        <lastmod>2026-09-26</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/spotify-floating-lyrics"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/letras-flotantes-spotify"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/spotify-floating-lyrics"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/youtube-music-floating-lyrics</loc>
+        <lastmod>2026-09-26</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/youtube-music-floating-lyrics"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/letras-flotantes-youtube-music"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/youtube-music-floating-lyrics"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/es/letras-flotantes-youtube-music</loc>
+        <lastmod>2026-09-26</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/youtube-music-floating-lyrics"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/letras-flotantes-youtube-music"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/youtube-music-floating-lyrics"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/apple-music-floating-lyrics</loc>
+        <lastmod>2026-09-26</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/apple-music-floating-lyrics"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/letras-flotantes-apple-music"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/apple-music-floating-lyrics"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/es/letras-flotantes-apple-music</loc>
+        <lastmod>2026-09-26</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/apple-music-floating-lyrics"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/letras-flotantes-apple-music"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/apple-music-floating-lyrics"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/about</loc>
+        <lastmod>2026-09-26</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/about"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/acerca-de"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/about"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/es/acerca-de</loc>
+        <lastmod>2026-09-26</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/about"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/acerca-de"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/about"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/changelog</loc>
+        <lastmod>2026-07-06</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/changelog"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/novedades"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/changelog"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/es/novedades</loc>
+        <lastmod>2026-07-06</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/changelog"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/novedades"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/changelog"/>
+    </url>
+    <url>
         <loc>https://navilyrics.com/privacy-policy</loc>
         <lastmod>2026-09-26</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/privacy-policy"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/politica-de-privacidad"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/privacy-policy"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/es/politica-de-privacidad</loc>
+        <lastmod>2026-09-26</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/privacy-policy"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/politica-de-privacidad"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/privacy-policy"/>
     </url>
 </urlset>

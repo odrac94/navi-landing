@@ -67,7 +67,12 @@
       "madeWith": "Made with",
       "and": "and a healthy dose of trial and error in",
       "privacyPolicy": "Privacy Policy",
-      "poweredBy": "Lyrics graciously powered by the incredible"
+      "poweredBy": "Lyrics graciously powered by the incredible",
+      "linkSpotify": "Floating lyrics for Spotify",
+      "linkYoutubeMusic": "Floating lyrics for YouTube Music",
+      "linkAppleMusic": "Floating lyrics for Apple Music",
+      "linkAbout": "About",
+      "linkChangelog": "Changelog"
     },
     "about": {
       "title": "What is Navi Lyrics?",
@@ -98,7 +103,8 @@
       "q7": "Where do the lyrics come from? What if they are wrong?",
       "a7": "Lyrics come from LRCLIB, a free, community-built lyrics database. If a song shows the wrong lyrics, press the thumbs-down button and Navi switches to the next available version.",
       "q8": "Is Navi Lyrics free? Does it collect my data?",
-      "a8": "Navi Lyrics is free and needs no account. It does not collect personal data: your settings and cached lyrics are stored locally in your browser."
+      "a8": "Navi Lyrics is free and needs no account. It does not collect personal data: your settings and cached lyrics are stored locally in your browser.",
+      "guides": "Step-by-step guides:"
     },
     "meta": {
       "title": "Navi Lyrics — Floating Lyrics for Spotify, YouTube Music & Apple Music",
@@ -180,7 +186,12 @@
       "madeWith": "Hecho con",
       "and": "y una buena dosis de prueba y error en",
       "privacyPolicy": "Política de Privacidad",
-      "poweredBy": "Las letras son gentilmente proporcionadas por la increíble"
+      "poweredBy": "Las letras son gentilmente proporcionadas por la increíble",
+      "linkSpotify": "Letras flotantes para Spotify",
+      "linkYoutubeMusic": "Letras flotantes para YouTube Music",
+      "linkAppleMusic": "Letras flotantes para Apple Music",
+      "linkAbout": "Acerca de",
+      "linkChangelog": "Novedades"
     },
     "about": {
       "title": "¿Qué es Navi Lyrics?",
@@ -211,10 +222,11 @@
       "q7": "¿De dónde salen las letras? ¿Y si están mal?",
       "a7": "Las letras vienen de LRCLIB, una base de datos de letras gratuita y construida por la comunidad. Si una canción muestra la letra equivocada, presiona el botón de pulgar abajo y Navi cambia a la siguiente versión disponible.",
       "q8": "¿Navi Lyrics es gratis? ¿Recopila mis datos?",
-      "a8": "Navi Lyrics es gratis y no necesita cuenta. No recopila datos personales: tu configuración y las letras en caché se guardan localmente en tu navegador."
+      "a8": "Navi Lyrics es gratis y no necesita cuenta. No recopila datos personales: tu configuración y las letras en caché se guardan localmente en tu navegador.",
+      "guides": "Guías paso a paso:"
     },
     "meta": {
-      "title": "Navi Lyrics — Letras flotantes para Spotify, YouTube Music y Apple Music",
+      "title": "Navi Lyrics — Letras flotantes: Spotify, YouTube Music y Apple Music",
       "description": "Extensión gratis para Chrome: letras flotantes y sincronizadas de Spotify Web, YouTube Music y Apple Music en una ventana siempre visible. Traducción y temas.",
       "ogDescription": "Letras sincronizadas en una ventana Picture-in-Picture siempre visible. Extensión gratuita para Chrome con traducción en tiempo real, temas y skins retro.",
       "ogImageAlt": "Ventana flotante de letras de Navi Lyrics junto al titular de Navi Lyrics"

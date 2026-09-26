@@ -2,7 +2,7 @@
 // Ahora se compila a assets/site.css con `npm run build`.
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./index.html', './es/index.html', './privacy-policy.html'],
+  content: ['./*.html', './es/*.html'],
   darkMode: 'class',
   theme: {
     extend: {

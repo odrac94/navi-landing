@@ -7,6 +7,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseHTML } from 'linkedom';
+import { ROUTES } from '../src/pages/routes.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://navilyrics.com';
@@ -47,6 +48,13 @@ for (const [lang, cfg] of Object.entries(LOCALES)) {
       const value = t(key);
       if (value !== undefined) el.setAttribute(attr, value);
     }
+  }
+
+  // Enlaces internos a otras páginas: la URL del idioma de esta página
+  for (const a of document.querySelectorAll('a[data-page]')) {
+    const route = ROUTES[a.getAttribute('data-page')];
+    if (!route) throw new Error(`data-page desconocido: ${a.getAttribute('data-page')}`);
+    a.setAttribute('href', route[lang]);
   }
 
   // <head>

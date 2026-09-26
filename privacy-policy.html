@@ -1,298 +1,255 @@
 <!DOCTYPE html>
+<!-- GENERADO por scripts/build-pages.mjs (src/pages/). No editar a mano. -->
 <html class="dark overflow-x-hidden" lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Policy — Navi Lyrics</title>
-    <meta name="description" content="Navi Lyrics does not collect personal data. Learn what the extension stores locally and which services it contacts (LRCLIB, Google Translate, music platforms)." />
+    <meta name="description" content="Navi Lyrics does not collect personal data. What the extension stores locally, which services it contacts (LRCLIB, Google Translate) and how this website works." />
     <link rel="canonical" href="https://navilyrics.com/privacy-policy" />
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/icon-96.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="assets/icon-48.png" />
-    <style>
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-        }
+    <link rel="alternate" hreflang="en" href="https://navilyrics.com/privacy-policy" />
+    <link rel="alternate" hreflang="es" href="https://navilyrics.com/es/politica-de-privacidad" />
+    <link rel="alternate" hreflang="x-default" href="https://navilyrics.com/privacy-policy" />
+    <meta name="theme-color" content="#0a192f" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/icon-96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48.png" />
+    <link rel="apple-touch-icon" href="/assets/icon-128.png" />
 
-        .glass-panel {
-            background: rgba(16, 34, 34, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Navi Lyrics" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_MX" />
+    <meta property="og:url" content="https://navilyrics.com/privacy-policy" />
+    <meta property="og:title" content="Privacy Policy — Navi Lyrics" />
+    <meta property="og:description" content="Navi Lyrics does not collect personal data. What the extension stores locally, which services it contacts (LRCLIB, Google Translate) and how this website works." />
+    <meta property="og:image" content="https://navilyrics.com/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@navilyrics_" />
 
-        .neon-glow {
-            box-shadow: 0 0 15px rgba(13, 242, 242, 0.3);
-        }
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://navilyrics.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Privacy policy",
+                        "item": "https://navilyrics.com/privacy-policy"
+                    }
+                ]
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://navilyrics.com/privacy-policy#webpage",
+                "url": "https://navilyrics.com/privacy-policy",
+                "name": "Privacy Policy — Navi Lyrics",
+                "description": "Navi Lyrics does not collect personal data. What the extension stores locally, which services it contacts (LRCLIB, Google Translate) and how this website works.",
+                "inLanguage": "en",
+                "isPartOf": {
+                    "@id": "https://navilyrics.com/#website"
+                },
+                "dateModified": "2026-09-26"
+            }
+        ]
+    }
+    </script>
 
-        .neon-text-glow {
-            text-shadow: 0 0 10px rgba(13, 242, 242, 0.5);
-        }
-
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            opacity: 0.4;
-            z-index: 0;
-        }
-
-        .cyber-grid-bg {
-            background-size: 40px 40px;
-            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-        }
-
-        .policy-section {
-            margin-bottom: 2rem;
-        }
-
-        .policy-section h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #0df2f2;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(13, 242, 242, 0.3);
-        }
-
-        .policy-section p {
-            color: #d1d5db;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .policy-section ul {
-            list-style-position: inside;
-            color: #d1d5db;
-            line-height: 1.8;
-            margin-left: 1rem;
-        }
-
-        .policy-section ul li {
-            margin-bottom: 0.5rem;
-        }
-    </style>
-    <!-- Después de los <style> propios: Tailwind debe ganar, como con el CDN -->
-    <link href="assets/site.css" rel="stylesheet" />
+    <link href="/assets/site.css" rel="stylesheet" />
 </head>
 
-<body class="bg-hero-gradient min-h-screen text-white overflow-x-hidden selection:bg-primary selection:text-black">
+<body class="bg-hero-gradient min-h-screen text-white font-display overflow-x-hidden selection:bg-primary selection:text-black">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-black">Skip to content</a>
 
     <div class="relative w-full overflow-x-hidden">
-
-        <div class="fixed inset-0 pointer-events-none z-0">
-            <div class="absolute top-0 left-0 w-full h-full cyber-grid-bg opacity-20"></div>
-            <div class="blob bg-primary w-96 h-96 rounded-full top-[-100px] left-[-100px] opacity-20 animate-pulse"></div>
+        <div class="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
+            <div class="absolute top-0 left-0 w-full h-full bg-cyber-grid cyber-grid-bg opacity-20"></div>
+            <div class="blob bg-primary w-96 h-96 rounded-full top-[-100px] left-[-100px] opacity-20"></div>
             <div class="blob bg-purple-600 w-80 h-80 rounded-full bottom-0 right-0 opacity-20"></div>
-            <div class="blob bg-blue-600 w-64 h-64 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-10"></div>
         </div>
 
-        <!-- Navigation -->
-        <nav class="fixed inset-x-0 z-50 top-0 transition-all duration-300">
+        <nav class="fixed inset-x-0 z-50 top-0">
             <div class="glass-panel mx-auto w-[calc(100%-1rem)] sm:w-[calc(100%-2rem)] max-w-7xl px-4 sm:px-6 lg:px-8 border-b border-white/5 rounded-2xl mt-2 sm:mt-4">
-                <div class="flex h-16 items-center justify-between">
-                    <div class="flex items-center">
-                        <a class="flex-shrink-0 flex items-center gap-2 group" href="./">
-                            <span class="text-2xl font-bold tracking-tighter text-white group-hover:text-primary transition-colors">Navi
-                                <span class="text-xl">Lyrics</span></span>
-                        </a>
+                <div class="flex h-16 items-center justify-between gap-3">
+                    <a class="flex-shrink-0 group" href="/">
+                        <span class="text-2xl font-bold tracking-tighter text-white group-hover:text-primary transition-colors">Navi <span class="text-xl">Lyrics</span></span>
+                    </a>
+                    <div class="hidden lg:flex items-baseline gap-2">
+                        <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="/spotify-floating-lyrics">Spotify</a>
+                        <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="/youtube-music-floating-lyrics">YouTube Music</a>
+                        <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="/apple-music-floating-lyrics">Apple Music</a>
+                        <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="/#faq">FAQ</a>
                     </div>
-                    <div class="hidden md:block">
-                        <div class="ml-10 flex items-baseline space-x-8">
-                            <a class="text-gray-300 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                                href="./">Home</a>
-                            <a class="text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                                href="privacy-policy">Privacy Policy</a>
-                        </div>
+                    <div class="lang-switch flex gap-2 items-center">
+                        <a href="/privacy-policy" hreflang="en" lang="en" data-lang="en" aria-current="page">EN</a>
+                        <a href="/es/politica-de-privacidad" hreflang="es" lang="es" data-lang="es">ES</a>
                     </div>
+                    <a class="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-primary/30 rounded-lg text-sm font-medium text-primary bg-primary/10 hover:bg-primary hover:text-black transition-all duration-300 neon-glow" href="https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp" target="_blank" rel="noopener">Get Extension</a>
                 </div>
             </div>
         </nav>
 
-        <!-- Main Content -->
-        <section class="relative z-10 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:pt-48 lg:pb-32 px-3 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <!-- Header -->
-            <div class="mb-12 sm:mb-16">
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 leading-tight">
-                    Privacy <span class="text-primary neon-text-glow">Policy</span>
-                </h1>
-                <p class="text-base sm:text-lg text-gray-400">
-                    Your privacy is important to us. This Privacy Policy explains how Navi Lyrics handles your information.
-                </p>
+        <main id="main" class="relative z-10 pt-28 sm:pt-36 pb-16 px-4 sm:px-6 lg:px-8">
+            <header class="max-w-3xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl font-bold tracking-tight leading-tight mb-5">Privacy <span class="text-primary neon-text-glow">Policy</span></h1>
+                <p class="text-base sm:text-lg text-gray-300 leading-relaxed">Your privacy is important to us. This policy explains how the Navi Lyrics extension and the navilyrics.com website handle your information.</p>
+            </header>
+
+            <div class="max-w-3xl mx-auto mt-10 flex flex-col gap-4">
+                <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
+                    <h2 class="!text-primary">No personal data collection</h2>
+                    <p><strong>Navi Lyrics does not collect, store or share any personal user data.</strong> The extension is designed to work without tracking or monitoring your activity, and it has no account system.</p>
+                </section>
+                <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
+                    <h2 class="!text-primary">What the extension stores locally</h2>
+                    <p>Navi Lyrics uses your browser’s local storage (<code>chrome.storage.local</code>) to remember your preferences and cache content for fast and offline access. Everything in this list stays on your device and is never transmitted anywhere:</p>
+                    <ul>
+                        <li><strong>Preferences:</strong> font size, time offset, translation language, color theme and skin.</li>
+                        <li><strong>Lyrics cache:</strong> synchronized and plain lyrics of songs you viewed recently (the oldest are removed after 400 songs).</li>
+                        <li><strong>Translation cache:</strong> translations you already requested, by language and song (the oldest are removed after 50).</li>
+                        <li><strong>Search results cache:</strong> alternative lyric versions for the multi-version feature (kept 30 minutes, 30 entries at most).</li>
+                        <li><strong>Hidden versions:</strong> IDs of lyric versions you marked as wrong with the thumbs-down button.</li>
+                    </ul>
+                    <p>No account is created and no identifier links this data to you. You can delete it at any time by removing the extension or clearing your browser data.</p>
+                </section>
+                <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
+                    <h2 class="!text-primary">Data sent to external services</h2>
+                    <p>The extension contacts external services only while you use it on a supported music page, and only with the data each one needs.</p>
+                    <h3>1. LRCLIB (lyrics)</h3>
+                    <ul>
+                        <li><strong>Sent:</strong> song title, artist, album name (when available) and duration.</li>
+                        <li><strong>When:</strong> automatically, when the floating window needs lyrics for a new song.</li>
+                        <li><strong>Why:</strong> to find synchronized or plain lyrics for that song.</li>
+                    </ul>
+                    <h3>2. Google Translate (translation)</h3>
+                    <ul>
+                        <li><strong>Sent:</strong> the lyric text (without timestamps) and the target language you chose.</li>
+                        <li><strong>When:</strong> only when you press the translate button.</li>
+                        <li><strong>Endpoint:</strong> Google Translate’s public client endpoint (<code>translate.googleapis.com</code>).</li>
+                    </ul>
+                    <h3>3. Album art (adaptive theme only)</h3>
+                    <ul>
+                        <li><strong>Loaded:</strong> the cover image of the current song, from the image servers of Spotify (<code>i.scdn.co</code>), YouTube (<code>lh3.googleusercontent.com</code>) or Apple Music (<code>mzstatic.com</code>), only when you use the “Adaptive” color theme.</li>
+                        <li><strong>Processed:</strong> drawn into a 32×32 canvas on your device to extract its dominant color.</li>
+                        <li><strong>Not transmitted:</strong> the image and the color stay on your device and are never uploaded.</li>
+                    </ul>
+                    <p>We don’t operate any server for the extension, so these requests are not logged, stored or analyzed by us.</p>
+                </section>
+                <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
+                    <h2 class="!text-primary">This website (navilyrics.com)</h2>
+                    <ul>
+                        <li><strong>No analytics, no cookies, no ads.</strong> The site doesn’t use Google Analytics or any tracking tool.</li>
+                        <li><strong>No third parties:</strong> fonts, styles and images are served from navilyrics.com itself, so visiting the site doesn’t send your IP address to Google or any other company.</li>
+                        <li><strong>Language choice:</strong> if you switch between English and Spanish, the choice is saved in your browser’s <code>localStorage</code> so we don’t suggest the other language again.</li>
+                        <li><strong>Server logs:</strong> like most web servers, ours keeps standard access logs (IP address, requested page, date and browser user agent) for security and troubleshooting. They are rotated automatically and are not used to identify or profile visitors.</li>
+                    </ul>
+                </section>
+                <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
+                    <h2 class="!text-primary">Third-party services</h2>
+                    <ul>
+                        <li><a href="https://lrclib.net/" target="_blank" rel="noopener">LRCLIB</a>: public lyrics database.</li>
+                        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Translate</a>: public translation endpoint, used only when you request a translation.</li>
+                        <li>Image servers of Spotify, YouTube and Apple Music: only with the adaptive theme, as described above.</li>
+                        <li>The Chrome Web Store, where you install the extension, is run by Google under its own privacy policy.</li>
+                    </ul>
+                    <p>Navi Lyrics is not affiliated with Spotify, YouTube Music, Apple Music, LRCLIB or Google, and we don’t control their privacy practices. Please check their policies for how they handle requests from your browser.</p>
+                </section>
+                <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
+                    <h2 class="!text-primary">Security</h2>
+                    <p>Since Navi Lyrics doesn’t collect personal data or store it on external servers, the privacy risk is minimal. We still recommend keeping your browser up to date and reviewing the permissions of your extensions from time to time.</p>
+                </section>
+                <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
+                    <h2 class="!text-primary">Changes to this policy</h2>
+                    <p>We may update this policy. Significant changes will be reflected in the date at the bottom of this page.</p>
+                </section>
+                <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
+                    <h2 class="!text-primary">Contact</h2>
+                    <ul>
+                        <li>X (Twitter): <a href="https://x.com/navilyrics_" target="_blank" rel="noopener">@navilyrics_</a></li>
+                        <li>GitHub: <a href="https://github.com/odrac94/navi-landing" target="_blank" rel="noopener">odrac94/navi-landing</a></li>
+                    </ul>
+                </section>
+                <p class="text-center text-sm text-gray-500 mt-6"><time datetime="2026-09-26">Last updated: September 26, 2026</time></p>
             </div>
+        </main>
 
-            <!-- Policy Content -->
-            <div class="space-y-8">
-
-                <!-- Section 1: No Data Collection -->
-                <div class="policy-section glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300">
-                    <h2>No Personal Data Collection</h2>
-                    <p>
-                        <strong>Navi Lyrics does not collect, store, or share any personal user data.</strong> We believe in your right to privacy and have designed our extension to operate without tracking or monitoring your activities.
-                    </p>
+        <footer class="relative z-10 border-t border-white/5 bg-black/40 backdrop-blur-sm">
+            <div class="max-w-5xl mx-auto py-10 sm:py-12 px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-gray-500 mb-3">Guides</p>
+                        <ul class="space-y-2">
+                            <li><a class="text-gray-400 hover:text-primary transition-colors" href="/spotify-floating-lyrics">Floating lyrics for Spotify</a></li>
+                            <li><a class="text-gray-400 hover:text-primary transition-colors" href="/youtube-music-floating-lyrics">Floating lyrics for YouTube Music</a></li>
+                            <li><a class="text-gray-400 hover:text-primary transition-colors" href="/apple-music-floating-lyrics">Floating lyrics for Apple Music</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-gray-500 mb-3">Navi Lyrics</p>
+                        <ul class="space-y-2">
+                            <li><a class="text-gray-400 hover:text-primary transition-colors" href="/about">About</a></li>
+                            <li><a class="text-gray-400 hover:text-primary transition-colors" href="/changelog">Changelog</a></li>
+                            <li><a class="text-gray-400 hover:text-primary transition-colors" href="/privacy-policy">Privacy policy</a></li>
+                            <li><a class="text-gray-400 hover:text-primary transition-colors" href="https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp" target="_blank" rel="noopener">Chrome Web Store</a></li>
+                            <li><a class="text-gray-400 hover:text-primary transition-colors" href="https://buymeacoffee.com/ivandelfin" target="_blank" rel="noopener">Support the project</a></li>
+                        </ul>
+                    </div>
                 </div>
-
-                <!-- Section 2: Local Processing -->
-                <div class="policy-section glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300">
-                    <h2>What We Store Locally</h2>
+                <div class="mt-8 pt-6 border-t border-white/5 text-xs text-gray-500 font-mono text-center space-y-2">
                     <p>
-                        Navi Lyrics uses your browser's local storage (<code>chrome.storage.local</code>) to remember your preferences and cache content for offline / fast access. Everything in this list stays on your device and is never transmitted anywhere:
+                        <a class="hover:text-primary transition-colors" href="https://x.com/navilyrics_" target="_blank" rel="noopener">X</a> ·
+                        <a class="hover:text-primary transition-colors" href="https://www.instagram.com/navilyrics__/" target="_blank" rel="noopener">Instagram</a> ·
+                        <a class="hover:text-primary transition-colors" href="https://github.com/odrac94/navi-landing" target="_blank" rel="noopener">GitHub</a>
                     </p>
-                    <ul>
-                        <li><strong>Preferences:</strong> font size, time offset, translation language, color theme</li>
-                        <li><strong>Lyrics cache:</strong> synchronized and plain-text lyrics for songs you've recently viewed (LRU eviction at 120 entries)</li>
-                        <li><strong>Translation cache:</strong> previously translated lyrics, keyed by language and song ID (LRU eviction at 50 entries)</li>
-                        <li><strong>Search results cache:</strong> alternative lyric versions for the multi-version feature (30-minute TTL, 30 entries max)</li>
-                        <li><strong>Blacklist:</strong> IDs of lyric versions you marked as incorrect via the "dislike" button</li>
-                    </ul>
-                    <p>
-                        No account is created. No identifier ties this data to you.
-                    </p>
-                </div>
-
-                <!-- Section 3: External Requests -->
-                <div class="policy-section glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300">
-                    <h2>Data Transmitted to External Servers</h2>
-                    <p>
-                        Navi Lyrics communicates with three external services. In every case, only the strictly necessary data is sent, and only when you're actively using the extension on a supported page.
-                    </p>
-                    <p><strong>1. LRCLIB API (lyrics provider)</strong></p>
-                    <ul>
-                        <li>Sent: song title, artist, album name (when available), and duration</li>
-                        <li>When: automatically whenever you open the floating lyrics window on a new song</li>
-                        <li>Purpose: fetch synchronized or plain-text lyrics for the song</li>
-                    </ul>
-                    <p><strong>2. Google Translate (translation provider)</strong></p>
-                    <ul>
-                        <li>Sent: the text content of the lyrics (without timestamps), plus your selected target language</li>
-                        <li>When: only when you tap the translate button in the floating window</li>
-                        <li>Purpose: produce a real-time translation of the lyrics</li>
-                        <li>Endpoint: Google Translate's public client endpoint (<code>translate.googleapis.com</code>)</li>
-                    </ul>
-                    <p><strong>3. Album art (Spotify, YouTube and Apple Music image CDNs — Adaptive theme only)</strong></p>
-                    <ul>
-                        <li>Loaded: the album cover image of the currently playing song, only when you choose the "Adaptive" color theme</li>
-                        <li>Processed: rendered into a 32×32 HTML canvas locally and analyzed to extract a dominant color</li>
-                        <li>Not transmitted: the image and the extracted color stay on your device. We never upload them anywhere.</li>
-                    </ul>
-                    <p>
-                        We do not log, store, or analyze any of these requests on a server we control — we don't operate one.
-                    </p>
-                </div>
-
-                <!-- Section 4: Browser Local Storage -->
-                <div class="policy-section glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300">
-                    <h2>Browser Local Storage</h2>
-                    <p>
-                        Navi Lyrics uses your browser's local storage to remember your preferences:
-                    </p>
-                    <ul>
-                        <li>Settings are stored locally on your device only</li>
-                        <li>You can clear this data at any time through your browser settings</li>
-                        <li>Clearing browser data will reset all Navi Lyrics preferences</li>
-                        <li>No one can access this data except you</li>
-                    </ul>
-                </div>
-
-                <!-- Section 5: Third-Party Services -->
-                <div class="policy-section glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300">
-                    <h2>Third-Party Services</h2>
-                    <p>
-                        Navi Lyrics uses the following third-party services:
-                    </p>
-                    <ul>
-                        <li><strong><a href="https://lrclib.net/" target="_blank" class="text-primary hover:text-cyan-300 transition-colors underline">LRCLIB</a></strong> — public lyrics database. We send song title and artist to fetch matching lyrics.</li>
-                        <li><strong><a href="https://policies.google.com/privacy" target="_blank" class="text-primary hover:text-cyan-300 transition-colors underline">Google Translate</a></strong> — public translation endpoint. Used only when you actively request a translation; the lyric text is sent for translation.</li>
-                        <li><strong>Spotify image CDN</strong> (<code>i.scdn.co</code>), <strong>YouTube image CDN</strong> (<code>lh3.googleusercontent.com</code>), and <strong>Apple Music image CDN</strong> (<code>mzstatic.com</code>) — only the album art image is loaded by your browser, and only when the Adaptive color theme is active. The image is processed locally to derive a color; it is never re-uploaded.</li>
-                    </ul>
-                    <p>
-                        Navi Lyrics has no affiliation with Spotify, YouTube Music, Apple Music, LRCLIB, or Google. We do not control their privacy practices — please review their respective policies if you need details on how they handle requests originating from your browser.
-                    </p>
-                </div>
-
-                <!-- Section 6: Security -->
-                <div class="policy-section glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300">
-                    <h2>Security</h2>
-                    <p>
-                        Since Navi Lyrics doesn't collect or store personal data on external servers, there is minimal privacy risk. However, we recommend:
-                    </p>
-                    <ul>
-                        <li>Keep your browser updated for the latest security patches</li>
-                        <li>Use strong passwords for your browser/OS account</li>
-                        <li>Review permissions granted to extensions regularly</li>
-                    </ul>
-                </div>
-
-                <!-- Section 7: Changes -->
-                <div class="policy-section glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300">
-                    <h2>Changes to This Policy</h2>
-                    <p>
-                        We may update this Privacy Policy from time to time. We will notify users of any significant changes by updating the date at the bottom of this page.
-                    </p>
-                </div>
-
-                <!-- Section 8: Contact -->
-                <div class="policy-section glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300">
-                    <h2>Contact Us</h2>
-                    <p>
-                        If you have questions about this Privacy Policy, please reach out to us:
-                    </p>
-                    <ul>
-                        <li>GitHub: <a href="https://github.com/odrac94/navi-landing" target="_blank" class="text-primary hover:text-cyan-300 transition-colors">odrac94/navi-landing</a></li>
-                        <li>Twitter: <a href="https://x.com/navilyrics_" target="_blank" class="text-primary hover:text-cyan-300 transition-colors">@navilyrics_</a></li>
-                    </ul>
-                </div>
-
-                <!-- Last Updated -->
-                <div class="text-center mt-16 pt-8 border-t border-white/10">
-                    <p class="text-sm text-gray-500">
-                        Last updated: June 27, 2026
-                    </p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="relative z-10 border-t border-white/5 bg-black/40 backdrop-blur-sm mt-8 sm:mt-12" id="support">
-            <div class="max-w-7xl mx-auto py-8 sm:py-12 px-3 sm:px-6 lg:px-8 text-center">
-                <div class="flex justify-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
-                    <a class="text-gray-400 hover:text-white transition-colors"
-                        href="https://github.com/odrac94/navi-landing" target="_blank">
-                        <span class="sr-only">GitHub</span>
-                        <svg aria-hidden="true" class="h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path clip-rule="evenodd"
-                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                                fill-rule="evenodd"></path>
-                        </svg>
-                    </a>
-
-                    <a class="text-gray-400 hover:text-blue-400 transition-colors" href="https://x.com/navilyrics_"
-                        target="_blank">
-                        <span class="sr-only">Twitter</span>
-                        <svg aria-hidden="true" class="h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
-                            </path>
-                        </svg>
-                    </a>
-
-                    <a class="text-gray-400 hover:text-pink-500 transition-colors"
-                        href="https://www.instagram.com/navilyrics__/" target="_blank">
-                        <span class="sr-only">Instagram</span>
-                        <svg aria-hidden="true" class="h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 011.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.153 1.772 4.915 4.915 0 01-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 01-1.772-1.153 4.904 4.904 0 01-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 011.153-1.772A4.897 4.897 0 015.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1.25 1.25 0 10-2.5 0 1.25 1.25 0 002.5 0zM12 9a3 3 0 110 6 3 3 0 010-6z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="text-xs sm:text-sm text-gray-500 font-mono border-t border-white/5 pt-6 sm:pt-8 pb-3 sm:pb-4">
-                    <p>© 2026 Navi Lyrics by Ivan Delfin.</p>
+                    <p>© 2026 Navi Lyrics by Ivan Delfin. Not affiliated with Spotify, YouTube or Apple.</p>
+                    <p>Lyrics graciously powered by <a class="text-primary hover:text-white underline decoration-primary/30 underline-offset-2" href="https://lrclib.net/" target="_blank" rel="noopener">LRCLIB</a>.</p>
                 </div>
             </div>
         </footer>
     </div>
+
+    <div id="lang-suggest" class="fixed bottom-4 inset-x-0 z-50 px-3" hidden>
+        <div class="glass-panel mx-auto w-fit max-w-full rounded-xl px-4 py-3 flex items-center gap-3 text-sm shadow-2xl" lang="es">
+            <span class="text-gray-300">¿Prefieres leer en español?</span>
+            <a href="/es/politica-de-privacidad" hreflang="es" data-lang="es" class="font-bold text-primary hover:text-white transition-colors whitespace-nowrap">Ver en español</a>
+            <button type="button" id="lang-suggest-close" class="text-gray-400 hover:text-white transition-colors flex" aria-label="Cerrar">
+                <span class="material-icons text-lg" aria-hidden="true">close</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var page = document.documentElement.lang;
+            var other = page === 'es' ? 'en' : 'es';
+            var save = function (l) { try { localStorage.setItem('navi-language', l); } catch (e) {} };
+            var stored = null;
+            try { stored = localStorage.getItem('navi-language'); } catch (e) {}
+            document.querySelectorAll('a[data-lang]').forEach(function (a) {
+                a.addEventListener('click', function () { save(a.getAttribute('data-lang')); });
+            });
+            var box = document.getElementById('lang-suggest');
+            if (!box) return;
+            var browser = ((navigator.languages && navigator.languages[0]) || navigator.language || '').slice(0, 2).toLowerCase();
+            if (stored === page || (stored !== other && browser !== other)) return;
+            box.hidden = false;
+            document.getElementById('lang-suggest-close').addEventListener('click', function () {
+                box.hidden = true;
+                save(page);
+            });
+        })();
+    </script>
 </body>
 
 </html>

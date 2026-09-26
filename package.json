@@ -3,7 +3,7 @@
   "private": true,
   "description": "Landing de Navi Lyrics (navilyrics.com)",
   "scripts": {
-    "build": "node scripts/copy-fonts.mjs && node scripts/build-i18n.mjs && tailwindcss -c tailwind.config.cjs -i src/site.css -o assets/site.css --minify",
+    "build": "node scripts/copy-fonts.mjs && node scripts/build-i18n.mjs && node scripts/build-pages.mjs && tailwindcss -c tailwind.config.cjs -i src/site.css -o assets/site.css --minify",
     "dev": "tailwindcss -c tailwind.config.cjs -i src/site.css -o assets/site.css --watch",
     "sync-skins": "node scripts/sync-skins.mjs"
   },

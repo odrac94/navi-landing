@@ -92,7 +92,7 @@
   const state = {
     skin: SKINS[params.get('skin')] ? params.get('skin') : 'navi',
     lang: MESSAGES[params.get('lang')] ? params.get('lang') : 'en',
-    theme: 'navi',
+    theme: 'navi', // se valida contra THEMES más abajo
     time: LYRICS[2].time, // arranca en el estribillo, como el mockup anterior
     playing: !reduceMotion,
     visible: true,
@@ -102,6 +102,9 @@
     version: 1,
     activeIndex: -1,
   };
+
+  // ?theme= inicial (las guías por plataforma usan el tema de esa plataforma)
+  if (params.get('theme') in THEMES) state.theme = params.get('theme');
 
   let mountSeq = 0;
   let glitchTimer = null;

@@ -45,4 +45,144 @@
 
 @tailwind base;
 @tailwind components;
+
+/* Estilos compartidos por las páginas generadas (scripts/build-pages.mjs).
+   index.html tiene su propia copia inline de los primeros. Van antes de
+   `utilities` para que clases como border-primary sigan ganando. */
+@layer components {
+  .glass-panel {
+    background: rgba(16, 34, 34, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 15px rgba(13, 242, 242, 0.3);
+  }
+
+  .neon-text-glow {
+    text-shadow: 0 0 10px rgba(13, 242, 242, 0.5);
+  }
+
+  .blob {
+    position: absolute;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  .cyber-grid-bg {
+    background-size: 40px 40px;
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  }
+
+  .lang-switch a {
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    color: #9ca3af;
+    transition: all 0.3s ease;
+  }
+
+  .lang-switch a[aria-current='page'] {
+    background: #0df2f2;
+    color: #000;
+    border-color: #0df2f2;
+    box-shadow: 0 0 10px rgba(13, 242, 242, 0.3);
+  }
+
+  .lang-switch a:not([aria-current='page']):hover {
+    background: rgba(13, 242, 242, 0.1);
+    color: #0df2f2;
+    border-color: #0df2f2;
+  }
+
+  /* Texto largo de las páginas de contenido */
+  .prose-navi h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1rem;
+  }
+
+  .prose-navi h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  .prose-navi p,
+  .prose-navi li {
+    color: #d1d5db;
+    line-height: 1.8;
+  }
+
+  .prose-navi p + p,
+  .prose-navi ul + p,
+  .prose-navi ol + p {
+    margin-top: 1rem;
+  }
+
+  .prose-navi ul,
+  .prose-navi ol {
+    margin: 0.75rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .prose-navi ul {
+    list-style: disc;
+  }
+
+  .prose-navi ol {
+    list-style: decimal;
+  }
+
+  .prose-navi li + li {
+    margin-top: 0.5rem;
+  }
+
+  .prose-navi li::marker {
+    color: #0df2f2;
+  }
+
+  .prose-navi a {
+    color: #0df2f2;
+    text-decoration: underline;
+    text-decoration-color: rgba(13, 242, 242, 0.3);
+    text-underline-offset: 2px;
+  }
+
+  .prose-navi a:hover {
+    color: #fff;
+  }
+
+  .prose-navi strong {
+    color: #fff;
+  }
+
+  .prose-navi code,
+  .prose-navi kbd {
+    font-size: 0.875em;
+    padding: 0.1em 0.4em;
+    border-radius: 0.3rem;
+    background: rgba(255, 255, 255, 0.08);
+    color: #e5e7eb;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
 @tailwind utilities;
