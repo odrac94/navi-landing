@@ -5,6 +5,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Analytics 4: se carga solo tras consentimiento (assets/consent.js) -->
+    <script src="/assets/consent.js" defer></script>
     <title>Privacy Policy — Navi Lyrics</title>
     <meta name="description" content="Navi Lyrics does not collect personal data. What the extension stores locally, which services it contacts (LRCLIB, Google Translate) and how this website works." />
     <link rel="canonical" href="https://navilyrics.com/privacy-policy" />
@@ -60,7 +62,7 @@
                 "isPartOf": {
                     "@id": "https://navilyrics.com/#website"
                 },
-                "dateModified": "2026-09-26"
+                "dateModified": "2026-09-28"
             }
         ]
     }
@@ -149,8 +151,9 @@
                 <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
                     <h2 class="!text-primary">This website (navilyrics.com)</h2>
                     <ul>
-                        <li><strong>No analytics, no cookies, no ads.</strong> The site doesn’t use Google Analytics or any tracking tool.</li>
-                        <li><strong>No third parties:</strong> fonts, styles and images are served from navilyrics.com itself, so visiting the site doesn’t send your IP address to Google or any other company.</li>
+                        <li><strong>Google Analytics:</strong> only if you accept it in the cookie banner, we use Google Analytics 4 to count visits and understand which pages are useful (pages viewed, referrer, approximate country, device and browser). It then sets first-party cookies (<code>_ga</code>, <code>_ga_*</code>, kept up to 2 years) and sends this data to Google, which processes it under its <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">privacy policy</a>. Until you accept, Google Analytics is not loaded at all. Google signals and ad features are disabled, and we don’t send it any personal data.</li>
+                        <li><strong>Your choice:</strong> you can accept or reject, and change your mind at any time with the “Cookie settings” link in the footer; rejecting deletes the analytics cookies. Your choice is saved in <code>localStorage</code> and we ask again after 12 months. If your browser sends a Global Privacy Control signal, we treat it as a rejection. Legal basis (GDPR/LGPD): your consent.</li>
+                        <li><strong>No ads.</strong> Fonts, styles and images are served from navilyrics.com itself; Google Analytics is the only third party the site loads.</li>
                         <li><strong>Language choice:</strong> if you switch between English and Spanish, the choice is saved in your browser’s <code>localStorage</code> so we don’t suggest the other language again.</li>
                         <li><strong>Server logs:</strong> like most web servers, ours keeps standard access logs (IP address, requested page, date and browser user agent) for security and troubleshooting. They are rotated automatically and are not used to identify or profile visitors.</li>
                     </ul>
@@ -161,6 +164,7 @@
                         <li><a href="https://lrclib.net/" target="_blank" rel="noopener">LRCLIB</a>: public lyrics database.</li>
                         <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Translate</a>: public translation endpoint, used only when you request a translation.</li>
                         <li>Image servers of Spotify, YouTube and Apple Music: only with the adaptive theme, as described above.</li>
+                        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Analytics</a>: visit statistics for navilyrics.com (not used by the extension).</li>
                         <li>The Chrome Web Store, where you install the extension, is run by Google under its own privacy policy.</li>
                     </ul>
                     <p>Navi Lyrics is not affiliated with Spotify, YouTube Music, Apple Music, LRCLIB or Google, and we don’t control their privacy practices. Please check their policies for how they handle requests from your browser.</p>
@@ -180,7 +184,7 @@
                         <li>GitHub: <a href="https://github.com/odrac94/navi-landing" target="_blank" rel="noopener">odrac94/navi-landing</a></li>
                     </ul>
                 </section>
-                <p class="text-center text-sm text-gray-500 mt-6"><time datetime="2026-09-26">Last updated: September 26, 2026</time></p>
+                <p class="text-center text-sm text-gray-500 mt-6"><time datetime="2026-09-28">Last updated: September 28, 2026</time></p>
             </div>
         </main>
 
@@ -201,6 +205,7 @@
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="/about">About</a></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="/changelog">Changelog</a></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="/privacy-policy">Privacy policy</a></li>
+                            <li><button type="button" class="text-gray-400 hover:text-primary transition-colors" data-consent-open>Cookie settings</button></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp" target="_blank" rel="noopener">Chrome Web Store</a></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="https://buymeacoffee.com/ivandelfin" target="_blank" rel="noopener">Support the project</a></li>
                         </ul>

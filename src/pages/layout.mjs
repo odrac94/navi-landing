@@ -16,6 +16,7 @@ const UI = {
     linkAbout: 'About',
     linkChangelog: 'Changelog',
     linkPrivacy: 'Privacy policy',
+    linkCookies: 'Cookie settings',
     linkStore: 'Chrome Web Store',
     linkCoffee: 'Support the project',
     copyright: '© 2026 Navi Lyrics by Ivan Delfin. Not affiliated with Spotify, YouTube or Apple.',
@@ -40,6 +41,7 @@ const UI = {
     linkAbout: 'Acerca de',
     linkChangelog: 'Novedades',
     linkPrivacy: 'Política de privacidad',
+    linkCookies: 'Configurar cookies',
     linkStore: 'Chrome Web Store',
     linkCoffee: 'Apoya el proyecto',
     copyright: '© 2026 Navi Lyrics, por Ivan Delfin. Sin afiliación con Spotify, YouTube ni Apple.',
@@ -115,6 +117,8 @@ export function renderPage({ lang, id, title, description, body, jsonLd = [], br
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Analytics 4: se carga solo tras consentimiento (assets/consent.js) -->
+    <script src="/assets/consent.js" defer></script>
     <title>${escape(title)}</title>
     <meta name="description" content="${escape(description)}" />${noindex ? '\n    <meta name="robots" content="noindex" />' : ''}${alternates}
     <meta name="theme-color" content="#0a192f" />
@@ -194,6 +198,7 @@ ${body}
                             ${footerLink('about', t.linkAbout)}
                             ${footerLink('changelog', t.linkChangelog)}
                             ${footerLink('privacy', t.linkPrivacy)}
+                            <li><button type="button" class="text-gray-400 hover:text-primary transition-colors" data-consent-open>${escape(t.linkCookies)}</button></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="${CWS_URL}" target="_blank" rel="noopener">${escape(t.linkStore)}</a></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="https://buymeacoffee.com/ivandelfin" target="_blank" rel="noopener">${escape(t.linkCoffee)}</a></li>
                         </ul>

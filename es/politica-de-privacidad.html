@@ -5,6 +5,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Analytics 4: se carga solo tras consentimiento (assets/consent.js) -->
+    <script src="/assets/consent.js" defer></script>
     <title>Política de privacidad — Navi Lyrics</title>
     <meta name="description" content="Navi Lyrics no recopila datos personales. Qué guarda la extensión en tu equipo, qué servicios contacta (LRCLIB, Google Translate) y cómo funciona este sitio." />
     <link rel="canonical" href="https://navilyrics.com/es/politica-de-privacidad" />
@@ -60,7 +62,7 @@
                 "isPartOf": {
                     "@id": "https://navilyrics.com/#website"
                 },
-                "dateModified": "2026-09-26"
+                "dateModified": "2026-09-28"
             }
         ]
     }
@@ -149,8 +151,9 @@
                 <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
                     <h2 class="!text-primary">Este sitio web (navilyrics.com)</h2>
                     <ul>
-                        <li><strong>Sin analytics, sin cookies, sin anuncios.</strong> El sitio no usa Google Analytics ni ninguna herramienta de rastreo.</li>
-                        <li><strong>Sin terceros:</strong> las fuentes, estilos e imágenes se sirven desde el propio navilyrics.com, así que visitar el sitio no envía tu dirección IP a Google ni a ninguna otra empresa.</li>
+                        <li><strong>Google Analytics:</strong> solo si lo aceptas en el banner de cookies, usamos Google Analytics 4 para contar visitas y saber qué páginas son útiles (páginas vistas, sitio de procedencia, país aproximado, dispositivo y navegador). Entonces guarda cookies propias (<code>_ga</code>, <code>_ga_*</code>, hasta 2 años) y envía estos datos a Google, que los trata según su <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">política de privacidad</a>. Mientras no aceptes, Google Analytics no se carga. Las señales de Google y las funciones publicitarias están desactivadas, y no le enviamos datos personales.</li>
+                        <li><strong>Tu elección:</strong> puedes aceptar o rechazar, y cambiar de opinión cuando quieras con el enlace “Configurar cookies” del pie de página; al rechazar se borran las cookies de estadísticas. Tu elección se guarda en <code>localStorage</code> y te volvemos a preguntar a los 12 meses. Si tu navegador envía la señal Global Privacy Control, la tratamos como un rechazo. Base legal (RGPD/LGPD): tu consentimiento.</li>
+                        <li><strong>Sin anuncios.</strong> Las fuentes, estilos e imágenes se sirven desde el propio navilyrics.com; Google Analytics es el único tercero que carga el sitio.</li>
                         <li><strong>Idioma elegido:</strong> si cambias entre inglés y español, la elección se guarda en el <code>localStorage</code> de tu navegador para no sugerirte el otro idioma de nuevo.</li>
                         <li><strong>Registros del servidor:</strong> como la mayoría de los servidores web, el nuestro guarda registros de acceso estándar (dirección IP, página solicitada, fecha y agente de usuario del navegador) por seguridad y para resolver problemas. Se rotan automáticamente y no se usan para identificar ni perfilar a los visitantes.</li>
                     </ul>
@@ -161,6 +164,7 @@
                         <li><a href="https://lrclib.net/" target="_blank" rel="noopener">LRCLIB</a>: base de datos pública de letras.</li>
                         <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Translate</a>: endpoint público de traducción, solo cuando pides una traducción.</li>
                         <li>Servidores de imágenes de Spotify, YouTube y Apple Music: solo con el tema adaptativo, como se describe arriba.</li>
+                        <li><a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">Google Analytics</a>: estadísticas de visitas de navilyrics.com (la extensión no lo usa).</li>
                         <li>La Chrome Web Store, donde instalas la extensión, la opera Google con su propia política de privacidad.</li>
                     </ul>
                     <p>Navi Lyrics no está afiliado a Spotify, YouTube Music, Apple Music, LRCLIB ni Google, y no controlamos sus prácticas de privacidad. Consulta sus políticas para saber cómo manejan las peticiones de tu navegador.</p>
@@ -180,7 +184,7 @@
                         <li>GitHub: <a href="https://github.com/odrac94/navi-landing" target="_blank" rel="noopener">odrac94/navi-landing</a></li>
                     </ul>
                 </section>
-                <p class="text-center text-sm text-gray-500 mt-6"><time datetime="2026-09-26">Última actualización: 26 de septiembre de 2026</time></p>
+                <p class="text-center text-sm text-gray-500 mt-6"><time datetime="2026-09-28">Última actualización: 28 de septiembre de 2026</time></p>
             </div>
         </main>
 
@@ -201,6 +205,7 @@
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="/es/acerca-de">Acerca de</a></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="/es/novedades">Novedades</a></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="/es/politica-de-privacidad">Política de privacidad</a></li>
+                            <li><button type="button" class="text-gray-400 hover:text-primary transition-colors" data-consent-open>Configurar cookies</button></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp" target="_blank" rel="noopener">Chrome Web Store</a></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="https://buymeacoffee.com/ivandelfin" target="_blank" rel="noopener">Apoya el proyecto</a></li>
                         </ul>

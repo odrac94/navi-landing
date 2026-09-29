@@ -1,9 +1,9 @@
 // /privacy-policy y /es/politica-de-privacidad.
 // Datos verificados contra extension-letras (src/shared/cache.js, translator.js,
-// themes.js, popup.js) y la infraestructura del sitio (nginx + Traefik, sin analytics).
+// themes.js, popup.js) y la infraestructura del sitio (nginx + Traefik, Google Analytics 4).
 import { ROUTES, SITE } from './routes.mjs';
 
-const UPDATED = '2026-09-26';
+const UPDATED = '2026-09-28';
 
 const block = (title, html) => `                <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
                     <h2 class="!text-primary">${title}</h2>
@@ -19,7 +19,7 @@ const CONTENT = {
     breadcrumb: 'Privacy policy',
     h1: 'Privacy <span class="text-primary neon-text-glow">Policy</span>',
     lead: 'Your privacy is important to us. This policy explains how the Navi Lyrics extension and the navilyrics.com website handle your information.',
-    updated: 'Last updated: September 26, 2026',
+    updated: 'Last updated: September 28, 2026',
     sections: [
       ['No personal data collection', `                    <p><strong>Navi Lyrics does not collect, store or share any personal user data.</strong> The extension is designed to work without tracking or monitoring your activity, and it has no account system.</p>`],
       ['What the extension stores locally', `                    <p>Navi Lyrics uses your browser’s local storage (<code>chrome.storage.local</code>) to remember your preferences and cache content for fast and offline access. Everything in this list stays on your device and is never transmitted anywhere:</p>
@@ -52,8 +52,9 @@ const CONTENT = {
                     </ul>
                     <p>We don’t operate any server for the extension, so these requests are not logged, stored or analyzed by us.</p>`],
       ['This website (navilyrics.com)', `                    <ul>
-                        <li><strong>No analytics, no cookies, no ads.</strong> The site doesn’t use Google Analytics or any tracking tool.</li>
-                        <li><strong>No third parties:</strong> fonts, styles and images are served from navilyrics.com itself, so visiting the site doesn’t send your IP address to Google or any other company.</li>
+                        <li><strong>Google Analytics:</strong> only if you accept it in the cookie banner, we use Google Analytics 4 to count visits and understand which pages are useful (pages viewed, referrer, approximate country, device and browser). It then sets first-party cookies (<code>_ga</code>, <code>_ga_*</code>, kept up to 2 years) and sends this data to Google, which processes it under its ${ext('https://policies.google.com/privacy', 'privacy policy')}. Until you accept, Google Analytics is not loaded at all. Google signals and ad features are disabled, and we don’t send it any personal data.</li>
+                        <li><strong>Your choice:</strong> you can accept or reject, and change your mind at any time with the “Cookie settings” link in the footer; rejecting deletes the analytics cookies. Your choice is saved in <code>localStorage</code> and we ask again after 12 months. If your browser sends a Global Privacy Control signal, we treat it as a rejection. Legal basis (GDPR/LGPD): your consent.</li>
+                        <li><strong>No ads.</strong> Fonts, styles and images are served from navilyrics.com itself; Google Analytics is the only third party the site loads.</li>
                         <li><strong>Language choice:</strong> if you switch between English and Spanish, the choice is saved in your browser’s <code>localStorage</code> so we don’t suggest the other language again.</li>
                         <li><strong>Server logs:</strong> like most web servers, ours keeps standard access logs (IP address, requested page, date and browser user agent) for security and troubleshooting. They are rotated automatically and are not used to identify or profile visitors.</li>
                     </ul>`],
@@ -61,6 +62,7 @@ const CONTENT = {
                         <li>${ext('https://lrclib.net/', 'LRCLIB')}: public lyrics database.</li>
                         <li>${ext('https://policies.google.com/privacy', 'Google Translate')}: public translation endpoint, used only when you request a translation.</li>
                         <li>Image servers of Spotify, YouTube and Apple Music: only with the adaptive theme, as described above.</li>
+                        <li>${ext('https://policies.google.com/privacy', 'Google Analytics')}: visit statistics for navilyrics.com (not used by the extension).</li>
                         <li>The Chrome Web Store, where you install the extension, is run by Google under its own privacy policy.</li>
                     </ul>
                     <p>Navi Lyrics is not affiliated with Spotify, YouTube Music, Apple Music, LRCLIB or Google, and we don’t control their privacy practices. Please check their policies for how they handle requests from your browser.</p>`],
@@ -78,7 +80,7 @@ const CONTENT = {
     breadcrumb: 'Política de privacidad',
     h1: 'Política de <span class="text-primary neon-text-glow">privacidad</span>',
     lead: 'Tu privacidad nos importa. Esta política explica cómo la extensión Navi Lyrics y el sitio navilyrics.com manejan tu información.',
-    updated: 'Última actualización: 26 de septiembre de 2026',
+    updated: 'Última actualización: 28 de septiembre de 2026',
     sections: [
       ['No recopilamos datos personales', `                    <p><strong>Navi Lyrics no recopila, almacena ni comparte datos personales.</strong> La extensión está diseñada para funcionar sin rastrear ni monitorear tu actividad, y no tiene sistema de cuentas.</p>`],
       ['Qué guarda la extensión en tu equipo', `                    <p>Navi Lyrics usa el almacenamiento local de tu navegador (<code>chrome.storage.local</code>) para recordar tus preferencias y guardar contenido en caché para un acceso rápido y sin conexión. Todo lo de esta lista se queda en tu dispositivo y nunca se envía a ningún lado:</p>
@@ -111,8 +113,9 @@ const CONTENT = {
                     </ul>
                     <p>No operamos ningún servidor para la extensión, así que no registramos, guardamos ni analizamos estas peticiones.</p>`],
       ['Este sitio web (navilyrics.com)', `                    <ul>
-                        <li><strong>Sin analytics, sin cookies, sin anuncios.</strong> El sitio no usa Google Analytics ni ninguna herramienta de rastreo.</li>
-                        <li><strong>Sin terceros:</strong> las fuentes, estilos e imágenes se sirven desde el propio navilyrics.com, así que visitar el sitio no envía tu dirección IP a Google ni a ninguna otra empresa.</li>
+                        <li><strong>Google Analytics:</strong> solo si lo aceptas en el banner de cookies, usamos Google Analytics 4 para contar visitas y saber qué páginas son útiles (páginas vistas, sitio de procedencia, país aproximado, dispositivo y navegador). Entonces guarda cookies propias (<code>_ga</code>, <code>_ga_*</code>, hasta 2 años) y envía estos datos a Google, que los trata según su ${ext('https://policies.google.com/privacy?hl=es', 'política de privacidad')}. Mientras no aceptes, Google Analytics no se carga. Las señales de Google y las funciones publicitarias están desactivadas, y no le enviamos datos personales.</li>
+                        <li><strong>Tu elección:</strong> puedes aceptar o rechazar, y cambiar de opinión cuando quieras con el enlace “Configurar cookies” del pie de página; al rechazar se borran las cookies de estadísticas. Tu elección se guarda en <code>localStorage</code> y te volvemos a preguntar a los 12 meses. Si tu navegador envía la señal Global Privacy Control, la tratamos como un rechazo. Base legal (RGPD/LGPD): tu consentimiento.</li>
+                        <li><strong>Sin anuncios.</strong> Las fuentes, estilos e imágenes se sirven desde el propio navilyrics.com; Google Analytics es el único tercero que carga el sitio.</li>
                         <li><strong>Idioma elegido:</strong> si cambias entre inglés y español, la elección se guarda en el <code>localStorage</code> de tu navegador para no sugerirte el otro idioma de nuevo.</li>
                         <li><strong>Registros del servidor:</strong> como la mayoría de los servidores web, el nuestro guarda registros de acceso estándar (dirección IP, página solicitada, fecha y agente de usuario del navegador) por seguridad y para resolver problemas. Se rotan automáticamente y no se usan para identificar ni perfilar a los visitantes.</li>
                     </ul>`],
@@ -120,6 +123,7 @@ const CONTENT = {
                         <li>${ext('https://lrclib.net/', 'LRCLIB')}: base de datos pública de letras.</li>
                         <li>${ext('https://policies.google.com/privacy', 'Google Translate')}: endpoint público de traducción, solo cuando pides una traducción.</li>
                         <li>Servidores de imágenes de Spotify, YouTube y Apple Music: solo con el tema adaptativo, como se describe arriba.</li>
+                        <li>${ext('https://policies.google.com/privacy?hl=es', 'Google Analytics')}: estadísticas de visitas de navilyrics.com (la extensión no lo usa).</li>
                         <li>La Chrome Web Store, donde instalas la extensión, la opera Google con su propia política de privacidad.</li>
                     </ul>
                     <p>Navi Lyrics no está afiliado a Spotify, YouTube Music, Apple Music, LRCLIB ni Google, y no controlamos sus prácticas de privacidad. Consulta sus políticas para saber cómo manejan las peticiones de tu navegador.</p>`],

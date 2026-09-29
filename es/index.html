@@ -5,6 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Google Analytics 4: se carga solo tras consentimiento (assets/consent.js) -->
+    <script src="/assets/consent.js" defer></script>
     <title>Navi Lyrics — Letras flotantes: Spotify, YouTube Music y Apple Music</title>
     <meta name="description" content="Extensión gratis para Chrome: letras flotantes y sincronizadas de Spotify Web, YouTube Music y Apple Music en una ventana siempre visible. Traducción y temas.">
     <link rel="canonical" href="https://navilyrics.com/es/">
@@ -698,6 +700,8 @@
                     <p><span data-i18n="footer.madeWith">Hecho con</span> <span class="text-red-500">❤️</span> <span data-i18n="footer.and">y una buena dosis de prueba y error en</span> <span class="text-green-500">Tijuana, Mexico</span>.</p>
                     <p class="mt-2">
                         <a href="/es/politica-de-privacidad" data-page="privacy" class="text-primary hover:text-white transition-colors underline decoration-primary/30 underline-offset-2" data-i18n="footer.privacyPolicy">Política de Privacidad</a>
+                        <span aria-hidden="true">·</span>
+                        <button type="button" class="text-primary hover:text-white transition-colors underline decoration-primary/30 underline-offset-2" data-consent-open="" data-i18n="footer.cookieSettings">Configurar cookies</button>
                     </p>
                 </div>
 
