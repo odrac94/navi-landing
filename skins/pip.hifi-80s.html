@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navi Lyrics PiP</title>
+    <link rel="stylesheet" href="styles.hifi-80s.css">
+</head>
+
+<!--
+  Skin: Hi-fi 80s (deck japonés de los 80: chasis plateado cepillado,
+  pantalla VFD verde agua, vúmetros L/R y teclas tipo piano).
+  IMPORTANTE: reutiliza EXACTAMENTE los mismos IDs/clases que pip.html
+  (ver contrato en src/shared/skins.js) para que el wiring de
+  content.entry.js funcione sin cambios. Solo cambian el orden y el estilo.
+-->
+
+<body class="hifi">
+
+    <!-- Placa superior del chasis -->
+    <div class="hifi-plate">
+        <div class="hifi-brand">
+            <span class="hifi-logo">NAVI</span>
+            <span class="hifi-logo-jp" aria-hidden="true">ナビ</span>
+        </div>
+        <div class="hifi-badges" aria-hidden="true">
+            <span>STEREO</span>
+            <span class="hifi-led"></span>
+            <span>LYRICS SYSTEM</span>
+        </div>
+    </div>
+
+    <!-- Pantalla VFD -->
+    <div class="hifi-screen">
+
+        <div class="header">
+            <div class="album-thumbnail-container">
+                <img id="album-thumbnail" class="album-thumbnail"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%230b1714' width='64' height='64'/%3E%3C/svg%3E"
+                    alt="Album art" />
+
+                <div class="song-info">
+                    <div id="song-title">__MSG_loading__</div>
+                    <div id="song-artist">-</div>
+                    <div class="song-details">
+                        <div id="song-album">-</div>
+                        <div id="song-year">-</div>
+                    </div>
+                </div>
+
+                <button id="btn-like" class="btn-like" title="__MSG_likeSong__" aria-label="__MSG_likeSong__" hidden>
+                    <span class="material-icons-round like-icon" aria-hidden="true">favorite_border</span>
+                    <span class="material-icons-round liked-icon" aria-hidden="true" style="display:none;">favorite</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Vúmetros decorativos: se animan solo mientras suena (ver :has en CSS) -->
+        <div class="hifi-vu" aria-hidden="true">
+            <span class="hifi-vu-ch">L</span>
+            <div class="hifi-vu-bar hifi-vu-l">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i class="hot"></i><i class="hot"></i><i class="hot"></i>
+            </div>
+            <span class="hifi-vu-ch">R</span>
+            <div class="hifi-vu-bar hifi-vu-r">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i class="hot"></i><i class="hot"></i><i class="hot"></i>
+            </div>
+        </div>
+
+        <!-- Letras -->
+        <div id="lyrics-container">
+            <div id="skeleton-loading" class="loading show-skeleton">
+                <div class="skeleton-loader">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line skeleton-short"></div>
+                    <div class="skeleton-line" style="margin-top: 20px;"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line skeleton-short"></div>
+                </div>
+                <div data-navi-status class="skeleton-caption">__MSG_searchingLyrics__</div>
+            </div>
+        </div>
+
+        <!-- Línea de tiempo -->
+        <div class="hifi-progress">
+            <span id="current-time" class="hifi-time">00:00</span>
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+            <span id="total-time" class="hifi-time">00:00</span>
+        </div>
+    </div>
+
+    <!-- Fila de botones pill (utilidades) -->
+    <div class="toolbar">
+        <div class="toolbar-group">
+            <button id="btn-font-minus" class="toolbar-btn" title="__MSG_decreaseFontSize__" aria-label="__MSG_decreaseFontSize__">A−</button>
+            <button id="btn-font-plus" class="toolbar-btn" title="__MSG_increaseFontSize__" aria-label="__MSG_increaseFontSize__">A+</button>
+        </div>
+
+        <div class="toolbar-group">
+            <button id="btn-offset-slow" class="toolbar-btn" title="__MSG_syncEarlier__" aria-label="__MSG_syncEarlier__">
+                <span class="material-icons-round" aria-hidden="true">fast_rewind</span>
+            </button>
+            <div class="offset-display">
+                <span class="hifi-sync-label" aria-hidden="true">同期</span>
+                <span id="offset-value">0s</span>
+            </div>
+            <button id="btn-offset-fast" class="toolbar-btn" title="__MSG_syncLater__" aria-label="__MSG_syncLater__">
+                <span class="material-icons-round" aria-hidden="true">fast_forward</span>
+            </button>
+        </div>
+
+        <div class="toolbar-group">
+            <button id="btn-translate" class="toolbar-btn hifi-jp-btn" title="__MSG_translateLyrics__" aria-label="__MSG_translateLyrics__">翻訳</button>
+            <div class="version-counter" id="version-badge">1/20</div>
+            <button id="btn-dislike" class="toolbar-btn btn-dislike" title="__MSG_markAsWrongLyrics__" aria-label="__MSG_markAsWrongLyrics__">
+                <span class="material-icons-round" aria-hidden="true">thumb_down</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Teclas de transporte (piano keys) con etiqueta serigrafiada -->
+    <div class="controls">
+        <div class="hifi-key hifi-key-mode">
+            <button id="btn-shuffle" class="btn-mode" title="__MSG_shuffle__" aria-label="__MSG_shuffle__" hidden>
+                <span class="material-icons-round" aria-hidden="true">shuffle</span>
+            </button>
+            <span class="hifi-key-label" aria-hidden="true">シャッフル</span>
+        </div>
+
+        <div class="hifi-key">
+            <button id="btn-prev" title="__MSG_previous__" aria-label="__MSG_previous__">
+                <span class="material-icons-round" aria-hidden="true">skip_previous</span>
+            </button>
+            <span class="hifi-key-label" aria-hidden="true">前</span>
+        </div>
+
+        <div class="hifi-key hifi-key-play">
+            <button id="btn-play" title="__MSG_playPause__" aria-label="__MSG_playPause__">
+                <span class="material-icons-round play-icon" aria-hidden="true" style="display:block;">play_arrow</span>
+                <span class="material-icons-round pause-icon" aria-hidden="true" style="display:none;">pause</span>
+            </button>
+            <span class="hifi-key-label" aria-hidden="true">再生 / 一時停止</span>
+        </div>
+
+        <div class="hifi-key">
+            <button id="btn-next" title="__MSG_next__" aria-label="__MSG_next__">
+                <span class="material-icons-round" aria-hidden="true">skip_next</span>
+            </button>
+            <span class="hifi-key-label" aria-hidden="true">次</span>
+        </div>
+
+        <div class="hifi-key hifi-key-mode">
+            <button id="btn-repeat" class="btn-mode" title="__MSG_repeat__" aria-label="__MSG_repeat__" hidden>
+                <span class="material-icons-round repeat-icon" aria-hidden="true">repeat</span>
+                <span class="material-icons-round repeat-one-icon" aria-hidden="true" style="display:none;">repeat_one</span>
+            </button>
+            <span class="hifi-key-label" aria-hidden="true">リピート</span>
+        </div>
+    </div>
+
+    <!-- AD MODAL OVERLAY -->
+    <div id="ad-overlay-modal" class="ad-overlay-modal" role="status" aria-live="polite">
+        <div class="ad-fairy-wrapper">
+            <svg class="ad-fairy ad-fairy-frame1" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="70" r="40" fill="rgba(95, 243, 208, 0.7)"/>
+                <circle cx="48" cy="60" r="7" fill="#070b0a"/>
+                <circle cx="72" cy="60" r="7" fill="#070b0a"/>
+                <circle cx="51" cy="57" r="2.5" fill="#b6fff0"/>
+                <circle cx="75" cy="63" r="2.5" fill="#b6fff0"/>
+            </svg>
+            <svg class="ad-fairy ad-fairy-frame2" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="70" r="40" fill="rgba(95, 243, 208, 0.7)"/>
+                <circle cx="48" cy="60" r="7" fill="#070b0a"/>
+                <circle cx="72" cy="60" r="7" fill="#070b0a"/>
+                <circle cx="51" cy="63" r="2.5" fill="#b6fff0"/>
+                <circle cx="69" cy="57" r="2.5" fill="#b6fff0"/>
+            </svg>
+        </div>
+
+        <div class="ad-message-container">
+            <div id="ad-message-text" class="ad-message-text">__MSG_adPlaying__</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

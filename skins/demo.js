@@ -14,6 +14,8 @@
     eink: { html: 'pip.eink.html', css: 'styles.eink.css', bodyClass: 'eink' },
     ascii: { html: 'pip.ascii.html', css: 'styles.ascii.css', bodyClass: 'ascii' },
     arcade: { html: 'pip.arcade.html', css: 'styles.arcade.css', bodyClass: 'arcade' },
+    'hifi-80s': { html: 'pip.hifi-80s.html', css: 'styles.hifi-80s.css', bodyClass: 'hifi' },
+    mecha: { html: 'pip.mecha.html', css: 'styles.mecha.css', bodyClass: 'mecha' },
   };
 
   // Solo las claves __MSG_*__ que usan los pip*.html (de _locales/*/messages.json)
@@ -23,12 +25,14 @@
       loading: 'Loading...', markAsWrongLyrics: 'Mark as wrong lyrics', next: 'Next', playPause: 'Play/Pause',
       previous: 'Previous', searchingLyrics: 'Searching lyrics...', syncEarlier: 'Sync earlier',
       syncLater: 'Sync later', translateLyrics: 'Translate lyrics',
+      likeSong: 'Like song', shuffle: 'Shuffle', repeat: 'Repeat',
     },
     es: {
       adPlaying: 'Anuncio en reproducción...', decreaseFontSize: 'Reducir tamaño de fuente',
       increaseFontSize: 'Aumentar tamaño de fuente', loading: 'Cargando...', markAsWrongLyrics: 'Marcar como letra incorrecta',
       next: 'Siguiente', playPause: 'Reproducir/Pausar', previous: 'Anterior', searchingLyrics: 'Buscando letra...',
       syncEarlier: 'Sincronizar antes', syncLater: 'Sincronizar después', translateLyrics: 'Traducir letra',
+      likeSong: 'Me gusta', shuffle: 'Aleatorio', repeat: 'Repetir',
     },
   };
 

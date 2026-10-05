@@ -44,6 +44,11 @@
                     <div id="song-year">-</div>
                 </div>
             </div>
+
+            <button id="btn-like" class="btn-like" title="__MSG_likeSong__" aria-label="__MSG_likeSong__" hidden>
+                <span class="material-icons-round like-icon" aria-hidden="true">favorite_border</span>
+                <span class="material-icons-round liked-icon" aria-hidden="true" style="display:none;">favorite</span>
+            </button>
         </div>
     </div>
 
@@ -117,6 +122,10 @@
 
     <!-- 3. Controles de reproducción -->
     <div class="controls">
+        <button id="btn-shuffle" class="btn-mode" title="__MSG_shuffle__" aria-label="__MSG_shuffle__" hidden>
+            <span class="material-icons-round" aria-hidden="true">shuffle</span>
+        </button>
+
         <button id="btn-prev" title="__MSG_previous__" aria-label="__MSG_previous__">
             <span class="material-icons-round" aria-hidden="true">skip_previous</span>
         </button>
@@ -128,6 +137,11 @@
 
         <button id="btn-next" title="__MSG_next__" aria-label="__MSG_next__">
             <span class="material-icons-round" aria-hidden="true">skip_next</span>
+        </button>
+
+        <button id="btn-repeat" class="btn-mode" title="__MSG_repeat__" aria-label="__MSG_repeat__" hidden>
+            <span class="material-icons-round repeat-icon" aria-hidden="true">repeat</span>
+            <span class="material-icons-round repeat-one-icon" aria-hidden="true" style="display:none;">repeat_one</span>
         </button>
     </div>
 

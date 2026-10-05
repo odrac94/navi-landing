@@ -55,7 +55,7 @@
                 "applicationSubCategory": "Browser extension",
                 "operatingSystem": "Windows, macOS, Linux, ChromeOS",
                 "browserRequirements": "Requires Google Chrome, Microsoft Edge or Brave with Document Picture-in-Picture support",
-                "softwareVersion": "1.6.4",
+                "softwareVersion": "1.7.0",
                 "downloadUrl": "https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp",
                 "installUrl": "https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp",
                 "image": "https://navilyrics.com/assets/og-image.png",
@@ -68,7 +68,9 @@
                     "Synchronized line-by-line lyrics for Spotify Web, YouTube Music and Apple Music",
                     "Real-time lyric translation into 12 languages",
                     "Seven color themes plus an adaptive theme from album art",
-                    "Five retro skins: CRT Amber, Y2K, E-Ink, ASCII and Arcade",
+                    "Seven retro skins: CRT Amber, Y2K, E-Ink, ASCII, Arcade, Hi-fi 80s and Anime Mecha",
+                    "Like, shuffle and repeat controls in the floating window",
+                    "Clickable time bar to jump anywhere in the song",
                     "Local lyrics cache and ad detection"
                 ],
                 "author": { "@id": "https://navilyrics.com/#author" },
@@ -335,6 +337,8 @@
                             <button type="button" class="skin-chip" data-skin="eink" aria-pressed="false" style="--sw-bg:#e8e6e0;--sw-fg:#1a1a1a">E-Ink Paper</button>
                             <button type="button" class="skin-chip" data-skin="ascii" aria-pressed="false" style="--sw-bg:#000000;--sw-fg:#d8d8d8">ASCII / BBS</button>
                             <button type="button" class="skin-chip" data-skin="arcade" aria-pressed="false" style="--sw-bg:#06080f;--sw-fg:#ff2e88">Arcade</button>
+                            <button type="button" class="skin-chip" data-skin="hifi-80s" aria-pressed="false" style="--sw-bg:#070b0a;--sw-fg:#5ff3d0">Hi-fi 80s</button>
+                            <button type="button" class="skin-chip" data-skin="mecha" aria-pressed="false" style="--sw-bg:#07070a;--sw-fg:#ff5a1f">Anime Mecha</button>
                         </div>
 
                         <!-- Temas de color: solo existen en la skin Navi -->
@@ -466,7 +470,7 @@
                         <span class="material-icons text-primary text-xl sm:text-2xl">palette</span>
                     </div>
                     <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3" data-i18n="features.feature7Title">Temas y Skins</h3>
-                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature7Desc">Siete temas de color (Navi Cyan, Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum), un tema Adaptativo que sale de tu carátula y cinco skins retro — CRT Amber, Y2K, E-Ink, ASCII y Arcade. Haz tuya la ventana.</p>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed" data-i18n="features.feature7Desc">Siete temas de color (Navi Cyan, Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum), un tema Adaptativo que sale de tu carátula y siete skins retro — CRT Amber, Y2K, E-Ink, ASCII, Arcade, Hi-fi 80s y Anime Mecha. Haz tuya la ventana.</p>
                 </div>
 
                 <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-colors duration-300 group">
@@ -560,12 +564,12 @@
                             <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary border border-primary/20" data-i18n="roadmap.phase4Label">HECHO</span>
                             <h3 class="font-bold text-white text-lg sm:text-xl" data-i18n="roadmap.phase4Title">Fase 4: Personalización</h3>
                         </div>
-                        <p class="text-xs sm:text-sm text-gray-400 leading-relaxed" data-i18n="roadmap.phase4Desc">Siete temas de color más un tema adaptativo que sale de tu carátula, seis skins retro (CRT Amber, Y2K, E-Ink, ASCII, Arcade), atajos de teclado dentro del PiP y un gran trabajo de rendimiento. Lanzado en v1.5.0.</p>
+                        <p class="text-xs sm:text-sm text-gray-400 leading-relaxed" data-i18n="roadmap.phase4Desc">Siete temas de color más un tema adaptativo que sale de tu carátula, cinco skins retro (CRT Amber, Y2K, E-Ink, ASCII, Arcade), atajos de teclado dentro del PiP y un gran trabajo de rendimiento. Lanzado en v1.5.0.</p>
                     </div>
                 </div>
 
-                <!-- Phase 5: Beyond — PLANNED -->
-                <div class="relative flex flex-col md:flex-row items-center justify-between w-full">
+                <!-- Phase 5: Beyond — DONE -->
+                <div class="relative mb-8 sm:mb-12 flex flex-col md:flex-row items-center justify-between w-full">
                     <div class="w-[calc(100%-3.5rem)] ml-auto md:ml-0 md:w-5/12 glass-panel p-4 sm:p-6 rounded-xl border-l-4 md:border-l-0 md:border-r-4 border-primary shadow-[0_0_15px_rgba(13,242,242,0.15)] text-left md:text-right">
                         <div class="flex flex-wrap gap-2 mb-2 sm:mb-3 items-center md:justify-end">
                             <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary border border-primary/20" data-i18n="roadmap.phase5Label">HECHO</span>
@@ -576,6 +580,40 @@
 
                     <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 z-20 w-10 h-10 bg-primary rounded-full border-4 border-background-dark flex items-center justify-center shadow-[0_0_15px_rgba(13,242,242,0.4)]">
                         <span class="material-icons text-black text-sm font-bold">check</span>
+                    </div>
+
+                    <div class="hidden md:block w-5/12"></div>
+                </div>
+
+                <!-- Phase 6: More Control — DONE -->
+                <div class="relative mb-8 sm:mb-12 flex flex-col md:flex-row items-center justify-between w-full">
+                    <div class="hidden md:block w-5/12"></div>
+
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 z-20 w-10 h-10 bg-primary rounded-full border-4 border-background-dark flex items-center justify-center shadow-[0_0_15px_rgba(13,242,242,0.4)]">
+                        <span class="material-icons text-black text-sm font-bold">check</span>
+                    </div>
+
+                    <div class="w-[calc(100%-3.5rem)] ml-auto md:ml-0 md:w-5/12 glass-panel p-4 sm:p-6 rounded-xl border-l-4 border-primary shadow-[0_0_15px_rgba(13,242,242,0.15)] text-left">
+                        <div class="flex flex-wrap gap-2 mb-2 sm:mb-3 items-center">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary border border-primary/20" data-i18n="roadmap.phase6Label">HECHO</span>
+                            <h3 class="font-bold text-white text-lg sm:text-xl" data-i18n="roadmap.phase6Title">Fase 6: Más Control</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-400 leading-relaxed" data-i18n="roadmap.phase6Desc">Me gusta, aleatorio y repetir desde la ventana flotante, una barra de tiempo clicable para saltar a cualquier punto de la canción, un atajo en la página (Alt+Shift+L) para abrir la letra y dos skins nuevas: Hi-fi 80s y Anime Mecha. Lanzado en v1.7.0.</p>
+                    </div>
+                </div>
+
+                <!-- Phase 7: Skin Market — NEXT -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between w-full">
+                    <div class="w-[calc(100%-3.5rem)] ml-auto md:ml-0 md:w-5/12 glass-panel p-4 sm:p-6 rounded-xl border-l-4 md:border-l-0 md:border-r-4 border-purple-500 text-left md:text-right">
+                        <div class="flex flex-wrap gap-2 mb-2 sm:mb-3 items-center md:justify-end">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30" data-i18n="roadmap.phase7Label">SIGUIENTE</span>
+                            <h3 class="font-bold text-white text-lg sm:text-xl" data-i18n="roadmap.phase7Title">Fase 7: Mercado de Skins</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-400 leading-relaxed" data-i18n="roadmap.phase7Desc">Una galería en este sitio para descargar solo las skins que te gustan e importarlas en la extensión. Después, abierta a la comunidad para que cualquiera publique las suyas.</p>
+                    </div>
+
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 z-20 w-10 h-10 bg-background-dark rounded-full border-4 border-purple-500 flex items-center justify-center">
+                        <span class="material-icons text-purple-300 text-sm font-bold">schedule</span>
                     </div>
 
                     <div class="hidden md:block w-5/12"></div>

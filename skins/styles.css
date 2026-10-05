@@ -785,3 +785,98 @@ body {
         text-shadow: 0 0 20px rgba(var(--accent-rgb), 0.8);
     }
 }
+
+/* ===== LIKE / ALEATORIO / REPETIR =====
+   [hidden] lo pone el content script si la plataforma no soporta la acción.
+   aria-pressed="true" = activo; sin aria-pressed = estado desconocido. */
+#btn-like[hidden],
+.controls button[hidden] {
+    display: none !important;
+}
+
+.btn-like {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    margin: 6px auto 0;
+    border-radius: 50%;
+    border: 1px solid var(--navi-glass-border);
+    background: var(--navi-glass-surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    /* Mismo umbral que #song-title: sin título visible, el like sobra */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+@media screen and (min-height: 420px) {
+    .btn-like {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 360px) and (min-height: 500px) {
+    .btn-like {
+        margin: 0 0 0 auto;
+    }
+}
+
+.btn-like .material-icons-round {
+    font-size: 18px;
+}
+
+.btn-like:hover {
+    color: var(--error-hex);
+    border-color: rgba(var(--error-rgb), 0.5);
+}
+
+.btn-like[aria-pressed="true"] {
+    color: var(--error-hex);
+    border-color: var(--error-hex);
+    background: rgba(var(--error-rgb), 0.12);
+}
+
+.controls {
+    gap: 14px;
+}
+
+.controls button.btn-mode {
+    width: 36px;
+    height: 36px;
+    color: var(--text-tertiary);
+}
+
+.controls button.btn-mode .material-icons-round {
+    font-size: 18px;
+}
+
+.controls button.btn-mode[aria-pressed="true"] {
+    color: var(--navi-primary);
+    border-color: rgba(var(--accent-rgb), 0.5);
+}
+
+/* ===== FOCO VISIBLE (teclado) Y BARRA DE TIEMPO INTERACTIVA =====
+   .navi-seekable y role="slider" los pone el content script en la pista de
+   #progress-bar: clic para saltar, arrastrar para buscar, ←/→ con foco. */
+.navi-seekable {
+    cursor: pointer;
+    touch-action: none;
+}
+
+button:focus-visible,
+.navi-seekable:focus-visible {
+    outline: 2px solid var(--navi-primary);
+    outline-offset: 2px;
+}
+
+/* La pista mide 3px: se engrosa al pasar el mouse / arrastrar */
+.progress-container.navi-seekable {
+    transition: height 0.15s ease;
+}
+
+.progress-container.navi-seekable:hover,
+.progress-container.navi-seekable.is-seeking {
+    height: 6px;
+}

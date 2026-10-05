@@ -41,6 +41,7 @@ ${section('history', 'A short history', `                    <ul>
                         <li><strong>June 2026 · v1.4.0:</strong> color themes, adaptive theme and keyboard shortcuts.</li>
                         <li><strong>June 2026 · v1.5.0:</strong> retro skins: CRT Amber, Y2K, E-Ink, ASCII and Arcade.</li>
                         <li><strong>June 2026 · v1.6.0:</strong> Apple Music support.</li>
+                        <li><strong>October 2026 · v1.7.0:</strong> like, shuffle and repeat controls, a clickable time bar, and the Hi-fi 80s and Anime Mecha skins.</li>
                     </ul>
                     <p>Every change is in the <a href="${ROUTES.changelog[lang]}">changelog</a>.</p>`)}
 
@@ -75,6 +76,7 @@ ${section('history', 'Una breve historia', `                    <ul>
                         <li><strong>Junio 2026 · v1.4.0:</strong> temas de color, tema adaptativo y atajos de teclado.</li>
                         <li><strong>Junio 2026 · v1.5.0:</strong> skins retro: CRT Amber, Y2K, E-Ink, ASCII y Arcade.</li>
                         <li><strong>Junio 2026 · v1.6.0:</strong> compatibilidad con Apple Music.</li>
+                        <li><strong>Octubre 2026 · v1.7.0:</strong> controles de me gusta, aleatorio y repetir, una barra de tiempo clicable y las skins Hi-fi 80s y Anime Mecha.</li>
                     </ul>
                     <p>Todos los cambios están en las <a href="${ROUTES.changelog[lang]}">novedades</a>.</p>`)}
 

@@ -684,3 +684,75 @@ body.y2k .ad-overlay-modal.active { display: flex; }
         pointer-events: auto;
     }
 }
+
+/* ===== LIKE / ALEATORIO / REPETIR =====
+   [hidden] lo pone el content script si la plataforma no soporta la acción.
+   aria-pressed="true" = activo; sin aria-pressed = estado desconocido. */
+#btn-like[hidden],
+.controls button[hidden] {
+    display: none !important;
+}
+
+.btn-like {
+    flex-shrink: 0;
+    margin-left: auto;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: var(--magenta);
+    border: 3px solid #000;
+    border-radius: 9px;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-like .material-icons-round {
+    font-size: 18px;
+}
+
+.btn-like[aria-pressed="true"] {
+    color: #fff;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 48%),
+        linear-gradient(180deg, var(--pink-hot), var(--pink-deep));
+}
+
+.btn-like:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #000;
+}
+
+.controls button.btn-mode {
+    width: 34px;
+    height: 34px;
+    color: var(--magenta);
+    background: var(--paper);
+}
+
+.controls button.btn-mode .material-icons-round {
+    font-size: 18px;
+}
+
+/* Activo = botón "hundido" */
+.controls button.btn-mode[aria-pressed="true"] {
+    color: #fff;
+    background: linear-gradient(180deg, var(--magenta), var(--pink-deep));
+    box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.35);
+    transform: translate(2px, 2px);
+}
+
+/* ===== FOCO VISIBLE (teclado) Y BARRA DE TIEMPO INTERACTIVA =====
+   .navi-seekable y role="slider" los pone el content script en la pista de
+   #progress-bar: clic para saltar, arrastrar para buscar, ←/→ con foco. */
+.navi-seekable {
+    cursor: pointer;
+    touch-action: none;
+}
+
+button:focus-visible,
+.navi-seekable:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}

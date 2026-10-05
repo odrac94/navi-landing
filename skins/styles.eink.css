@@ -565,3 +565,65 @@ body.eink > * {
 @media (max-height: 230px) {
     .eink-progress { display: none; }
 }
+
+/* ===== LIKE / ALEATORIO / REPETIR =====
+   [hidden] lo pone el content script si la plataforma no soporta la acción.
+   aria-pressed="true" = activo; sin aria-pressed = estado desconocido. */
+#btn-like[hidden],
+.controls button[hidden] {
+    display: none !important;
+}
+
+.btn-like {
+    flex-shrink: 0;
+    margin-left: auto;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+}
+
+.btn-like .material-icons-round {
+    font-size: 18px;
+}
+
+/* Tinta invertida = activo (sin color: es e-ink) */
+.btn-like:hover,
+.btn-like[aria-pressed="true"],
+.controls button.btn-mode[aria-pressed="true"] {
+    color: var(--paper);
+    background: var(--ink);
+}
+
+.controls button.btn-mode {
+    width: 34px;
+    height: 34px;
+    color: var(--ink-soft);
+    border-style: dashed;
+}
+
+.controls button.btn-mode[aria-pressed="true"] {
+    border-style: solid;
+}
+
+.controls button.btn-mode .material-icons-round {
+    font-size: 18px;
+}
+
+/* ===== FOCO VISIBLE (teclado) Y BARRA DE TIEMPO INTERACTIVA =====
+   .navi-seekable y role="slider" los pone el content script en la pista de
+   #progress-bar: clic para saltar, arrastrar para buscar, ←/→ con foco. */
+.navi-seekable {
+    cursor: pointer;
+    touch-action: none;
+}
+
+button:focus-visible,
+.navi-seekable:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}

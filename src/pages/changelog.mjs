@@ -7,6 +7,27 @@ import { ctaButton, escape } from './layout.mjs';
 
 export const RELEASES = [
   {
+    version: '1.7.0', date: '2026-10-04',
+    en: [
+      'Like, shuffle and repeat buttons in every skin. They follow the state on the site and hide when a platform has no such control (Apple Music has no like button in its player).',
+      'Click or drag the time bar to jump anywhere in the song. With the bar focused, the left and right arrows jump 5 seconds.',
+      'Two new skins: Hi-fi 80s, a silver Japanese stereo deck with a teal display and VU meters, and Anime Mecha, an orange and amber cockpit HUD.',
+      'Press Alt+Shift+L on the music page to open or close the floating lyrics.',
+      'New “?” button in the popup listing every keyboard shortcut. Inside the window, L, S and R toggle like, shuffle and repeat.',
+      'New installs get Alt+Shift+Y as the shortcut to open the popup, because Ctrl+Shift+L is taken by Microsoft Edge.',
+      'Visible keyboard focus in every skin.',
+    ],
+    es: [
+      'Botones de me gusta, aleatorio y repetir en todas las skins. Siguen el estado del sitio y se ocultan cuando una plataforma no tiene ese control (el reproductor de Apple Music no tiene me gusta).',
+      'Haz clic o arrastra la barra de tiempo para saltar a cualquier punto de la canción. Con la barra enfocada, las flechas izquierda y derecha saltan 5 segundos.',
+      'Dos skins nuevas: Hi-fi 80s, un equipo de sonido japonés plateado con pantalla verde agua y vúmetros, y Anime Mecha, un HUD de cabina en naranja y ámbar.',
+      'Pulsa Alt+Shift+L en la página de música para abrir o cerrar las letras flotantes.',
+      'Nuevo botón “?” en el popup con todos los atajos de teclado. Dentro de la ventana, L, S y R activan me gusta, aleatorio y repetir.',
+      'Las instalaciones nuevas usan Alt+Shift+Y para abrir el popup, porque Microsoft Edge ya ocupa Ctrl+Shift+L.',
+      'Foco de teclado visible en todas las skins.',
+    ],
+  },
+  {
     version: '1.6.4', date: '2026-07-06',
     en: [
       'The lyrics cache now keeps up to 400 songs (was 120), so songs you replay load instantly.',

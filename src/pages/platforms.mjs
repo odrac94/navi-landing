@@ -131,7 +131,7 @@ export const PLATFORMS = {
         shared.en.keyboard,
         ads.en('Spotify Free'),
         shared.en.translate,
-        { icon: 'palette', title: 'A Spotify-green theme', text: 'Pick the Spotify color theme to match the player, or any of the other themes, the adaptive theme that takes its color from the album art, and five retro skins.' },
+        { icon: 'palette', title: 'A Spotify-green theme', text: 'Pick the Spotify color theme to match the player, or any of the other themes, the adaptive theme that takes its color from the album art, and seven retro skins.' },
       ],
       limits: [
         'Navi works with the <strong>Spotify web player</strong>. The Spotify desktop and mobile apps are not supported, because Chrome extensions only run inside the browser.',
@@ -162,7 +162,7 @@ export const PLATFORMS = {
         shared.es.keyboard,
         ads.es('Spotify Free'),
         shared.es.translate,
-        { icon: 'palette', title: 'Un tema verde Spotify', text: 'Elige el tema de color Spotify para que combine con el reproductor, o cualquiera de los otros temas, el tema adaptativo que toma el color de la carátula y cinco skins retro.' },
+        { icon: 'palette', title: 'Un tema verde Spotify', text: 'Elige el tema de color Spotify para que combine con el reproductor, o cualquiera de los otros temas, el tema adaptativo que toma el color de la carátula y siete skins retro.' },
       ],
       limits: [
         'Navi funciona con el <strong>reproductor web de Spotify</strong>. Las apps de escritorio y móvil de Spotify no son compatibles, porque las extensiones de Chrome solo funcionan dentro del navegador.',
@@ -196,7 +196,7 @@ export const PLATFORMS = {
         shared.en.keyboard,
         ads.en('YouTube Music'),
         { ...shared.en.translate, text: `Listening to K-pop, J-pop or music in another language? ${shared.en.translate.text}` },
-        { icon: 'palette', title: 'Themes and retro skins', text: 'Seven color themes, an adaptive theme that takes its color from the album art, and five retro skins: CRT Amber, Y2K, E-Ink, ASCII and Arcade.' },
+        { icon: 'palette', title: 'Themes and retro skins', text: 'Seven color themes, an adaptive theme that takes its color from the album art, and seven retro skins: CRT Amber, Y2K, E-Ink, ASCII, Arcade, Hi-fi 80s and Anime Mecha.' },
       ],
       limits: [
         'Navi works on <strong>music.youtube.com</strong>. Regular videos on youtube.com are not supported, and neither are the YouTube Music mobile apps.',
@@ -227,7 +227,7 @@ export const PLATFORMS = {
         shared.es.keyboard,
         ads.es('YouTube Music'),
         { ...shared.es.translate, text: `¿Escuchas K-pop, J-pop o música en otro idioma? ${shared.es.translate.text}` },
-        { icon: 'palette', title: 'Temas y skins retro', text: 'Siete temas de color, un tema adaptativo que toma el color de la carátula y cinco skins retro: CRT Amber, Y2K, E-Ink, ASCII y Arcade.' },
+        { icon: 'palette', title: 'Temas y skins retro', text: 'Siete temas de color, un tema adaptativo que toma el color de la carátula y siete skins retro: CRT Amber, Y2K, E-Ink, ASCII, Arcade, Hi-fi 80s y Anime Mecha.' },
       ],
       limits: [
         'Navi funciona en <strong>music.youtube.com</strong>. Los videos normales de youtube.com no son compatibles, y tampoco las apps móviles de YouTube Music.',
@@ -261,7 +261,7 @@ export const PLATFORMS = {
         shared.en.keyboard,
         { icon: 'image', title: 'Sharp album art', text: 'The floating window shows the album cover in higher resolution than the player bar. With the adaptive theme, its dominant color tints the window.' },
         shared.en.translate,
-        { icon: 'palette', title: 'An Apple Music red theme', text: 'Pick the Apple Music color theme, or any of the other themes and five retro skins: CRT Amber, Y2K, E-Ink, ASCII and Arcade.' },
+        { icon: 'palette', title: 'An Apple Music red theme', text: 'Pick the Apple Music color theme, or any of the other themes and seven retro skins: CRT Amber, Y2K, E-Ink, ASCII, Arcade, Hi-fi 80s and Anime Mecha.' },
       ],
       limits: [
         'Navi works with the <strong>Apple Music web player</strong> at music.apple.com. The Music app on macOS, the Apple Music app for Windows and iTunes are not supported.',
@@ -292,7 +292,7 @@ export const PLATFORMS = {
         shared.es.keyboard,
         { icon: 'image', title: 'Carátula nítida', text: 'La ventana flotante muestra la portada del álbum en mayor resolución que la barra del reproductor. Con el tema adaptativo, su color dominante tiñe la ventana.' },
         shared.es.translate,
-        { icon: 'palette', title: 'Un tema rojo Apple Music', text: 'Elige el tema de color Apple Music, o cualquiera de los otros temas y cinco skins retro: CRT Amber, Y2K, E-Ink, ASCII y Arcade.' },
+        { icon: 'palette', title: 'Un tema rojo Apple Music', text: 'Elige el tema de color Apple Music, o cualquiera de los otros temas y siete skins retro: CRT Amber, Y2K, E-Ink, ASCII, Arcade, Hi-fi 80s y Anime Mecha.' },
       ],
       limits: [
         'Navi funciona con el <strong>reproductor web de Apple Music</strong> en music.apple.com. La app Música de macOS, la app de Apple Music para Windows e iTunes no son compatibles.',

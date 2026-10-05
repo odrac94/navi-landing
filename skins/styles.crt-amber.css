@@ -818,3 +818,73 @@ body.crt > .ad-overlay-modal.active {
         -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
     }
 }
+
+/* ===== LIKE / ALEATORIO / REPETIR =====
+   [hidden] lo pone el content script si la plataforma no soporta la acción.
+   aria-pressed="true" = activo; sin aria-pressed = estado desconocido. */
+#btn-like[hidden],
+.controls button[hidden] {
+    display: none !important;
+}
+
+.btn-like {
+    flex-shrink: 0;
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--amber-dim);
+    cursor: pointer;
+    padding: 5px;
+    line-height: 0;
+    transition: color 0.12s, border-color 0.12s;
+}
+
+.btn-like .material-icons-round {
+    font-size: 18px;
+}
+
+.btn-like:hover,
+.btn-like[aria-pressed="true"] {
+    color: var(--amber);
+    border-color: var(--amber-dim);
+    filter: drop-shadow(0 0 6px rgba(255, 176, 0, 0.5));
+}
+
+.controls {
+    gap: 20px;
+}
+
+.controls button.btn-mode {
+    color: var(--amber-faint);
+    filter: none;
+}
+
+.controls button.btn-mode .material-icons-round {
+    font-size: 20px;
+}
+
+.controls button.btn-mode[aria-pressed="true"] {
+    color: var(--amber);
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(255, 176, 0, 0.5));
+}
+
+/* ===== FOCO VISIBLE (teclado) Y BARRA DE TIEMPO INTERACTIVA =====
+   .navi-seekable y role="slider" los pone el content script en la pista de
+   #progress-bar: clic para saltar, arrastrar para buscar, ←/→ con foco. */
+.navi-seekable {
+    cursor: pointer;
+    touch-action: none;
+}
+
+button:focus-visible,
+.navi-seekable:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px;
+}
+
+/* La pista mide 1px: se engrosa al pasar el mouse / arrastrar */
+.progress-container.navi-seekable:hover,
+.progress-container.navi-seekable.is-seeking {
+    height: 3px;
+}

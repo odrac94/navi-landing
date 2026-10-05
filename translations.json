@@ -38,7 +38,7 @@
       "feature6Title": "Multi-Language UI",
       "feature6Desc": "Full interface available in English and Spanish. The extension adapts to your browser language automatically.",
       "feature7Title": "Themes & Skins",
-      "feature7Desc": "Seven color themes (Navi Cyan, Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum), an Adaptive theme drawn from your album art, and five retro skins — CRT Amber, Y2K, E-Ink, ASCII and Arcade. Make the window yours.",
+      "feature7Desc": "Seven color themes (Navi Cyan, Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum), an Adaptive theme drawn from your album art, and seven retro skins — CRT Amber, Y2K, E-Ink, ASCII, Arcade, Hi-fi 80s and Anime Mecha. Make the window yours.",
       "feature8Title": "Lyric Translation",
       "feature8Desc": "Translate any lyric in real time into 12 languages — Korean, Japanese, Chinese, Arabic, Hindi and more — right inside the floating window."
     },
@@ -56,10 +56,16 @@
       "phase3Desc": "Real-time lyric translations across 13 languages (Korean, Japanese, Chinese, Arabic, Hindi and more) with smart caching. Shipped in v1.3.0.",
       "phase4Label": "DONE",
       "phase4Title": "Phase 4: Customization",
-      "phase4Desc": "Seven color themes plus an adaptive theme from your album art, six retro skins (CRT Amber, Y2K, E-Ink, ASCII, Arcade), keyboard shortcuts inside the PiP, and major performance work. Shipped in v1.5.0.",
+      "phase4Desc": "Seven color themes plus an adaptive theme from your album art, five retro skins (CRT Amber, Y2K, E-Ink, ASCII, Arcade), keyboard shortcuts inside the PiP, and major performance work. Shipped in v1.5.0.",
       "phase5Label": "DONE",
       "phase5Title": "Phase 5: Beyond",
-      "phase5Desc": "Apple Music support shipped in v1.6.0. Tidal and community-requested features are next."
+      "phase5Desc": "Apple Music support shipped in v1.6.0. Tidal and community-requested features are next.",
+      "phase6Label": "DONE",
+      "phase6Title": "Phase 6: More Control",
+      "phase6Desc": "Like, shuffle and repeat from the floating window, a clickable time bar to jump anywhere in the song, a page shortcut (Alt+Shift+L) to open the lyrics, and two new skins: Hi-fi 80s and Anime Mecha. Shipped in v1.7.0.",
+      "phase7Label": "NEXT",
+      "phase7Title": "Phase 7: Skin Market",
+      "phase7Desc": "A gallery on this site to download only the skins you like and import them into the extension. Later, open to the community so anyone can publish their own."
     },
     "footer": {
       "supportProject": "Support the project",
@@ -158,7 +164,7 @@
       "feature6Title": "Interfaz Multilingüe",
       "feature6Desc": "Interfaz completa disponible en inglés y español. La extensión se adapta automáticamente al idioma de tu navegador.",
       "feature7Title": "Temas y Skins",
-      "feature7Desc": "Siete temas de color (Navi Cyan, Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum), un tema Adaptativo que sale de tu carátula y cinco skins retro — CRT Amber, Y2K, E-Ink, ASCII y Arcade. Haz tuya la ventana.",
+      "feature7Desc": "Siete temas de color (Navi Cyan, Spotify, Apple Music, AMOLED, Sunset, Forest, Bubblegum), un tema Adaptativo que sale de tu carátula y siete skins retro — CRT Amber, Y2K, E-Ink, ASCII, Arcade, Hi-fi 80s y Anime Mecha. Haz tuya la ventana.",
       "feature8Title": "Traducción de Letras",
       "feature8Desc": "Traduce cualquier letra en tiempo real a 12 idiomas — coreano, japonés, chino, árabe, hindi y más — dentro de la ventana flotante."
     },
@@ -176,10 +182,16 @@
       "phase3Desc": "Traducciones de letras en tiempo real en 13 idiomas (coreano, japonés, chino, árabe, hindi y más) con caché inteligente. Lanzado en v1.3.0.",
       "phase4Label": "HECHO",
       "phase4Title": "Fase 4: Personalización",
-      "phase4Desc": "Siete temas de color más un tema adaptativo que sale de tu carátula, seis skins retro (CRT Amber, Y2K, E-Ink, ASCII, Arcade), atajos de teclado dentro del PiP y un gran trabajo de rendimiento. Lanzado en v1.5.0.",
+      "phase4Desc": "Siete temas de color más un tema adaptativo que sale de tu carátula, cinco skins retro (CRT Amber, Y2K, E-Ink, ASCII, Arcade), atajos de teclado dentro del PiP y un gran trabajo de rendimiento. Lanzado en v1.5.0.",
       "phase5Label": "HECHO",
       "phase5Title": "Fase 5: Más Allá",
-      "phase5Desc": "El soporte para Apple Music se lanzó en v1.6.0. Tidal y las funciones de la comunidad son lo siguiente."
+      "phase5Desc": "El soporte para Apple Music se lanzó en v1.6.0. Tidal y las funciones de la comunidad son lo siguiente.",
+      "phase6Label": "HECHO",
+      "phase6Title": "Fase 6: Más Control",
+      "phase6Desc": "Me gusta, aleatorio y repetir desde la ventana flotante, una barra de tiempo clicable para saltar a cualquier punto de la canción, un atajo en la página (Alt+Shift+L) para abrir la letra y dos skins nuevas: Hi-fi 80s y Anime Mecha. Lanzado en v1.7.0.",
+      "phase7Label": "SIGUIENTE",
+      "phase7Title": "Fase 7: Mercado de Skins",
+      "phase7Desc": "Una galería en este sitio para descargar solo las skins que te gustan e importarlas en la extensión. Después, abierta a la comunidad para que cualquiera publique las suyas."
     },
     "footer": {
       "supportProject": "Apoya el proyecto",

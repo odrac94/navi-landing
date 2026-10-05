@@ -20,11 +20,11 @@ const LANGS = ['en', 'es'];
 // Fecha de última modificación de cada página (para el sitemap). Actualizar al
 // cambiar el contenido de una página; changelog usa la fecha de la última versión.
 const LASTMOD = {
-  home: '2026-09-26',
-  spotify: '2026-09-26',
-  youtubeMusic: '2026-09-26',
-  appleMusic: '2026-09-26',
-  about: '2026-09-26',
+  home: '2026-10-04',
+  spotify: '2026-10-04',
+  youtubeMusic: '2026-10-04',
+  appleMusic: '2026-10-04',
+  about: '2026-10-04',
   changelog: RELEASES[0].date,
   privacy: '2026-09-26',
 };

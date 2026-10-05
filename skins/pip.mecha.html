@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navi Lyrics PiP</title>
+    <link rel="stylesheet" href="styles.mecha.css">
+</head>
+
+<!--
+  Skin: Anime / Mecha (HUD de cabina: naranja/ámbar sobre negro, esquinas
+  cortadas, franjas de peligro, retícula y kanji de sistema).
+  IMPORTANTE: reutiliza EXACTAMENTE los mismos IDs/clases que pip.html
+  (ver contrato en src/shared/skins.js) para que el wiring de
+  content.entry.js funcione sin cambios. Solo cambian el orden y el estilo.
+-->
+
+<body class="mecha">
+
+    <div class="mecha-grid" aria-hidden="true"></div>
+
+    <!-- Barra de sistema -->
+    <div class="mecha-topbar" aria-hidden="true">
+        <div class="mecha-tag">歌詞</div>
+        <div class="mecha-sys">
+            <span>LYRIC SYNC SYSTEM // NAVI-01</span>
+            <span class="mecha-status">STATUS: <b class="mecha-status-on">ACTIVE</b><b class="mecha-status-off">STANDBY</b></span>
+        </div>
+        <div class="mecha-hazard"></div>
+    </div>
+
+    <!-- Panel del piloto: carátula + canción -->
+    <div class="header">
+        <div class="album-thumbnail-container">
+            <img id="album-thumbnail" class="album-thumbnail"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%231a1206' width='64' height='64'/%3E%3C/svg%3E"
+                alt="Album art" />
+
+            <div class="song-info">
+                <div id="song-title">__MSG_loading__</div>
+                <div id="song-artist">-</div>
+                <div class="song-details">
+                    <div id="song-album">-</div>
+                    <div id="song-year">-</div>
+                </div>
+            </div>
+
+            <button id="btn-like" class="btn-like" title="__MSG_likeSong__" aria-label="__MSG_likeSong__" hidden>
+                <span class="material-icons-round like-icon" aria-hidden="true">favorite_border</span>
+                <span class="material-icons-round liked-icon" aria-hidden="true" style="display:none;">favorite</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Letras con retícula -->
+    <div class="mecha-lyrics">
+        <svg class="mecha-reticle" width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="27" cy="27" r="20"></circle>
+            <circle cx="27" cy="27" r="4"></circle>
+            <line x1="27" y1="0" x2="27" y2="14"></line>
+            <line x1="27" y1="40" x2="27" y2="54"></line>
+            <line x1="0" y1="27" x2="14" y2="27"></line>
+            <line x1="40" y1="27" x2="54" y2="27"></line>
+        </svg>
+        <div id="lyrics-container">
+            <div id="skeleton-loading" class="loading show-skeleton">
+                <div class="skeleton-loader">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line skeleton-short"></div>
+                    <div class="skeleton-line" style="margin-top: 20px;"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line skeleton-short"></div>
+                </div>
+                <div data-navi-status class="skeleton-caption">__MSG_searchingLyrics__</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Línea de tiempo segmentada -->
+    <div class="mecha-progress">
+        <span id="current-time" class="mecha-time">00:00</span>
+        <div class="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+        <span id="total-time" class="mecha-time">00:00</span>
+    </div>
+
+    <!-- Controles utilitarios -->
+    <div class="toolbar">
+        <button id="btn-font-minus" class="toolbar-btn" title="__MSG_decreaseFontSize__" aria-label="__MSG_decreaseFontSize__">A−</button>
+        <button id="btn-font-plus" class="toolbar-btn" title="__MSG_increaseFontSize__" aria-label="__MSG_increaseFontSize__">A+</button>
+
+        <div class="toolbar-group mecha-sync">
+            <button id="btn-offset-slow" class="toolbar-btn" title="__MSG_syncEarlier__" aria-label="__MSG_syncEarlier__">
+                <span class="material-icons-round" aria-hidden="true">fast_rewind</span>
+            </button>
+            <div class="offset-display">
+                <span class="mecha-sync-label" aria-hidden="true">SYNC</span>
+                <span id="offset-value">0s</span>
+            </div>
+            <button id="btn-offset-fast" class="toolbar-btn" title="__MSG_syncLater__" aria-label="__MSG_syncLater__">
+                <span class="material-icons-round" aria-hidden="true">fast_forward</span>
+            </button>
+        </div>
+
+        <button id="btn-translate" class="toolbar-btn mecha-jp-btn" title="__MSG_translateLyrics__" aria-label="__MSG_translateLyrics__">翻訳</button>
+
+        <div class="toolbar-group">
+            <div class="version-counter" id="version-badge">1/20</div>
+            <button id="btn-dislike" class="toolbar-btn btn-dislike" title="__MSG_markAsWrongLyrics__" aria-label="__MSG_markAsWrongLyrics__">
+                <span class="material-icons-round" aria-hidden="true">thumb_down</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Controles de reproducción -->
+    <div class="controls">
+        <button id="btn-shuffle" class="btn-mode" title="__MSG_shuffle__" aria-label="__MSG_shuffle__" hidden>
+            <span class="material-icons-round" aria-hidden="true">shuffle</span>
+        </button>
+
+        <button id="btn-prev" title="__MSG_previous__" aria-label="__MSG_previous__">
+            <span class="material-icons-round" aria-hidden="true">skip_previous</span>
+        </button>
+
+        <button id="btn-play" title="__MSG_playPause__" aria-label="__MSG_playPause__">
+            <span class="play-icon" aria-hidden="true" style="display:block;">
+                <span class="material-icons-round">play_arrow</span><span class="mecha-play-jp">再生</span>
+            </span>
+            <span class="pause-icon" aria-hidden="true" style="display:none;">
+                <span class="material-icons-round">pause</span><span class="mecha-play-jp">停止</span>
+            </span>
+        </button>
+
+        <button id="btn-next" title="__MSG_next__" aria-label="__MSG_next__">
+            <span class="material-icons-round" aria-hidden="true">skip_next</span>
+        </button>
+
+        <button id="btn-repeat" class="btn-mode" title="__MSG_repeat__" aria-label="__MSG_repeat__" hidden>
+            <span class="material-icons-round repeat-icon" aria-hidden="true">repeat</span>
+            <span class="material-icons-round repeat-one-icon" aria-hidden="true" style="display:none;">repeat_one</span>
+        </button>
+    </div>
+
+    <!-- AD MODAL OVERLAY -->
+    <div id="ad-overlay-modal" class="ad-overlay-modal" role="status" aria-live="polite">
+        <div class="ad-fairy-wrapper">
+            <svg class="ad-fairy ad-fairy-frame1" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="70" r="40" fill="rgba(255, 90, 31, 0.75)"/>
+                <circle cx="48" cy="60" r="7" fill="#07070a"/>
+                <circle cx="72" cy="60" r="7" fill="#07070a"/>
+                <circle cx="51" cy="57" r="2.5" fill="#ffb000"/>
+                <circle cx="75" cy="63" r="2.5" fill="#ffb000"/>
+            </svg>
+            <svg class="ad-fairy ad-fairy-frame2" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="70" r="40" fill="rgba(255, 90, 31, 0.75)"/>
+                <circle cx="48" cy="60" r="7" fill="#07070a"/>
+                <circle cx="72" cy="60" r="7" fill="#07070a"/>
+                <circle cx="51" cy="63" r="2.5" fill="#ffb000"/>
+                <circle cx="69" cy="57" r="2.5" fill="#ffb000"/>
+            </svg>
+        </div>
+
+        <div class="ad-message-container">
+            <div class="mecha-ad-warn" aria-hidden="true">WARNING // 警告</div>
+            <div id="ad-message-text" class="ad-message-text">__MSG_adPlaying__</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
