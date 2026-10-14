@@ -217,19 +217,86 @@
             outline-offset: 2px;
         }
 
-        /* Halo detrás del PiP: lo separa del fondo sin más elementos decorativos */
-        .pip-stage::before {
-            content: "";
+        /* Mazo de skins del hero. --slot: 0 = frente, 1-2 = asoman detrás, 3 = oculta.
+           Las de atrás se abren hacia arriba a la derecha, más chicas y más oscuras. */
+        .deck {
+            --dx: 8px;
+            --dy: -13px;
+            --rot: 2deg;
+            --shrink: 0.03;
+        }
+
+        @media (min-width: 640px) {
+            .deck {
+                --dx: 18px;
+                --dy: -22px;
+                --rot: 3deg;
+                --shrink: 0.04;
+            }
+        }
+
+        .deck-card {
             position: absolute;
-            inset: 8% -18% 20%;
-            z-index: -1;
-            background: radial-gradient(closest-side, rgba(13, 242, 242, 0.22), transparent);
-            filter: blur(24px);
+            inset: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            background: #05080c;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 24px 48px -12px rgba(2, 6, 12, 0.7);
+            /* Origen arriba: al encoger, el borde superior no baja y la tarjeta asoma */
+            transform-origin: 50% 0;
+            transform:
+                translate(calc(var(--slot) * var(--dx)), calc(var(--slot) * var(--dy)))
+                rotate(calc(var(--slot) * var(--rot)))
+                scale(calc(1 - var(--slot) * var(--shrink)));
+            z-index: calc(10 - var(--slot));
+            transition:
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.5s ease,
+                opacity 0.15s ease;
+        }
+
+        .deck-back {
+            cursor: pointer;
+            filter: brightness(calc(1 - var(--slot) * 0.22));
+        }
+
+        .deck-back[data-slot="3"] {
+            opacity: 0;
             pointer-events: none;
         }
 
+        .deck-back img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .deck-live {
+            z-index: 20;
+        }
+
+        /* La tarjeta en vivo sale girando hacia la izquierda... */
+        .deck-live.is-leaving {
+            transform: translate(-70%, 24px) rotate(-12deg);
+            opacity: 0;
+            transition: transform 0.32s cubic-bezier(0.4, 0, 1, 1), opacity 0.32s ease-in;
+        }
+
+        /* ...y vuelve al frente invisible mientras el demo monta la skin nueva */
+        .deck-live.is-hidden {
+            opacity: 0;
+            transition: none;
+        }
+
+        .deck-card.no-anim {
+            transition: none;
+        }
+
         @media (prefers-reduced-motion: reduce) {
-            .skin-swatch::before {
+            .skin-swatch::before,
+            .deck-card {
                 transition: none;
             }
         }
@@ -301,43 +368,54 @@
                     <p class="text-[1.875rem] sm:text-5xl xl:text-[3.5rem] font-bold tracking-tight leading-[1.1]">
                         <span data-i18n="hero.heading1">The tool your productivity</span>
                         <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-700 decoration-line-through line-through decoration-primary/50 decoration-4" data-i18n="hero.heading2">didn't
+                            class="text-gray-500 line-through decoration-primary decoration-[3px]" data-i18n="hero.heading2">didn't
                             ask for</span><span data-i18n="hero.heading3">,
-                        but your inner </span><span class="text-primary neon-text-glow" data-i18n="hero.heading4">karaoke</span><span data-i18n="hero.heading5"> needs.</span>
+                        but your inner </span><span class="text-primary" data-i18n="hero.heading4">karaoke</span><span data-i18n="hero.heading5"> needs.</span>
                     </p>
                 </div>
 
-                <!-- PiP en vivo: skins reales de la extensión (skins/, ver scripts/sync-skins.mjs) -->
-                <div class="lg:col-start-8 lg:col-span-5 lg:row-start-1 lg:row-span-2 relative mt-6 sm:mt-10 lg:mt-0">
-                    <div class="pip-stage relative mx-auto w-full max-w-[400px] lg:max-w-[440px]">
-                        <div class="relative rounded-xl sm:rounded-2xl overflow-hidden ring-1 ring-white/15 shadow-2xl shadow-black/60 bg-black">
+                <!-- Mazo de skins: la tarjeta del frente es el demo en vivo (skins/, ver
+                     scripts/sync-skins.mjs); las de atrás son capturas fijas de las siguientes
+                     skins (assets/skins/, ver scripts/capture-skins.py), para no cargar 8 iframes. -->
+                <div class="lg:col-start-8 lg:col-span-5 lg:row-start-1 lg:row-span-2 relative mt-10 sm:mt-14 lg:mt-0">
+                    <div id="skin-deck" class="deck relative mx-auto w-full max-w-[400px] lg:max-w-[440px] h-[500px] sm:h-[540px] lg:h-[580px]">
+                        <div class="deck-card deck-back" style="--slot:1" data-slot="1" data-skin="crt-amber" aria-hidden="true">
+                            <img src="/assets/skins/crt-amber.webp" alt="" width="440" height="580" decoding="async">
+                        </div>
+                        <div class="deck-card deck-back" style="--slot:2" data-slot="2" data-skin="y2k" aria-hidden="true">
+                            <img src="/assets/skins/y2k.webp" alt="" width="440" height="580" decoding="async">
+                        </div>
+                        <div class="deck-card deck-back" style="--slot:3" data-slot="3" data-skin="eink" aria-hidden="true">
+                            <img src="/assets/skins/eink.webp" alt="" width="440" height="580" loading="lazy" decoding="async">
+                        </div>
+                        <div class="deck-card deck-live" style="--slot:0">
                             <iframe id="skin-demo" src="/skins/demo.html?skin=navi" title="Navi Lyrics live preview"
-                                class="block w-full h-[500px] sm:h-[540px] lg:h-[580px] border-0"></iframe>
+                                class="block w-full h-full border-0"></iframe>
                         </div>
+                    </div>
 
-                        <!-- Selector de skins: una fila de muestras; el nombre de la activa va debajo -->
-                        <div class="mt-4 flex flex-col items-center gap-2">
-                            <div id="skin-picker" class="flex justify-center gap-1" role="group" aria-label="Skins"
-                                data-i18n-attr="data-new:hero.newTag" data-new="New">
-                                <button type="button" class="skin-swatch" data-skin="navi" aria-pressed="true" aria-label="Navi" title="Navi" style="--sw-bg:#102222;--sw-fg:#0df2f2"></button>
-                                <button type="button" class="skin-swatch" data-skin="crt-amber" aria-pressed="false" aria-label="CRT Amber" title="CRT Amber" style="--sw-bg:#0a0500;--sw-fg:#ffb000"></button>
-                                <button type="button" class="skin-swatch" data-skin="y2k" aria-pressed="false" aria-label="Y2K Webcore" title="Y2K Webcore" style="--sw-bg:#fff0fa;--sw-fg:#ff2e9a"></button>
-                                <button type="button" class="skin-swatch" data-skin="eink" aria-pressed="false" aria-label="E-Ink Paper" title="E-Ink Paper" style="--sw-bg:#e8e6e0;--sw-fg:#1a1a1a"></button>
-                                <button type="button" class="skin-swatch" data-skin="ascii" aria-pressed="false" aria-label="ASCII / BBS" title="ASCII / BBS" style="--sw-bg:#000000;--sw-fg:#d8d8d8"></button>
-                                <button type="button" class="skin-swatch" data-skin="arcade" aria-pressed="false" aria-label="Arcade" title="Arcade" style="--sw-bg:#06080f;--sw-fg:#ff2e88"></button>
-                                <button type="button" class="skin-swatch is-new" data-skin="hifi-80s" aria-pressed="false" aria-label="Hi-fi 80s" title="Hi-fi 80s" style="--sw-bg:#070b0a;--sw-fg:#5ff3d0"></button>
-                                <button type="button" class="skin-swatch is-new" data-skin="mecha" aria-pressed="false" aria-label="Anime Mecha" title="Anime Mecha" style="--sw-bg:#07070a;--sw-fg:#ff5a1f"></button>
-                            </div>
-                            <p class="text-xs text-gray-500">
-                                <span data-i18n="hero.skinLabel">Skin:</span>
-                                <span id="skin-name" class="font-semibold text-gray-200" aria-live="polite">Navi</span>
-                            </p>
+                    <!-- Selector de skins: una fila de muestras; el nombre de la activa va debajo -->
+                    <div class="mt-5 flex flex-col items-center gap-2">
+                        <div id="skin-picker" class="flex justify-center gap-1" role="group" aria-label="Skins"
+                            data-i18n-attr="data-new:hero.newTag" data-new="New">
+                            <button type="button" class="skin-swatch" data-skin="navi" aria-pressed="true" aria-label="Navi" title="Navi" style="--sw-bg:#102222;--sw-fg:#0df2f2"></button>
+                            <button type="button" class="skin-swatch" data-skin="crt-amber" aria-pressed="false" aria-label="CRT Amber" title="CRT Amber" style="--sw-bg:#0a0500;--sw-fg:#ffb000"></button>
+                            <button type="button" class="skin-swatch" data-skin="y2k" aria-pressed="false" aria-label="Y2K Webcore" title="Y2K Webcore" style="--sw-bg:#fff0fa;--sw-fg:#ff2e9a"></button>
+                            <button type="button" class="skin-swatch" data-skin="eink" aria-pressed="false" aria-label="E-Ink Paper" title="E-Ink Paper" style="--sw-bg:#e8e6e0;--sw-fg:#1a1a1a"></button>
+                            <button type="button" class="skin-swatch" data-skin="ascii" aria-pressed="false" aria-label="ASCII / BBS" title="ASCII / BBS" style="--sw-bg:#000000;--sw-fg:#d8d8d8"></button>
+                            <button type="button" class="skin-swatch" data-skin="arcade" aria-pressed="false" aria-label="Arcade" title="Arcade" style="--sw-bg:#06080f;--sw-fg:#ff2e88"></button>
+                            <button type="button" class="skin-swatch is-new" data-skin="hifi-80s" aria-pressed="false" aria-label="Hi-fi 80s" title="Hi-fi 80s" style="--sw-bg:#070b0a;--sw-fg:#5ff3d0"></button>
+                            <button type="button" class="skin-swatch is-new" data-skin="mecha" aria-pressed="false" aria-label="Anime Mecha" title="Anime Mecha" style="--sw-bg:#07070a;--sw-fg:#ff5a1f"></button>
                         </div>
+                        <p class="text-xs text-gray-500">
+                            <span data-i18n="hero.skinLabel">Skin:</span>
+                            <span id="skin-name" class="font-semibold text-gray-200" aria-live="polite">Navi</span>
+                        </p>
                     </div>
                 </div>
 
                 <div class="lg:col-span-6 lg:row-start-2 lg:self-start text-center lg:text-left mt-6 lg:mt-10">
-                    <a class="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-base sm:text-lg font-bold rounded-xl text-black bg-primary hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(13,242,242,0.4)] hover:shadow-[0_0_30px_rgba(13,242,242,0.6)] transform hover:-translate-y-1"
+                    <a class="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-base sm:text-lg font-bold rounded-xl text-black bg-primary hover:bg-white transition-colors duration-200 active:scale-[0.98]"
                         href="https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp" target="_blank">
                         <span class="material-icons mr-2">add_to_queue</span>
                         <span data-i18n="hero.addChrome">Add to Chrome</span>
@@ -355,17 +433,113 @@
             <script>
                 (function () {
                     const frame = document.getElementById('skin-demo');
+                    const deck = document.getElementById('skin-deck');
+                    const live = deck.querySelector('.deck-live');
                     const picker = document.getElementById('skin-picker');
-                    const swatches = picker.querySelectorAll('.skin-swatch');
+                    const swatches = [...picker.querySelectorAll('.skin-swatch')];
                     const nameEl = document.getElementById('skin-name');
+                    const ORDER = swatches.map((s) => s.dataset.skin);
+                    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
                     const send = (data) => frame.contentWindow?.postMessage({ type: 'navi-demo', ...data }, location.origin);
+                    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
-                    swatches.forEach((sw) => sw.addEventListener('click', () => {
-                        swatches.forEach((s) => s.setAttribute('aria-pressed', String(s === sw)));
+                    // Tarjetas de atrás, de la más cercana (hueco 1) a la oculta (hueco 3)
+                    let queue = [...deck.querySelectorAll('.deck-back')];
+                    let active = 'navi';
+                    let busy = false;
+                    let pending = null;
+
+                    const after = (id, n) => {
+                        const i = ORDER.indexOf(id);
+                        return Array.from({ length: n }, (_, k) => ORDER[(i + k + 1) % ORDER.length]);
+                    };
+                    const setCard = (card, skin) => {
+                        if (card.dataset.skin === skin) return;
+                        card.dataset.skin = skin;
+                        card.querySelector('img').src = `/assets/skins/${skin}.webp`;
+                    };
+                    const setSlot = (card, slot) => {
+                        card.style.setProperty('--slot', slot);
+                        card.dataset.slot = slot;
+                    };
+
+                    // El demo avisa cuando terminó de montar la skin (skins/demo.js)
+                    let readyResolve = null;
+                    window.addEventListener('message', (event) => {
+                        if (event.origin !== location.origin || event.data?.type !== 'navi-demo-ready') return;
+                        readyResolve?.(event.data.skin);
+                    });
+                    const demoReady = (skin) => new Promise((resolve) => {
+                        readyResolve = (s) => { if (s === skin) resolve(); };
+                        setTimeout(resolve, 1500); // red lenta: no dejar el mazo trabado
+                    });
+
+                    function markActive(skin) {
+                        swatches.forEach((s) => s.setAttribute('aria-pressed', String(s.dataset.skin === skin)));
+                        const sw = swatches.find((s) => s.dataset.skin === skin);
                         const name = sw.getAttribute('aria-label');
                         nameEl.textContent = sw.classList.contains('is-new') ? `${name} · ${picker.dataset.new}` : name;
-                        send({ skin: sw.dataset.skin });
-                    }));
+                    }
+
+                    // Cambio de skin: la tarjeta en vivo sale hacia un lado, la de atrás (ya
+                    // con la skin elegida) pasa al frente y el demo en vivo vuelve encima.
+                    async function select(skin) {
+                        if (skin === active) return;
+                        if (busy) { pending = skin; return; }
+                        busy = true;
+                        active = skin;
+                        markActive(skin);
+
+                        const [first, second, third] = queue;
+                        const [n1, n2, n3] = after(skin, 3);
+
+                        if (reduceMotion) {
+                            send({ skin });
+                            [n1, n2, n3].forEach((s, i) => setCard(queue[i], s));
+                            busy = false;
+                            return;
+                        }
+
+                        setCard(first, skin);
+                        setCard(second, n1);
+                        setCard(third, n2);
+                        live.classList.add('is-leaving');
+                        setSlot(first, 0);
+                        setSlot(second, 1);
+                        setSlot(third, 2);
+
+                        await wait(320);
+                        const ready = demoReady(skin);
+                        send({ skin });
+                        live.classList.remove('is-leaving');
+                        live.classList.add('is-hidden');
+                        await ready;
+                        live.classList.remove('is-hidden');
+                        await wait(180);
+
+                        // La tarjeta que pasó al frente queda tapada por la en vivo: se manda
+                        // al fondo sin animación y se convierte en la siguiente de la fila.
+                        first.classList.add('no-anim');
+                        setSlot(first, 3);
+                        setCard(first, n3);
+                        first.offsetHeight; // aplicar antes de reactivar la transición
+                        first.classList.remove('no-anim');
+                        queue = [second, third, first];
+
+                        busy = false;
+                        if (pending) { const next = pending; pending = null; select(next); }
+                    }
+
+                    // Precargar todas las capturas: al cambiar el src de una tarjeta no debe
+                    // verse la imagen anterior mientras decodifica la nueva
+                    const preload = () => ORDER.forEach((s) => { new Image().src = `/assets/skins/${s}.webp`; });
+                    if ('requestIdleCallback' in window) requestIdleCallback(preload, { timeout: 3000 });
+                    else setTimeout(preload, 1500);
+
+                    swatches.forEach((sw) => sw.addEventListener('click', () => select(sw.dataset.skin)));
+                    // Las tarjetas que asoman detrás también sirven para avanzar
+                    deck.querySelectorAll('.deck-back').forEach((card) =>
+                        card.addEventListener('click', () => select(card.dataset.skin)));
 
                     frame.addEventListener('load', () => send({ lang: document.documentElement.lang }));
 

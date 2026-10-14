@@ -157,7 +157,11 @@
     applyFont();
     render(true);
     scheduleGlitch();
-    requestAnimationFrame(() => document.body.classList.remove('demo-swapping'));
+    requestAnimationFrame(() => {
+      document.body.classList.remove('demo-swapping');
+      // El mazo del hero espera esto para mostrar la tarjeta en vivo sin parpadeo
+      if (parent !== window) parent.postMessage({ type: 'navi-demo-ready', skin: skinId }, location.origin);
+    });
   }
 
   function wire() {
