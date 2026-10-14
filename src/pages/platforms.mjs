@@ -11,7 +11,7 @@ const shared = {
     steps: (site, url) => [
       `Install <a href="${CWS_URL}" target="_blank" rel="noopener">Navi Lyrics from the Chrome Web Store</a>. It's free and needs no account.`,
       `Open <a href="${url}" target="_blank" rel="noopener nofollow">${site}</a> in Chrome, Edge or Brave and play a song.`,
-      'Click the <strong>Show lyrics</strong> button that appears on the page, or click the Navi icon in the toolbar and press <strong>Float Lyrics</strong>.',
+      `Click the <strong>Show lyrics</strong> button that appears on the page, press ${kbd('Alt')}+${kbd('Shift')}+${kbd('L')}, or click the Navi icon in the toolbar and press <strong>Float Lyrics</strong>.`,
       'Drag the floating window wherever you want and resize it. It stays on top of your other windows, even outside the browser.',
     ],
     translate: {
@@ -22,12 +22,12 @@ const shared = {
     keyboard: {
       icon: 'keyboard',
       title: 'Controls and shortcuts',
-      text: `Play/pause, previous and next from the floating window, or with the keyboard: ${kbd('Space')}, ${kbd('←')} ${kbd('→')}. ${kbd('↑')} ${kbd('↓')} change the font size, ${kbd(',')} ${kbd('.')} adjust the sync.`,
+      text: `Play/pause, previous and next from the floating window, or with the keyboard: ${kbd('Space')}, ${kbd('←')} ${kbd('→')}. Like, shuffle and repeat (${kbd('L')} ${kbd('S')} ${kbd('R')}) appear when the site has them and follow its state. ${kbd('↑')} ${kbd('↓')} change the font size, ${kbd(',')} ${kbd('.')} adjust the sync. ${kbd('Alt')}+${kbd('Shift')}+${kbd('L')} on the music page opens or closes the window.`,
     },
     seek: {
       icon: 'ads_click',
-      title: 'Click a line to jump there',
-      text: 'Click any line of the lyrics and the song jumps to that moment. Handy to repeat a verse or skip to the chorus.',
+      title: 'Jump to any moment',
+      text: 'Click any line of the lyrics and the song jumps to that moment. Or click or drag the time bar, just like in the player. Handy to repeat a verse or skip to the chorus.',
     },
     troubleshooting: [
       {
@@ -56,7 +56,7 @@ const shared = {
     steps: (site, url) => [
       `Instala <a href="${CWS_URL}" target="_blank" rel="noopener">Navi Lyrics desde la Chrome Web Store</a>. Es gratis y no necesita cuenta.`,
       `Abre <a href="${url}" target="_blank" rel="noopener nofollow">${site}</a> en Chrome, Edge o Brave y reproduce una canción.`,
-      'Haz clic en el botón <strong>Ver letra</strong> que aparece en la página, o en el ícono de Navi en la barra de herramientas y luego en <strong>Letras flotantes</strong>.',
+      `Haz clic en el botón <strong>Ver letra</strong> que aparece en la página, pulsa ${kbd('Alt')}+${kbd('Shift')}+${kbd('L')}, o haz clic en el ícono de Navi en la barra de herramientas y luego en <strong>Letras flotantes</strong>.`,
       'Arrastra la ventana flotante adonde quieras y cámbiale el tamaño. Se queda encima de tus otras ventanas, incluso fuera del navegador.',
     ],
     translate: {
@@ -67,12 +67,12 @@ const shared = {
     keyboard: {
       icon: 'keyboard',
       title: 'Controles y atajos',
-      text: `Reproducir/pausar, anterior y siguiente desde la ventana flotante, o con el teclado: ${kbd('Espacio')}, ${kbd('←')} ${kbd('→')}. ${kbd('↑')} ${kbd('↓')} cambian el tamaño de letra y ${kbd(',')} ${kbd('.')} ajustan la sincronía.`,
+      text: `Reproducir/pausar, anterior y siguiente desde la ventana flotante, o con el teclado: ${kbd('Espacio')}, ${kbd('←')} ${kbd('→')}. Me gusta, aleatorio y repetir (${kbd('L')} ${kbd('S')} ${kbd('R')}) aparecen cuando el sitio los tiene y siguen su estado. ${kbd('↑')} ${kbd('↓')} cambian el tamaño de letra y ${kbd(',')} ${kbd('.')} ajustan la sincronía. ${kbd('Alt')}+${kbd('Shift')}+${kbd('L')} en la página de música abre o cierra la ventana.`,
     },
     seek: {
       icon: 'ads_click',
-      title: 'Haz clic en una línea para saltar ahí',
-      text: 'Haz clic en cualquier línea de la letra y la canción salta a ese momento. Útil para repetir una estrofa o ir directo al coro.',
+      title: 'Salta a cualquier momento',
+      text: 'Haz clic en cualquier línea de la letra y la canción salta a ese momento. O haz clic o arrastra la barra de tiempo, igual que en el reproductor. Útil para repetir una estrofa o ir directo al coro.',
     },
     troubleshooting: [
       {
