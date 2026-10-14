@@ -7,7 +7,7 @@ import { ctaButton, escape } from './layout.mjs';
 
 export const RELEASES = [
   {
-    version: '1.7.0', date: '2026-10-04',
+    version: '1.7.0', date: '2026-10-13',
     en: [
       'Like, shuffle and repeat buttons in every skin. They follow the state on the site and hide when a platform has no such control (Apple Music has no like button in its player).',
       'Click or drag the time bar to jump anywhere in the song. With the bar focused, the left and right arrows jump 5 seconds.',
