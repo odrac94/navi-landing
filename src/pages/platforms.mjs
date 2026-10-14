@@ -10,7 +10,7 @@ const shared = {
   en: {
     steps: (site, url) => [
       `Install <a href="${CWS_URL}" target="_blank" rel="noopener">Navi Lyrics from the Chrome Web Store</a>. It's free and needs no account.`,
-      `Open <a href="${url}" target="_blank" rel="noopener nofollow">${site}</a> in Chrome, Edge or Brave and play a song.`,
+      `Open <a href="${url}" target="_blank" rel="noopener nofollow">${site}</a> in Chrome, Edge, Brave or Opera and play a song.`,
       `Click the <strong>Show lyrics</strong> button that appears on the page, press ${kbd('Alt')}+${kbd('Shift')}+${kbd('L')}, or click the Navi icon in the toolbar and press <strong>Float Lyrics</strong>.`,
       'Drag the floating window wherever you want and resize it. It stays on top of your other windows, even outside the browser.',
     ],
@@ -55,7 +55,7 @@ const shared = {
   es: {
     steps: (site, url) => [
       `Instala <a href="${CWS_URL}" target="_blank" rel="noopener">Navi Lyrics desde la Chrome Web Store</a>. Es gratis y no necesita cuenta.`,
-      `Abre <a href="${url}" target="_blank" rel="noopener nofollow">${site}</a> en Chrome, Edge o Brave y reproduce una canción.`,
+      `Abre <a href="${url}" target="_blank" rel="noopener nofollow">${site}</a> en Chrome, Edge, Brave u Opera y reproduce una canción.`,
       `Haz clic en el botón <strong>Ver letra</strong> que aparece en la página, pulsa ${kbd('Alt')}+${kbd('Shift')}+${kbd('L')}, o haz clic en el ícono de Navi en la barra de herramientas y luego en <strong>Letras flotantes</strong>.`,
       'Arrastra la ventana flotante adonde quieras y cámbiale el tamaño. Se queda encima de tus otras ventanas, incluso fuera del navegador.',
     ],

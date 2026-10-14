@@ -54,7 +54,7 @@
                 "applicationCategory": "MultimediaApplication",
                 "applicationSubCategory": "Browser extension",
                 "operatingSystem": "Windows, macOS, Linux, ChromeOS",
-                "browserRequirements": "Requires Google Chrome, Microsoft Edge or Brave with Document Picture-in-Picture support",
+                "browserRequirements": "Requires Google Chrome, Microsoft Edge, Brave or Opera with Document Picture-in-Picture support",
                 "softwareVersion": "1.7.0",
                 "downloadUrl": "https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp",
                 "installUrl": "https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp",
@@ -427,12 +427,13 @@
         <section class="relative z-10 pt-[5.5rem] pb-12 sm:pt-28 sm:pb-16 lg:pt-36 lg:pb-24 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 lg:gap-x-12 items-center">
                 <div class="lg:col-span-5 lg:row-start-1 lg:self-end text-center lg:text-left">
-                    <h1 class="text-[0.8125rem] sm:text-base font-semibold text-primary leading-snug max-w-md mx-auto lg:mx-0 mb-3 sm:mb-5" data-i18n="hero.h1">Letras flotantes y sincronizadas para Spotify, YouTube Music y Apple Music</h1>
                     <!-- Frase de marca: el único texto grande del hero -->
                     <p class="text-[1.875rem] sm:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold tracking-tight leading-[1.1]">
                         <span data-i18n="hero.heading1">La herramienta que tu productividad</span>
                         <span class="text-gray-500 line-through decoration-primary decoration-[3px]" data-i18n="hero.heading2">no pidió</span><span data-i18n="hero.heading3">, pero tu interior </span><span class="text-primary" data-i18n="hero.heading4">karaoke</span><span data-i18n="hero.heading5"> necesita.</span>
                     </p>
+                    <!-- H1 (qué es el producto, para buscadores) como subtítulo bajo la frase de marca -->
+                    <h1 class="mt-4 sm:mt-5 text-base sm:text-lg font-medium text-gray-300 leading-snug max-w-md mx-auto lg:mx-0" data-i18n="hero.h1">Letras flotantes y sincronizadas para Spotify, YouTube Music y Apple Music</h1>
                 </div>
 
                 <!-- Carrusel de skins: al centro el demo en vivo (skins/, ver scripts/sync-skins.mjs);
@@ -510,10 +511,10 @@
                         <span class="material-icons mr-2">add_to_queue</span>
                         <span data-i18n="hero.addChrome">Agregar a Chrome</span>
                     </a>
-                    <p class="hidden sm:block mt-3 text-sm text-gray-500" data-i18n="hero.ctaNote">Gratis · Sin cuenta · Chrome, Edge y Brave</p>
+                    <p class="hidden sm:block mt-3 text-sm text-gray-500" data-i18n="hero.ctaNote">Gratis · Sin cuenta · Chrome, Edge, Brave y Opera</p>
                     <!-- En el teléfono no se puede instalar: ofrecer mandarse el link a la computadora -->
                     <p class="sm:hidden mt-3 flex flex-wrap justify-center gap-x-2 gap-y-1 text-xs text-gray-400">
-                        <span data-i18n="hero.mobileNote">Gratis · para Chrome, Edge y Brave en computadora</span>
+                        <span data-i18n="hero.mobileNote">Gratis · para Chrome, Edge, Brave y Opera en computadora</span>
                         <button type="button" id="send-to-desktop" class="font-semibold text-primary underline underline-offset-2" data-i18n="hero.sendToDesktop" data-i18n-attr="data-copied:hero.linkCopied" data-copied="Link copiado">Enviar a mi computadora</button>
                     </p>
                 </div>
