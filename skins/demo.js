@@ -111,6 +111,17 @@
   if (params.get('theme') in THEMES) state.theme = params.get('theme');
 
   let mountSeq = 0;
+  // pip*.html ya descargados: cambiar de skin no debe esperar a la red
+  const htmlCache = new Map();
+
+  // Tras montar la primera skin, bajar las demás en segundo plano (HTML a memoria,
+  // CSS a la caché HTTP) para que el selector del hero cambie al instante
+  function prefetchSkins() {
+    Object.values(SKINS).forEach(({ html, css }) => {
+      if (!htmlCache.has(html)) fetch(html).then((r) => r.text()).then((t) => htmlCache.set(html, t)).catch(() => {});
+      fetch(css).catch(() => {});
+    });
+  }
   let glitchTimer = null;
   const $ = (id) => document.getElementById(id);
 
@@ -124,8 +135,9 @@
     const skin = SKINS[skinId];
     const msgs = MESSAGES[state.lang];
 
-    const res = await fetch(skin.html);
-    const html = (await res.text()).replace(/__MSG_(\w+)__/g, (_, k) => msgs[k] ?? '');
+    const raw = htmlCache.get(skin.html) ?? await (await fetch(skin.html)).text();
+    htmlCache.set(skin.html, raw);
+    const html = raw.replace(/__MSG_(\w+)__/g, (_, k) => msgs[k] ?? '');
     const doc = new DOMParser().parseFromString(html, 'text/html');
 
     // Esperar a que cargue el CSS nuevo antes de cambiar el DOM (sin flash sin estilos)
@@ -140,7 +152,7 @@
     if (seq !== mountSeq) { link.remove(); return; }
 
     document.body.classList.add('demo-swapping');
-    await new Promise((r) => setTimeout(r, document.body.childElementCount ? 180 : 0));
+    await new Promise((r) => setTimeout(r, document.body.childElementCount ? 90 : 0));
     if (seq !== mountSeq) { link.remove(); return; }
 
     document.querySelectorAll('link[data-skin]').forEach((l) => { if (l !== link) l.remove(); });
@@ -328,6 +340,9 @@
     if ((SKINS[skin] && skin !== state.skin) || langChanged) mount(SKINS[skin] ? skin : state.skin);
   });
 
-  mount(state.skin);
+  mount(state.skin).then(() => {
+    if ('requestIdleCallback' in window) requestIdleCallback(prefetchSkins, { timeout: 3000 });
+    else setTimeout(prefetchSkins, 1000);
+  });
   requestAnimationFrame(tick);
 })();
