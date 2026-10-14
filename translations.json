@@ -9,7 +9,9 @@
       "faq": "FAQ"
     },
     "hero": {
-      "badge": "New in v1.7.0 — like, shuffle & 2 new skins",
+      "ctaNote": "Free · No account · Chrome, Edge & Brave",
+      "skinLabel": "Skin:",
+      "newTag": "New",
       "mobileNote": "Free · for Chrome, Edge & Brave on desktop",
       "sendToDesktop": "Send to my computer",
       "linkCopied": "Link copied",
@@ -18,11 +20,7 @@
       "heading3": ", but your inner ",
       "heading4": "karaoke",
       "heading5": " needs.",
-      "description": "A free Chrome extension that keeps the lyrics in an always-on-top Picture-in-Picture window. Bring the concert to your spreadsheets, study sessions, or dance practices without losing your rhythm.",
       "addChrome": "Add to Chrome",
-      "supportDev": "Support the dev",
-      "skinPicker": "Live preview · pick a skin",
-      "themePicker": "Color themes · Navi skin",
       "h1": "Floating, synchronized lyrics for Spotify, YouTube Music & Apple Music"
     },
     "features": {
@@ -138,7 +136,9 @@
       "faq": "Preguntas"
     },
     "hero": {
-      "badge": "Nuevo en v1.7.0 — me gusta, aleatorio y 2 skins",
+      "ctaNote": "Gratis · Sin cuenta · Chrome, Edge y Brave",
+      "skinLabel": "Skin:",
+      "newTag": "Nueva",
       "mobileNote": "Gratis · para Chrome, Edge y Brave en computadora",
       "sendToDesktop": "Enviar a mi computadora",
       "linkCopied": "Link copiado",
@@ -147,11 +147,7 @@
       "heading3": ", pero tu interior ",
       "heading4": "karaoke",
       "heading5": " necesita.",
-      "description": "Una extensión gratuita para Chrome que mantiene la letra en una ventana Picture-in-Picture siempre visible. Trae el concierto a tus hojas de cálculo, sesiones de estudio o prácticas de baile sin perder el ritmo.",
       "addChrome": "Agregar a Chrome",
-      "supportDev": "Apoya al desarrollador",
-      "skinPicker": "Vista en vivo · elige una skin",
-      "themePicker": "Temas de color · skin Navi",
       "h1": "Letras flotantes y sincronizadas para Spotify, YouTube Music y Apple Music"
     },
     "features": {
