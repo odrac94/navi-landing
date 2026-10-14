@@ -212,6 +212,78 @@
             box-shadow: 0 0 0 2px #0b1220;
         }
 
+        /* Pestaña de temas: cuelga del borde inferior de la tarjeta en vivo (queda detrás
+           de ella en el orden de apilado) y se retrae hacia arriba cuando no aplica. */
+        .theme-tab-slot {
+            display: flex;
+            justify-content: center;
+        }
+
+        .theme-tab {
+            position: relative;
+            z-index: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.125rem;
+            padding: 0.375rem 0.625rem 0.375rem 0.875rem;
+            border-radius: 0 0 0.875rem 0.875rem;
+            background: #0b141c;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, z-index 0s;
+        }
+
+        /* Abierta va por encima de la sombra de la tarjeta (si no, queda atenuada), pero
+           recién al terminar de bajar; al cerrarse vuelve detrás de inmediato. */
+        .theme-tab[data-open="true"] {
+            z-index: 2;
+            transition-delay: 0s, 0s, 0.3s;
+        }
+
+        .theme-tab[data-open="false"] {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .theme-tab-label {
+            margin-right: 0.375rem;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: #9ca3af;
+        }
+
+        /* Botón de 30px para el dedo; el círculo visible mide 18px */
+        .theme-dot {
+            display: grid;
+            place-items: center;
+            width: 1.875rem;
+            height: 1.875rem;
+            border-radius: 9999px;
+            cursor: pointer;
+        }
+
+        .theme-dot::before {
+            content: "";
+            width: 1.125rem;
+            height: 1.125rem;
+            border-radius: 9999px;
+            background: var(--dot);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+            transition: transform 0.15s ease;
+        }
+
+        .theme-dot:hover::before {
+            transform: scale(1.15);
+        }
+
+        .theme-dot[aria-pressed="true"]::before {
+            box-shadow: 0 0 0 2px #0b141c, 0 0 0 3.5px #fff;
+        }
+
+        .theme-dot:focus-visible {
+            outline: 2px solid #0df2f2;
+            outline-offset: 1px;
+        }
+
         .skin-swatch:focus-visible {
             outline: 2px solid #0df2f2;
             outline-offset: 2px;
@@ -225,6 +297,9 @@
             --x1: 34px;
             --x2: 58px;
             perspective: 1600px;
+            /* perspective crea un contexto de apilado propio: sin z-index, la pestaña de
+               temas (que va después en el DOM) se pintaría encima de las tarjetas */
+            z-index: 1;
         }
 
         @media (min-width: 640px) {
@@ -296,6 +371,8 @@
 
         @media (prefers-reduced-motion: reduce) {
             .skin-swatch::before,
+            .theme-dot::before,
+            .theme-tab,
             .deck-card {
                 transition: none;
             }
@@ -409,8 +486,28 @@
                         </div>
                     </div>
 
+                    <!-- Temas de color: solo existen en la skin Navi, así que cuelgan de la tarjeta
+                         en vivo como una pestaña y se retraen detrás de ella con otra skin. Su
+                         espacio queda reservado: abrir/cerrar no mueve nada. -->
+                    <div class="theme-tab-slot">
+                        <div id="theme-tab" class="theme-tab" data-open="true" role="group" aria-labelledby="theme-tab-label">
+                            <span id="theme-tab-label" class="theme-tab-label" data-i18n="hero.themeLabel">Color</span>
+                            <button type="button" class="theme-dot" data-theme="navi" aria-pressed="true" aria-label="Navi Cyan" title="Navi Cyan" style="--dot:#0df2f2"></button>
+                            <button type="button" class="theme-dot" data-theme="spotify" aria-pressed="false" aria-label="Spotify" title="Spotify" style="--dot:#1DB954"></button>
+                            <button type="button" class="theme-dot" data-theme="apple" aria-pressed="false" aria-label="Apple Music" title="Apple Music" style="--dot:#FA243C"></button>
+                            <button type="button" class="theme-dot" data-theme="amoled" aria-pressed="false" aria-label="AMOLED Black" title="AMOLED Black" style="--dot:#ffffff"></button>
+                            <button type="button" class="theme-dot" data-theme="sunset" aria-pressed="false" aria-label="Sunset" title="Sunset" style="--dot:#f97316"></button>
+                            <button type="button" class="theme-dot" data-theme="forest" aria-pressed="false" aria-label="Forest" title="Forest" style="--dot:#10b981"></button>
+                            <button type="button" class="theme-dot" data-theme="bubblegum" aria-pressed="false" aria-label="Bubblegum Pink" title="Bubblegum Pink" style="--dot:#ff5cb8"></button>
+                            <button type="button" class="theme-dot" data-theme="adaptive" aria-pressed="false"
+                                aria-label="Adaptive (album art)" title="Adaptive (album art)"
+                                data-i18n-attr="aria-label:hero.themeAdaptive|title:hero.themeAdaptive"
+                                style="--dot:conic-gradient(#ff5cb8, #0df2f2, #10b981, #f97316, #ff5cb8)"></button>
+                        </div>
+                    </div>
+
                     <!-- Selector de skins: una fila de muestras; el nombre de la activa va debajo -->
-                    <div class="mt-5 flex flex-col items-center gap-2">
+                    <div class="mt-3 flex flex-col items-center gap-2">
                         <div id="skin-picker" class="flex justify-center gap-1" role="group" aria-label="Skins"
                             data-i18n-attr="data-new:hero.newTag" data-new="New">
                             <button type="button" class="skin-swatch" data-skin="navi" aria-pressed="true" aria-label="Navi" title="Navi" style="--sw-bg:#102222;--sw-fg:#0df2f2"></button>
@@ -452,6 +549,8 @@
                     const live = deck.querySelector('.deck-live');
                     const picker = document.getElementById('skin-picker');
                     const swatches = [...picker.querySelectorAll('.skin-swatch')];
+                    const themeTab = document.getElementById('theme-tab');
+                    const dots = [...themeTab.querySelectorAll('.theme-dot')];
                     const nameEl = document.getElementById('skin-name');
                     const ORDER = swatches.map((s) => s.dataset.skin);
                     const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -508,11 +607,19 @@
                         markActive(skin);
                         layout();
                         send({ skin });
+                        // inert: cerrada, sus botones salen del orden de tabulación y del árbol accesible
+                        themeTab.dataset.open = String(skin === 'navi');
+                        themeTab.inert = skin !== 'navi';
                     }
 
                     swatches.forEach((sw) => sw.addEventListener('click', () => select(sw.dataset.skin)));
                     // Las tarjetas laterales también sirven para girar el carrusel
                     cards.forEach((card) => card.addEventListener('click', () => select(card.dataset.skin)));
+
+                    dots.forEach((dot) => dot.addEventListener('click', () => {
+                        dots.forEach((d) => d.setAttribute('aria-pressed', String(d === dot)));
+                        send({ theme: dot.dataset.theme });
+                    }));
 
                     frame.addEventListener('load', () => send({ lang: document.documentElement.lang }));
 
