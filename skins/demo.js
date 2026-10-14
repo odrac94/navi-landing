@@ -114,12 +114,20 @@
   // pip*.html ya descargados: cambiar de skin no debe esperar a la red
   const htmlCache = new Map();
 
-  // Tras montar la primera skin, bajar las demás en segundo plano (HTML a memoria,
-  // CSS a la caché HTTP) para que el selector del hero cambie al instante
+  // Tras montar la primera skin, bajar las demás en segundo plano (HTML a memoria;
+  // CSS y sus fuentes .woff2 a la caché HTTP) para que el selector del hero cambie al
+  // instante y sin esperar fuentes.
   function prefetchSkins() {
     Object.values(SKINS).forEach(({ html, css }) => {
       if (!htmlCache.has(html)) fetch(html).then((r) => r.text()).then((t) => htmlCache.set(html, t)).catch(() => {});
-      fetch(css).catch(() => {});
+      fetch(css)
+        .then((r) => r.text())
+        .then((text) => {
+          for (const [, url] of text.matchAll(/url\(['"]?([^'")]+\.woff2)['"]?\)/g)) {
+            fetch(new URL(url, new URL(css, location.href))).catch(() => {});
+          }
+        })
+        .catch(() => {});
     });
   }
   let glitchTimer = null;
@@ -169,9 +177,16 @@
     applyFont();
     render(true);
     scheduleGlitch();
+
+    // Las fuentes propias de la skin (VT323, Chakra Petch...) empiezan a bajar recién
+    // ahora que el DOM las usa. Con la fuente de respaldo las líneas miden distinto y
+    // el centrado de arriba queda corrido: re-centrar cuando lleguen, todavía oculto.
+    await Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 600))]);
+    if (seq !== mountSeq) return;
+    render(true);
     requestAnimationFrame(() => {
       document.body.classList.remove('demo-swapping');
-      // El mazo del hero espera esto para mostrar la tarjeta en vivo sin parpadeo
+      // El carrusel del hero espera esto para animar la entrada de la tarjeta en vivo
       if (parent !== window) parent.postMessage({ type: 'navi-demo-ready', skin: skinId }, location.origin);
     });
   }
@@ -287,7 +302,9 @@
     const c = container.getBoundingClientRect();
     const l = line.getBoundingClientRect();
     const top = container.scrollTop + (l.top + l.height / 2) - (c.top + c.height / 2);
-    container.scrollTo({ top, behavior: instant || reduceMotion ? 'auto' : 'smooth' });
+    // 'instant', no 'auto': las skins declaran scroll-behavior: smooth en el contenedor
+    // y 'auto' lo respeta, así que al montar una skin la lista se deslizaba sola.
+    container.scrollTo({ top, behavior: instant || reduceMotion ? 'instant' : 'smooth' });
   }
 
   function render(instant = false) {
