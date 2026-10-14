@@ -9,7 +9,10 @@
       "faq": "FAQ"
     },
     "hero": {
-      "badge": "New in v1.6.0 — Now on Apple Music, plus retro skins & adaptive themes",
+      "badge": "New in v1.7.0 — like, shuffle & 2 new skins",
+      "mobileNote": "Free · for Chrome, Edge & Brave on desktop",
+      "sendToDesktop": "Send to my computer",
+      "linkCopied": "Link copied",
       "heading1": "The tool your productivity",
       "heading2": "didn't ask for",
       "heading3": ", but your inner ",
@@ -135,7 +138,10 @@
       "faq": "Preguntas"
     },
     "hero": {
-      "badge": "Nuevo en v1.6.0 — Ahora en Apple Music, además de skins retro y temas adaptativos",
+      "badge": "Nuevo en v1.7.0 — me gusta, aleatorio y 2 skins",
+      "mobileNote": "Gratis · para Chrome, Edge y Brave en computadora",
+      "sendToDesktop": "Enviar a mi computadora",
+      "linkCopied": "Link copiado",
       "heading1": "La herramienta que tu productividad",
       "heading2": "no pidió",
       "heading3": ", pero tu interior ",

@@ -254,3 +254,30 @@
   outline: 2px solid #fff;
   outline-offset: 2px;
 }
+
+/* Móvil: más compacto para no tapar el demo de la primera pantalla.
+   Mismo texto y Rechazar/Aceptar con el mismo peso visual. */
+@media (max-width: 639px) {
+  .consent-banner {
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    padding: 0.875rem 1rem;
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
+
+  .consent-title {
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .consent-actions {
+    gap: 0.5rem;
+    margin-top: 0.625rem;
+  }
+
+  .consent-btn {
+    padding: 0.45rem 0.75rem;
+  }
+}
