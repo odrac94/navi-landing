@@ -148,9 +148,13 @@
     const html = raw.replace(/__MSG_(\w+)__/g, (_, k) => msgs[k] ?? '');
     const doc = new DOMParser().parseFromString(html, 'text/html');
 
-    // Esperar a que cargue el CSS nuevo antes de cambiar el DOM (sin flash sin estilos)
+    // Esperar a que cargue el CSS nuevo antes de cambiar el DOM (sin flash sin estilos).
+    // Se carga con media="print" para que NO se aplique al HTML de la skin anterior,
+    // que sigue a la vista mientras tanto (si no, durante unos cuadros se ve la
+    // estructura de una skin con los estilos de la otra). Se activa en el cambio.
     const link = document.createElement('link');
     link.rel = 'stylesheet';
+    link.media = 'print';
     link.href = skin.css;
     link.dataset.skin = skinId;
     await new Promise((resolve) => {
@@ -164,6 +168,7 @@
     if (seq !== mountSeq) { link.remove(); return; }
 
     document.querySelectorAll('link[data-skin]').forEach((l) => { if (l !== link) l.remove(); });
+    link.media = 'all';
     document.documentElement.style.removeProperty('--font-size');
     // Contenido del pip*.html propio (mismo origen), igual que hace la extensión
     document.body.innerHTML = doc.body.innerHTML;
