@@ -2,7 +2,7 @@
 // Cada idioma queda como HTML estático en su propia URL (/ y /es/) para que
 // Google y los asistentes de IA indexen ambos; hreflang los enlaza entre sí.
 //
-// Uso: node scripts/build-i18n.mjs   (lo corre `npm run build`)
+// Uso: node scripts/build-i18n.mjs   (lo corre `pnpm run build`)
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';

@@ -14,7 +14,7 @@ asistentes de IA indexen las dos:
   (o `data-i18n-attr="atributo:clave"` para atributos).
 - `translations.json` tiene los textos de ambos idiomas: `{ "en": {...}, "es": {...} }`.
   Las claves `meta.*` son el `<title>`, la description y Open Graph de cada idioma.
-- `npm run build` ejecuta `scripts/build-i18n.mjs`, que toma `index.html`, reemplaza
+- `pnpm run build` ejecuta `scripts/build-i18n.mjs`, que toma `index.html`, reemplaza
   cada `data-i18n` por el texto en español y ajusta `lang`, canonical, Open Graph,
   el selector EN/ES y el demo del hero. El resultado es `es/index.html`.
 - Si falta una clave en español, el build falla y dice cuál.
@@ -25,7 +25,7 @@ asistentes de IA indexen las dos:
 1. Edita `index.html` (inglés) y/o `translations.json` (ambos idiomas).
 2. Si agregas un texto nuevo: ponle `data-i18n="seccion.clave"` y agrega la clave en
    `en` y `es` dentro de `translations.json`.
-3. `npm run build`
+3. `pnpm run build`
 4. Commit de todo, incluido `es/index.html` y `assets/site.css`.
 
 **Nunca edites `es/index.html` a mano**: se sobrescribe en cada build.
@@ -51,7 +51,7 @@ No se editan en HTML: se generan con `scripts/build-pages.mjs` desde `src/pages/
 | `src/pages/platforms.mjs` | Contenido de las guías de Spotify, YouTube Music y Apple Music |
 | `src/pages/about.mjs`, `changelog.mjs`, `privacy.mjs` | Contenido de esas páginas |
 
-- `npm run build` genera `*.html`, `es/*.html`, `404.html` y `sitemap.xml`.
+- `pnpm run build` genera `*.html`, `es/*.html`, `404.html` y `sitemap.xml`.
 - **Nueva versión de la extensión:** agrégala arriba de `RELEASES` en `changelog.mjs`
   y actualiza `softwareVersion` en el JSON-LD de `index.html`.
 - **Cambiaste el contenido de una página:** actualiza su fecha en `LASTMOD`

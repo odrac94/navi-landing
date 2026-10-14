@@ -2,7 +2,7 @@
 // privacidad y 404) en inglés y español, más sitemap.xml.
 // La home (index.html / es/index.html) la maneja build-i18n.mjs.
 //
-// Uso: node scripts/build-pages.mjs   (lo corre `npm run build`)
+// Uso: node scripts/build-pages.mjs   (lo corre `pnpm run build`)
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';

@@ -8,5 +8,5 @@ node_modules
 src
 scripts
 package.json
-package-lock.json
+pnpm-lock.yaml
 tailwind.config.cjs

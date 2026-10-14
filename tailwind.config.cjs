@@ -1,5 +1,5 @@
 // Antes vivía inline en cada página para el CDN de Tailwind (cdn.tailwindcss.com).
-// Ahora se compila a assets/site.css con `npm run build`.
+// Ahora se compila a assets/site.css con `pnpm run build`.
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./*.html', './es/*.html'],
