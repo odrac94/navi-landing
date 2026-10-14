@@ -26,6 +26,7 @@
       previous: 'Previous', searchingLyrics: 'Searching lyrics...', syncEarlier: 'Sync earlier',
       syncLater: 'Sync later', translateLyrics: 'Translate lyrics',
       likeSong: 'Like song', shuffle: 'Shuffle', repeat: 'Repeat',
+      repeatOff: 'Repeat: off', repeatAll: 'Repeat: all', repeatOne: 'Repeat: one',
     },
     es: {
       adPlaying: 'Anuncio en reproducción...', decreaseFontSize: 'Reducir tamaño de fuente',
@@ -33,6 +34,7 @@
       next: 'Siguiente', playPause: 'Reproducir/Pausar', previous: 'Anterior', searchingLyrics: 'Buscando letra...',
       syncEarlier: 'Sincronizar antes', syncLater: 'Sincronizar después', translateLyrics: 'Traducir letra',
       likeSong: 'Me gusta', shuffle: 'Aleatorio', repeat: 'Repetir',
+      repeatOff: 'Repetir: desactivado', repeatAll: 'Repetir: todas', repeatOne: 'Repetir: una',
     },
   };
 
@@ -102,6 +104,9 @@
     visible: true,
     translated: false,
     fontDelta: 0,
+    liked: false,
+    shuffle: false,
+    repeat: 'off', // off -> all -> one, como cycleRepeat en los adapters
     offset: 0,
     version: 1,
     activeIndex: -1,
@@ -233,7 +238,46 @@
       btn.classList.add('btn-dislike-cycle');
       setTimeout(() => btn.classList.remove('btn-dislike-cycle'), 600);
     });
+
+    // Me gusta / aleatorio / repetir (v1.7.0). Vienen con hidden en todas las skins y la
+    // extensión los muestra solo si la plataforma los soporta (setupExtraControls en
+    // content.entry.js); en el demo se muestran siempre, con el mismo estado:
+    // aria-pressed, data-repeat e íconos alternos.
+    ['btn-like', 'btn-shuffle', 'btn-repeat'].forEach((id) => { if ($(id)) $(id).hidden = false; });
+    on('btn-like', () => { state.liked = !state.liked; renderExtras(); });
+    on('btn-shuffle', () => { state.shuffle = !state.shuffle; renderExtras(); });
+    on('btn-repeat', () => {
+      const modes = ['off', 'all', 'one'];
+      state.repeat = modes[(modes.indexOf(state.repeat) + 1) % modes.length];
+      renderExtras();
+    });
+    renderExtras();
     renderPlay();
+    setupSeekTrack();
+  }
+
+  function renderExtras() {
+    const toggleIcons = (btn, showSel, hideSel) => {
+      btn.querySelectorAll(showSel).forEach((el) => { el.style.display = ''; });
+      btn.querySelectorAll(hideSel).forEach((el) => { el.style.display = 'none'; });
+    };
+    const like = $('btn-like');
+    if (like) {
+      like.setAttribute('aria-pressed', String(state.liked));
+      if (state.liked) toggleIcons(like, '.liked-icon', '.like-icon');
+      else toggleIcons(like, '.like-icon', '.liked-icon');
+    }
+    $('btn-shuffle')?.setAttribute('aria-pressed', String(state.shuffle));
+    const repeat = $('btn-repeat');
+    if (repeat) {
+      repeat.dataset.repeat = state.repeat;
+      repeat.setAttribute('aria-pressed', String(state.repeat !== 'off'));
+      if (state.repeat === 'one') toggleIcons(repeat, '.repeat-one-icon', '.repeat-icon');
+      else toggleIcons(repeat, '.repeat-icon', '.repeat-one-icon');
+      const label = MESSAGES[state.lang][{ off: 'repeatOff', all: 'repeatAll', one: 'repeatOne' }[state.repeat]];
+      repeat.title = label;
+      repeat.setAttribute('aria-label', label);
+    }
   }
 
   function on(id, fn) { $(id)?.addEventListener('click', fn); }
@@ -344,10 +388,96 @@
     last = now;
     if (state.playing && state.visible && $('lyrics-container')) {
       state.time = (state.time + dt) % DURATION;
-      render();
+      // Durante el arrastre de la barra solo se mueve la barra (como isSeekingBar)
+      if (!seeking) render();
     }
     requestAnimationFrame(tick);
   }
+
+  // Barra de tiempo interactiva (v1.7.0), versión del demo de setupSeekBar en
+  // content.entry.js: la pista es el padre de #progress-bar, área de captura ±8px por
+  // geometría (las pistas miden 1-14px), el salto ocurre al soltar y ←/→ mueven 5 s.
+  const SEEK_HIT_PAD = 8;
+  const SEEK_KEY_STEP = 5;
+  let seeking = false;
+
+  const getTrack = () => {
+    const track = $('progress-bar')?.parentElement;
+    return track && track !== document.body ? track : null;
+  };
+
+  function setupSeekTrack() {
+    const track = getTrack();
+    if (!track) return;
+    track.classList.add('navi-seekable');
+    track.setAttribute('role', 'slider');
+    track.tabIndex = 0;
+    track.setAttribute('aria-label', state.lang === 'es' ? 'Barra de tiempo' : 'Seek bar');
+    track.setAttribute('aria-valuemin', '0');
+    track.setAttribute('aria-valuemax', String(Math.round(DURATION)));
+  }
+
+  function paintSeek(time) {
+    const bar = $('progress-bar');
+    if (bar) bar.style.width = `${Math.min(100, (time / DURATION) * 100)}%`;
+    if ($('current-time')) $('current-time').textContent = fmt(time);
+    getTrack()?.setAttribute('aria-valuenow', String(Math.round(time)));
+  }
+
+  function commitSeek(time) {
+    state.time = Math.max(0, Math.min(DURATION - 0.5, time));
+    paintSeek(state.time);
+    render();
+  }
+
+  const ratioAt = (t, clientX) => {
+    const r = t.getBoundingClientRect();
+    return r.width > 0 ? Math.max(0, Math.min(1, (clientX - r.left) / r.width)) : 0;
+  };
+  const hitsTrack = (t, e) => {
+    const r = t.getBoundingClientRect();
+    return e.clientX >= r.left && e.clientX <= r.right &&
+      e.clientY >= r.top - SEEK_HIT_PAD && e.clientY <= r.bottom + SEEK_HIT_PAD;
+  };
+
+  // En el document: sobrevive a los cambios de skin (mount reemplaza el body)
+  document.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0) return;
+    const t = getTrack();
+    if (!t || !hitsTrack(t, e)) return;
+    // No robarle el clic a un botón vecino que cae dentro del margen
+    if (e.target !== t && e.target.closest?.('button, a, input')) return;
+    e.preventDefault();
+    seeking = true;
+    t.classList.add('is-seeking');
+    paintSeek(ratioAt(t, e.clientX) * DURATION);
+
+    const onMove = (ev) => paintSeek(ratioAt(t, ev.clientX) * DURATION);
+    const onUp = (ev) => {
+      document.removeEventListener('pointermove', onMove);
+      document.removeEventListener('pointerup', onUp);
+      document.removeEventListener('pointercancel', onUp);
+      t.classList.remove('is-seeking');
+      seeking = false;
+      if (ev.type === 'pointerup') commitSeek(ratioAt(t, ev.clientX) * DURATION);
+    };
+    document.addEventListener('pointermove', onMove);
+    document.addEventListener('pointerup', onUp);
+    document.addEventListener('pointercancel', onUp);
+  }, true);
+
+  document.addEventListener('keydown', (e) => {
+    const t = getTrack();
+    if (!t || e.target !== t || e.altKey || e.ctrlKey || e.metaKey) return;
+    let target = null;
+    if (e.key === 'ArrowLeft') target = state.time - SEEK_KEY_STEP;
+    else if (e.key === 'ArrowRight') target = state.time + SEEK_KEY_STEP;
+    else if (e.key === 'Home') target = 0;
+    else if (e.key === 'End') target = DURATION - 1;
+    if (target === null) return;
+    e.preventDefault();
+    commitSeek(target);
+  }, true);
 
   // Parpadeo aleatorio de la skin CRT (como scheduleCrtGlitch en la extensión)
   const GLITCH_SELECTOR = '#song-title, #song-artist, #song-album, #song-year, .toolbar-btn, .controls button, #offset-value, #version-badge, .crt-time, .crt-sync-label, .crt-now';
