@@ -131,6 +131,7 @@
     });
   }
   let glitchTimer = null;
+  let lineResizeObserver = null;
   const $ = (id) => document.getElementById(id);
 
   const fmt = (s) => {
@@ -289,6 +290,18 @@
       div.addEventListener('click', () => seekLine(index));
       container.appendChild(div);
     });
+
+    // Si las líneas cambian de tamaño (A+/A-, traducción, transición de fuente, ventana)
+    // la línea activa deja de estar centrada: re-centrarla, como hace recenterActiveLine
+    // en la extensión. Suave y no instantáneo, porque en muchas skins la línea activa
+    // crece al activarse y esto también corre en cada cambio de línea.
+    lineResizeObserver?.disconnect();
+    lineResizeObserver = new ResizeObserver(() => {
+      const active = container.querySelectorAll('.line')[state.activeIndex];
+      if (active) centerLine(active, false);
+    });
+    lineResizeObserver.observe(container);
+    container.querySelectorAll('.line').forEach((el) => lineResizeObserver.observe(el));
   }
 
   function currentIndex() {
