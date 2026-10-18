@@ -3,7 +3,7 @@
 // themes.js, popup.js) y la infraestructura del sitio (nginx + Traefik, Google Analytics 4).
 import { ROUTES, SITE } from './routes.mjs';
 
-const UPDATED = '2026-09-28';
+const UPDATED = '2026-10-17';
 
 const block = (title, html) => `                <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
                     <h2 class="!text-primary">${title}</h2>
@@ -19,7 +19,7 @@ const CONTENT = {
     breadcrumb: 'Privacy policy',
     h1: 'Privacy <span class="text-primary neon-text-glow">Policy</span>',
     lead: 'Your privacy is important to us. This policy explains how the Navi Lyrics extension and the navilyrics.com website handle your information.',
-    updated: 'Last updated: September 28, 2026',
+    updated: 'Last updated: October 17, 2026',
     sections: [
       ['No personal data collection', `                    <p><strong>Navi Lyrics does not collect, store or share any personal user data.</strong> The extension is designed to work without tracking or monitoring your activity, and it has no account system.</p>`],
       ['What the extension stores locally', `                    <p>Navi Lyrics uses your browser’s local storage (<code>chrome.storage.local</code>) to remember your preferences and cache content for fast and offline access. Everything in this list stays on your device and is never transmitted anywhere:</p>
@@ -58,8 +58,16 @@ const CONTENT = {
                         <li><strong>Language choice:</strong> if you switch between English and Spanish, the choice is saved in your browser’s <code>localStorage</code> so we don’t suggest the other language again.</li>
                         <li><strong>Server logs:</strong> like most web servers, ours keeps standard access logs (IP address, requested page, date and browser user agent) for security and troubleshooting. They are rotated automatically and are not used to identify or profile visitors.</li>
                     </ul>`],
+      ['Diagnostic report (from version 1.8.0)', `                    <p>If you press <strong>“Report a problem”</strong> in the extension, it builds, on your device, a text with: the extension version, your browser’s brand and major version, operating system, interface language, the music platform in use, your skin/theme/translation settings, local storage usage and the most recent error codes (codes only: no URLs, no lyrics, no account data).</p>
+                    <ul>
+                        <li><strong>You see the full text before anything leaves your device</strong>, and it is only sent if you copy it yourself, paste it into the form at <a href="${ROUTES.support.en}">navilyrics.com/support</a> or send it by email.</li>
+                        <li>The title and artist of the last song are included <strong>only if you tick the box</strong>.</li>
+                        <li>Nothing is sent automatically, and you can clear the local diagnostic history at any time from the same dialog.</li>
+                        <li>The support form is processed by ${ext('https://formspree.io/legal/privacy-policy/', 'Formspree')}, which delivers it to our inbox; your message and the report are kept only to help you.</li>
+                    </ul>`],
       ['Third-party services', `                    <ul>
                         <li>${ext('https://lrclib.net/', 'LRCLIB')}: public lyrics database.</li>
+                        <li>${ext('https://formspree.io/legal/privacy-policy/', 'Formspree')}: delivers the support form on navilyrics.com, only when you submit it.</li>
                         <li>${ext('https://policies.google.com/privacy', 'Google Translate')}: public translation endpoint, used only when you request a translation.</li>
                         <li>Image servers of Spotify, YouTube and Apple Music: only with the adaptive theme, as described above.</li>
                         <li>${ext('https://policies.google.com/privacy', 'Google Analytics')}: visit statistics for navilyrics.com (not used by the extension).</li>
@@ -69,6 +77,7 @@ const CONTENT = {
       ['Security', `                    <p>Since Navi Lyrics doesn’t collect personal data or store it on external servers, the privacy risk is minimal. We still recommend keeping your browser up to date and reviewing the permissions of your extensions from time to time.</p>`],
       ['Changes to this policy', `                    <p>We may update this policy. Significant changes will be reflected in the date at the bottom of this page.</p>`],
       ['Contact', `                    <ul>
+                        <li>Support form: <a href="${ROUTES.support.en}">navilyrics.com/support</a></li>
                         <li>X (Twitter): ${ext('https://x.com/navilyrics_', '@navilyrics_')}</li>
                         <li>GitHub: ${ext('https://github.com/odrac94/navi-landing', 'odrac94/navi-landing')}</li>
                     </ul>`],
@@ -80,7 +89,7 @@ const CONTENT = {
     breadcrumb: 'Política de privacidad',
     h1: 'Política de <span class="text-primary neon-text-glow">privacidad</span>',
     lead: 'Tu privacidad nos importa. Esta política explica cómo la extensión Navi Lyrics y el sitio navilyrics.com manejan tu información.',
-    updated: 'Última actualización: 28 de septiembre de 2026',
+    updated: 'Última actualización: 17 de octubre de 2026',
     sections: [
       ['No recopilamos datos personales', `                    <p><strong>Navi Lyrics no recopila, almacena ni comparte datos personales.</strong> La extensión está diseñada para funcionar sin rastrear ni monitorear tu actividad, y no tiene sistema de cuentas.</p>`],
       ['Qué guarda la extensión en tu equipo', `                    <p>Navi Lyrics usa el almacenamiento local de tu navegador (<code>chrome.storage.local</code>) para recordar tus preferencias y guardar contenido en caché para un acceso rápido y sin conexión. Todo lo de esta lista se queda en tu dispositivo y nunca se envía a ningún lado:</p>
@@ -119,8 +128,16 @@ const CONTENT = {
                         <li><strong>Idioma elegido:</strong> si cambias entre inglés y español, la elección se guarda en el <code>localStorage</code> de tu navegador para no sugerirte el otro idioma de nuevo.</li>
                         <li><strong>Registros del servidor:</strong> como la mayoría de los servidores web, el nuestro guarda registros de acceso estándar (dirección IP, página solicitada, fecha y agente de usuario del navegador) por seguridad y para resolver problemas. Se rotan automáticamente y no se usan para identificar ni perfilar a los visitantes.</li>
                     </ul>`],
+      ['Reporte de diagnóstico (desde la versión 1.8.0)', `                    <p>Si pulsas <strong>“Reportar un problema”</strong> en la extensión, esta genera en tu dispositivo un texto con: la versión de la extensión, la marca y versión mayor del navegador, el sistema operativo, el idioma de la interfaz, la plataforma de música en uso, tus ajustes de skin/tema/traducción, el uso del almacenamiento local y los últimos códigos de error (solo códigos: sin URLs, sin letras, sin datos de cuenta).</p>
+                    <ul>
+                        <li><strong>Ves el texto completo antes de que salga de tu dispositivo</strong>, y solo se envía si tú lo copias, lo pegas en el formulario de <a href="${ROUTES.support.es}">navilyrics.com/es/soporte</a> o lo mandas por correo.</li>
+                        <li>El título y artista de la última canción se incluyen <strong>solo si marcas la casilla</strong>.</li>
+                        <li>Nada se envía automáticamente y puedes borrar el historial local de diagnóstico cuando quieras desde el mismo diálogo.</li>
+                        <li>El formulario de soporte lo procesa ${ext('https://formspree.io/legal/privacy-policy/', 'Formspree')}, que lo entrega a nuestro buzón; tu mensaje y el reporte se conservan solo para ayudarte.</li>
+                    </ul>`],
       ['Servicios de terceros', `                    <ul>
                         <li>${ext('https://lrclib.net/', 'LRCLIB')}: base de datos pública de letras.</li>
+                        <li>${ext('https://formspree.io/legal/privacy-policy/', 'Formspree')}: entrega el formulario de soporte de navilyrics.com, solo cuando lo envías.</li>
                         <li>${ext('https://policies.google.com/privacy', 'Google Translate')}: endpoint público de traducción, solo cuando pides una traducción.</li>
                         <li>Servidores de imágenes de Spotify, YouTube y Apple Music: solo con el tema adaptativo, como se describe arriba.</li>
                         <li>${ext('https://policies.google.com/privacy?hl=es', 'Google Analytics')}: estadísticas de visitas de navilyrics.com (la extensión no lo usa).</li>
@@ -130,6 +147,7 @@ const CONTENT = {
       ['Seguridad', `                    <p>Como Navi Lyrics no recopila datos personales ni los guarda en servidores externos, el riesgo para tu privacidad es mínimo. Aun así, te recomendamos mantener tu navegador actualizado y revisar de vez en cuando los permisos de tus extensiones.</p>`],
       ['Cambios a esta política', `                    <p>Podemos actualizar esta política. Los cambios importantes se reflejarán en la fecha al final de esta página.</p>`],
       ['Contacto', `                    <ul>
+                        <li>Formulario de soporte: <a href="${ROUTES.support.es}">navilyrics.com/es/soporte</a></li>
                         <li>X (Twitter): ${ext('https://x.com/navilyrics_', '@navilyrics_')}</li>
                         <li>GitHub: ${ext('https://github.com/odrac94/navi-landing', 'odrac94/navi-landing')}</li>
                     </ul>`],

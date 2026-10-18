@@ -16,6 +16,7 @@ const UI = {
     linkAbout: 'About',
     linkChangelog: 'Changelog',
     linkPrivacy: 'Privacy policy',
+    linkSupport: 'Support',
     linkCookies: 'Cookie settings',
     linkStore: 'Chrome Web Store',
     linkCoffee: 'Support the project',
@@ -41,6 +42,7 @@ const UI = {
     linkAbout: 'Acerca de',
     linkChangelog: 'Novedades',
     linkPrivacy: 'Política de privacidad',
+    linkSupport: 'Soporte',
     linkCookies: 'Configurar cookies',
     linkStore: 'Chrome Web Store',
     linkCoffee: 'Apoya el proyecto',
@@ -198,6 +200,7 @@ ${body}
                             ${footerLink('about', t.linkAbout)}
                             ${footerLink('changelog', t.linkChangelog)}
                             ${footerLink('privacy', t.linkPrivacy)}
+                            ${footerLink('support', t.linkSupport)}
                             <li><button type="button" class="text-gray-400 hover:text-primary transition-colors" data-consent-open>${escape(t.linkCookies)}</button></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="${CWS_URL}" target="_blank" rel="noopener">${escape(t.linkStore)}</a></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="https://buymeacoffee.com/ivandelfin" target="_blank" rel="noopener">${escape(t.linkCoffee)}</a></li>

@@ -88,16 +88,30 @@
     </url>
     <url>
         <loc>https://navilyrics.com/privacy-policy</loc>
-        <lastmod>2026-09-26</lastmod>
+        <lastmod>2026-10-17</lastmod>
         <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/privacy-policy"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/politica-de-privacidad"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/privacy-policy"/>
     </url>
     <url>
         <loc>https://navilyrics.com/es/politica-de-privacidad</loc>
-        <lastmod>2026-09-26</lastmod>
+        <lastmod>2026-10-17</lastmod>
         <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/privacy-policy"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/politica-de-privacidad"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/privacy-policy"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/support</loc>
+        <lastmod>2026-10-17</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/support"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/soporte"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/support"/>
+    </url>
+    <url>
+        <loc>https://navilyrics.com/es/soporte</loc>
+        <lastmod>2026-10-17</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://navilyrics.com/support"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://navilyrics.com/es/soporte"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://navilyrics.com/support"/>
     </url>
 </urlset>
