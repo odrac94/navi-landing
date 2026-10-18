@@ -78,6 +78,7 @@ const CONTENT = {
       ['Changes to this policy', `                    <p>We may update this policy. Significant changes will be reflected in the date at the bottom of this page.</p>`],
       ['Contact', `                    <ul>
                         <li>Support form: <a href="${ROUTES.support.en}">navilyrics.com/support</a></li>
+                        <li>Email: <a href="mailto:soporte@navilyrics.com">soporte@navilyrics.com</a></li>
                         <li>X (Twitter): ${ext('https://x.com/navilyrics_', '@navilyrics_')}</li>
                         <li>GitHub: ${ext('https://github.com/odrac94/navi-landing', 'odrac94/navi-landing')}</li>
                     </ul>`],
@@ -148,6 +149,7 @@ const CONTENT = {
       ['Cambios a esta política', `                    <p>Podemos actualizar esta política. Los cambios importantes se reflejarán en la fecha al final de esta página.</p>`],
       ['Contacto', `                    <ul>
                         <li>Formulario de soporte: <a href="${ROUTES.support.es}">navilyrics.com/es/soporte</a></li>
+                        <li>Correo: <a href="mailto:soporte@navilyrics.com">soporte@navilyrics.com</a></li>
                         <li>X (Twitter): ${ext('https://x.com/navilyrics_', '@navilyrics_')}</li>
                         <li>GitHub: ${ext('https://github.com/odrac94/navi-landing', 'odrac94/navi-landing')}</li>
                     </ul>`],

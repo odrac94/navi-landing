@@ -97,6 +97,7 @@ export const supportBody = (lang) => {
                     <div class="flex flex-wrap justify-center gap-3">
                         <a class="glass-panel rounded-full px-4 py-2 text-sm text-gray-300 hover:text-primary hover:border-primary/50 transition-colors" href="https://www.instagram.com/navilyrics__/" target="_blank" rel="noopener">Instagram · @navilyrics__</a>
                         <a class="glass-panel rounded-full px-4 py-2 text-sm text-gray-300 hover:text-primary hover:border-primary/50 transition-colors" href="https://x.com/navilyrics_" target="_blank" rel="noopener">X · @navilyrics_</a>
+                        <a class="glass-panel rounded-full px-4 py-2 text-sm text-gray-300 hover:text-primary hover:border-primary/50 transition-colors" href="mailto:soporte@navilyrics.com">soporte@navilyrics.com</a>
                     </div>
                 </section>
             </div>
