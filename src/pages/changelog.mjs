@@ -7,6 +7,33 @@ import { ctaButton, escape } from './layout.mjs';
 
 export const RELEASES = [
   {
+    version: '1.8.0', date: '2026-10-17',
+    en: [
+      'Every failure now explains itself. If the floating window can’t open, closes by itself, or lyrics won’t load, you get a message on the music page or in the window saying what happened and what you can do, instead of nothing.',
+      'New “Report a problem” button in the popup. It builds a short diagnostic report on your device (extension version, browser, platform, settings and the latest error codes; no URLs, no account, no lyrics), shows it to you first, and lets you copy it, open the support form at navilyrics.com or send it by email. The song title is included only if you tick the box.',
+      'Fixed: the window that “opened and closed right away”. Two causes: the extension could end up running twice on the same page after a restart, and the previous window’s shutdown could break the new one. Both are gone.',
+      'Fixed: after updating the extension, open music tabs no longer keep a broken copy running. You either get a “reload this page” notice or nothing, never both.',
+      'Lyrics errors are specific now: “No internet connection”, “Couldn’t reach the lyrics service” and “The lyrics server isn’t responding” are different messages, and “no lyrics yet” is only shown when the song really isn’t in the database.',
+      'Translation failures say why: too slow, rate-limited by Google, or offline.',
+      'If Chrome refuses to open the window from the popup, the notice on the page has an “Open lyrics” button that works with a single click.',
+      'The popup tells you when the tab isn’t responding (with a reload button), when the site can’t be read any more, or when the window didn’t open, instead of showing a generic state.',
+      'No more native alert dialogs: all notices are in-page, keyboard accessible and announced to screen readers.',
+      'Support page at navilyrics.com/support and a contact email: soporte@navilyrics.com.',
+    ],
+    es: [
+      'Cada fallo ahora se explica. Si la ventana flotante no abre, se cierra sola o la letra no carga, verás un aviso en la página de música o en la ventana con qué pasó y qué puedes hacer, en vez de nada.',
+      'Nuevo botón “Reportar un problema” en el popup. Genera en tu dispositivo un reporte corto de diagnóstico (versión de la extensión, navegador, plataforma, ajustes y últimos códigos de error; sin URLs, sin cuenta, sin letras), te lo muestra antes y te deja copiarlo, abrir el formulario de soporte en navilyrics.com o enviarlo por correo. El título de la canción solo se incluye si marcas la casilla.',
+      'Corregido: la ventana que “se abría y se cerraba enseguida”. Dos causas: la extensión podía quedar corriendo dos veces en la misma página tras reiniciar, y el cierre de la ventana anterior podía romper la nueva. Las dos están resueltas.',
+      'Corregido: tras actualizar la extensión, las pestañas de música abiertas ya no mantienen una copia rota en marcha. O recibes un aviso de “recarga esta página” o nada, nunca ambas cosas.',
+      'Los errores de letra ahora son específicos: “Sin conexión a internet”, “No pudimos conectar con el servicio de letras” y “El servidor de letras no responde” son mensajes distintos, y “sin letra todavía” solo aparece cuando la canción de verdad no está en la base de datos.',
+      'Los fallos de traducción dicen por qué: demasiado lenta, limitada por Google o sin conexión.',
+      'Si Chrome se niega a abrir la ventana desde el popup, el aviso en la página tiene un botón “Abrir letras” que funciona con un solo clic.',
+      'El popup te avisa cuando la pestaña no responde (con botón de recargar), cuando ya no se puede leer el sitio o cuando la ventana no se abrió, en vez de mostrar un estado genérico.',
+      'Sin diálogos nativos de alerta: todos los avisos están en la página, se manejan con teclado y los anuncian los lectores de pantalla.',
+      'Página de soporte en navilyrics.com/es/soporte y correo de contacto: soporte@navilyrics.com.',
+    ],
+  },
+  {
     version: '1.7.0', date: '2026-10-13',
     en: [
       'Like, shuffle and repeat buttons in every skin. They follow the state on the site and hide when a platform has no such control (Apple Music has no like button in its player).',

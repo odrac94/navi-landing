@@ -65,7 +65,7 @@
                 "about": {
                     "@id": "https://navilyrics.com/#app"
                 },
-                "dateModified": "2026-10-13"
+                "dateModified": "2026-10-17"
             }
         ]
     }
@@ -112,8 +112,24 @@
             </header>
 
             <div class="max-w-3xl mx-auto mt-10 flex flex-col gap-4">
+                <article id="v1.8.0" class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
+                    <h2 class="!mb-1 flex flex-wrap items-center gap-3">v1.8.0 <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary border border-primary/20">Latest</span></h2>
+                    <p class="!mt-0 text-sm !text-gray-500"><time datetime="2026-10-17">October 17, 2026</time></p>
+                    <ul>
+                        <li>Every failure now explains itself. If the floating window can’t open, closes by itself, or lyrics won’t load, you get a message on the music page or in the window saying what happened and what you can do, instead of nothing.</li>
+                        <li>New “Report a problem” button in the popup. It builds a short diagnostic report on your device (extension version, browser, platform, settings and the latest error codes; no URLs, no account, no lyrics), shows it to you first, and lets you copy it, open the support form at navilyrics.com or send it by email. The song title is included only if you tick the box.</li>
+                        <li>Fixed: the window that “opened and closed right away”. Two causes: the extension could end up running twice on the same page after a restart, and the previous window’s shutdown could break the new one. Both are gone.</li>
+                        <li>Fixed: after updating the extension, open music tabs no longer keep a broken copy running. You either get a “reload this page” notice or nothing, never both.</li>
+                        <li>Lyrics errors are specific now: “No internet connection”, “Couldn’t reach the lyrics service” and “The lyrics server isn’t responding” are different messages, and “no lyrics yet” is only shown when the song really isn’t in the database.</li>
+                        <li>Translation failures say why: too slow, rate-limited by Google, or offline.</li>
+                        <li>If Chrome refuses to open the window from the popup, the notice on the page has an “Open lyrics” button that works with a single click.</li>
+                        <li>The popup tells you when the tab isn’t responding (with a reload button), when the site can’t be read any more, or when the window didn’t open, instead of showing a generic state.</li>
+                        <li>No more native alert dialogs: all notices are in-page, keyboard accessible and announced to screen readers.</li>
+                        <li>Support page at navilyrics.com/support and a contact email: soporte@navilyrics.com.</li>
+                    </ul>
+                </article>
                 <article id="v1.7.0" class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
-                    <h2 class="!mb-1 flex flex-wrap items-center gap-3">v1.7.0 <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary border border-primary/20">Latest</span></h2>
+                    <h2 class="!mb-1 flex flex-wrap items-center gap-3">v1.7.0</h2>
                     <p class="!mt-0 text-sm !text-gray-500"><time datetime="2026-10-13">October 13, 2026</time></p>
                     <ul>
                         <li>Like, shuffle and repeat buttons in every skin. They follow the state on the site and hide when a platform has no such control (Apple Music has no like button in its player).</li>

@@ -65,7 +65,7 @@
                 "about": {
                     "@id": "https://navilyrics.com/#app"
                 },
-                "dateModified": "2026-10-13"
+                "dateModified": "2026-10-17"
             }
         ]
     }
@@ -112,8 +112,24 @@
             </header>
 
             <div class="max-w-3xl mx-auto mt-10 flex flex-col gap-4">
+                <article id="v1.8.0" class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
+                    <h2 class="!mb-1 flex flex-wrap items-center gap-3">v1.8.0 <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary border border-primary/20">Última</span></h2>
+                    <p class="!mt-0 text-sm !text-gray-500"><time datetime="2026-10-17">17 de octubre de 2026</time></p>
+                    <ul>
+                        <li>Cada fallo ahora se explica. Si la ventana flotante no abre, se cierra sola o la letra no carga, verás un aviso en la página de música o en la ventana con qué pasó y qué puedes hacer, en vez de nada.</li>
+                        <li>Nuevo botón “Reportar un problema” en el popup. Genera en tu dispositivo un reporte corto de diagnóstico (versión de la extensión, navegador, plataforma, ajustes y últimos códigos de error; sin URLs, sin cuenta, sin letras), te lo muestra antes y te deja copiarlo, abrir el formulario de soporte en navilyrics.com o enviarlo por correo. El título de la canción solo se incluye si marcas la casilla.</li>
+                        <li>Corregido: la ventana que “se abría y se cerraba enseguida”. Dos causas: la extensión podía quedar corriendo dos veces en la misma página tras reiniciar, y el cierre de la ventana anterior podía romper la nueva. Las dos están resueltas.</li>
+                        <li>Corregido: tras actualizar la extensión, las pestañas de música abiertas ya no mantienen una copia rota en marcha. O recibes un aviso de “recarga esta página” o nada, nunca ambas cosas.</li>
+                        <li>Los errores de letra ahora son específicos: “Sin conexión a internet”, “No pudimos conectar con el servicio de letras” y “El servidor de letras no responde” son mensajes distintos, y “sin letra todavía” solo aparece cuando la canción de verdad no está en la base de datos.</li>
+                        <li>Los fallos de traducción dicen por qué: demasiado lenta, limitada por Google o sin conexión.</li>
+                        <li>Si Chrome se niega a abrir la ventana desde el popup, el aviso en la página tiene un botón “Abrir letras” que funciona con un solo clic.</li>
+                        <li>El popup te avisa cuando la pestaña no responde (con botón de recargar), cuando ya no se puede leer el sitio o cuando la ventana no se abrió, en vez de mostrar un estado genérico.</li>
+                        <li>Sin diálogos nativos de alerta: todos los avisos están en la página, se manejan con teclado y los anuncian los lectores de pantalla.</li>
+                        <li>Página de soporte en navilyrics.com/es/soporte y correo de contacto: soporte@navilyrics.com.</li>
+                    </ul>
+                </article>
                 <article id="v1.7.0" class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
-                    <h2 class="!mb-1 flex flex-wrap items-center gap-3">v1.7.0 <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary border border-primary/20">Última</span></h2>
+                    <h2 class="!mb-1 flex flex-wrap items-center gap-3">v1.7.0</h2>
                     <p class="!mt-0 text-sm !text-gray-500"><time datetime="2026-10-13">13 de octubre de 2026</time></p>
                     <ul>
                         <li>Botones de me gusta, aleatorio y repetir en todas las skins. Siguen el estado del sitio y se ocultan cuando una plataforma no tiene ese control (el reproductor de Apple Music no tiene me gusta).</li>
