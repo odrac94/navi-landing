@@ -13,6 +13,7 @@ import { platformBody, platformJsonLd } from '../src/pages/platform.mjs';
 import { ABOUT, aboutJsonLd } from '../src/pages/about.mjs';
 import { RELEASES, changelogBody, changelogJsonLd, changelogMeta } from '../src/pages/changelog.mjs';
 import { privacyBody, privacyJsonLd, privacyMeta } from '../src/pages/privacy.mjs';
+import { supportBody, supportJsonLd, supportMeta } from '../src/pages/support.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const LANGS = ['en', 'es'];
@@ -26,7 +27,8 @@ const LASTMOD = {
   appleMusic: '2026-10-04',
   about: '2026-10-04',
   changelog: RELEASES[0].date,
-  privacy: '2026-09-26',
+  privacy: '2026-10-17',
+  support: '2026-10-17',
 };
 
 const pages = [];
@@ -47,6 +49,9 @@ for (const lang of LANGS) {
 
   const p = privacyMeta(lang);
   pages.push({ id: 'privacy', lang, html: renderPage({ lang, id: 'privacy', title: p.title, description: p.description, breadcrumb: p.breadcrumb, body: privacyBody(lang), jsonLd: privacyJsonLd(lang) }) });
+
+  const s = supportMeta(lang);
+  pages.push({ id: 'support', lang, html: renderPage({ lang, id: 'support', title: s.title, description: s.description, breadcrumb: s.breadcrumb, body: supportBody(lang), jsonLd: supportJsonLd(lang) }) });
 }
 
 for (const { id, lang, html } of pages) {

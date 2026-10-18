@@ -62,7 +62,7 @@
                 "isPartOf": {
                     "@id": "https://navilyrics.com/#website"
                 },
-                "dateModified": "2026-09-28"
+                "dateModified": "2026-10-17"
             }
         ]
     }
@@ -159,9 +159,20 @@
                     </ul>
                 </section>
                 <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
+                    <h2 class="!text-primary">Diagnostic report (from version 1.8.0)</h2>
+                    <p>If you press <strong>“Report a problem”</strong> in the extension, it builds, on your device, a text with: the extension version, your browser’s brand and major version, operating system, interface language, the music platform in use, your skin/theme/translation settings, local storage usage and the most recent error codes (codes only: no URLs, no lyrics, no account data).</p>
+                    <ul>
+                        <li><strong>You see the full text before anything leaves your device</strong>, and it is only sent if you copy it yourself, paste it into the form at <a href="/support">navilyrics.com/support</a> or send it by email.</li>
+                        <li>The title and artist of the last song are included <strong>only if you tick the box</strong>.</li>
+                        <li>Nothing is sent automatically, and you can clear the local diagnostic history at any time from the same dialog.</li>
+                        <li>The support form is processed by <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Formspree</a>, which delivers it to our inbox; your message and the report are kept only to help you.</li>
+                    </ul>
+                </section>
+                <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
                     <h2 class="!text-primary">Third-party services</h2>
                     <ul>
                         <li><a href="https://lrclib.net/" target="_blank" rel="noopener">LRCLIB</a>: public lyrics database.</li>
+                        <li><a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Formspree</a>: delivers the support form on navilyrics.com, only when you submit it.</li>
                         <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Translate</a>: public translation endpoint, used only when you request a translation.</li>
                         <li>Image servers of Spotify, YouTube and Apple Music: only with the adaptive theme, as described above.</li>
                         <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Analytics</a>: visit statistics for navilyrics.com (not used by the extension).</li>
@@ -180,11 +191,12 @@
                 <section class="glass-panel rounded-2xl p-6 sm:p-8 prose-navi">
                     <h2 class="!text-primary">Contact</h2>
                     <ul>
+                        <li>Support form: <a href="/support">navilyrics.com/support</a></li>
                         <li>X (Twitter): <a href="https://x.com/navilyrics_" target="_blank" rel="noopener">@navilyrics_</a></li>
                         <li>GitHub: <a href="https://github.com/odrac94/navi-landing" target="_blank" rel="noopener">odrac94/navi-landing</a></li>
                     </ul>
                 </section>
-                <p class="text-center text-sm text-gray-500 mt-6"><time datetime="2026-09-28">Last updated: September 28, 2026</time></p>
+                <p class="text-center text-sm text-gray-500 mt-6"><time datetime="2026-10-17">Last updated: October 17, 2026</time></p>
             </div>
         </main>
 
@@ -205,6 +217,7 @@
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="/about">About</a></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="/changelog">Changelog</a></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="/privacy-policy">Privacy policy</a></li>
+                            <li><a class="text-gray-400 hover:text-primary transition-colors" href="/support">Support</a></li>
                             <li><button type="button" class="text-gray-400 hover:text-primary transition-colors" data-consent-open>Cookie settings</button></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="https://chromewebstore.google.com/detail/navi-lyrics/pjjcbhbdefbdfcnbdfpholpbpdgbmejp" target="_blank" rel="noopener">Chrome Web Store</a></li>
                             <li><a class="text-gray-400 hover:text-primary transition-colors" href="https://buymeacoffee.com/ivandelfin" target="_blank" rel="noopener">Support the project</a></li>

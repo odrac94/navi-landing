@@ -12,6 +12,7 @@ export const ROUTES = {
   about: { en: '/about', es: '/es/acerca-de' },
   changelog: { en: '/changelog', es: '/es/novedades' },
   privacy: { en: '/privacy-policy', es: '/es/politica-de-privacidad' },
+  support: { en: '/support', es: '/es/soporte' },
 };
 
 // Ruta pública -> archivo generado (relativo a la raíz del repo)
