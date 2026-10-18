@@ -211,7 +211,8 @@ ${body}
                     <p>
                         <a class="hover:text-primary transition-colors" href="https://x.com/navilyrics_" target="_blank" rel="noopener">X</a> ·
                         <a class="hover:text-primary transition-colors" href="https://www.instagram.com/navilyrics__/" target="_blank" rel="noopener">Instagram</a> ·
-                        <a class="hover:text-primary transition-colors" href="https://github.com/odrac94/navi-landing" target="_blank" rel="noopener">GitHub</a>
+                        <a class="hover:text-primary transition-colors" href="https://github.com/odrac94/navi-landing" target="_blank" rel="noopener">GitHub</a> ·
+                        <a class="hover:text-primary transition-colors" href="mailto:soporte@navilyrics.com">soporte@navilyrics.com</a>
                     </p>
                     <p>${escape(t.copyright)}</p>
                     <p>${escape(t.poweredBy)} <a class="text-primary hover:text-white underline decoration-primary/30 underline-offset-2" href="https://lrclib.net/" target="_blank" rel="noopener">LRCLIB</a>.</p>

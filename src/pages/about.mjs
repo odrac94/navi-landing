@@ -4,10 +4,12 @@ import { ctaButton, section } from './layout.mjs';
 
 const links = (lang) => {
   const t = lang === 'en'
-    ? { store: 'Chrome Web Store', x: 'X (Twitter)', ig: 'Instagram', coffee: 'Buy Me a Coffee', gh: 'GitHub (website source code)' }
-    : { store: 'Chrome Web Store', x: 'X (Twitter)', ig: 'Instagram', coffee: 'Buy Me a Coffee', gh: 'GitHub (código de este sitio web)' };
+    ? { store: 'Chrome Web Store', email: 'Email', support: 'Support form', x: 'X (Twitter)', ig: 'Instagram', coffee: 'Buy Me a Coffee', gh: 'GitHub (website source code)' }
+    : { store: 'Chrome Web Store', email: 'Correo', support: 'Formulario de soporte', x: 'X (Twitter)', ig: 'Instagram', coffee: 'Buy Me a Coffee', gh: 'GitHub (código de este sitio web)' };
   return `                    <ul>
                         <li><a href="${CWS_URL}" target="_blank" rel="noopener">${t.store}</a></li>
+                        <li><a href="mailto:soporte@navilyrics.com">${t.email}</a>: soporte@navilyrics.com</li>
+                        <li><a href="${ROUTES.support[lang]}">${t.support}</a></li>
                         <li><a href="https://x.com/navilyrics_" target="_blank" rel="noopener">${t.x}</a>: @navilyrics_</li>
                         <li><a href="https://www.instagram.com/navilyrics__/" target="_blank" rel="noopener">${t.ig}</a>: @navilyrics__</li>
                         <li><a href="https://buymeacoffee.com/ivandelfin" target="_blank" rel="noopener">${t.coffee}</a></li>
